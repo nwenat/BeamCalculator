@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Belka version 1.0" Height="350" Width="525">
     <Border Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,14 +18,16 @@
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2"/>
+                    <TextBox x:Name="hight" Padding="2"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Szerokość belki b=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2"/>
+                    <TextBox x:Name="width" Padding="2"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
+
+                <Button x:Name="resultBtn" Click="resultBtn_Click" Content="Oblicz!!!" Margin="40 10"/>
             </StackPanel>
 
             <!-- Right column Output Data -->
@@ -33,7 +35,7 @@
                 <TextBlock Text="Wyniki" FontWeight="Bold"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Pole przekroju belki=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2"/>
+                    <TextBox x:Name="field" Padding="2"/>
                     <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
                 </StackPanel>
              </StackPanel>

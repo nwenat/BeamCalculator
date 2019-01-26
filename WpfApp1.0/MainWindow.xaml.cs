@@ -20,9 +20,30 @@ namespace WpfApp1._0
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CrossSectionCahracteristics przkroj1 = new CrossSectionCahracteristics();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            przkroj1.h = 0;
+            przkroj1.b = 0;
+            refreshField(przkroj1.a);
+        }
+
+        private void refreshField(Double wynik)
+        {
+            this.field.Text = wynik.ToString();
+        }
+
+        private void resultBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Double hight_h = Double.Parse(hight.Text.Replace('.', ','));
+            przkroj1.h = hight_h;
+            Double width_b = Double.Parse(width.Text.Replace('.', ','));
+            przkroj1.b = width_b;
+
+            refreshField(przkroj1.a);
         }
     }
 }
