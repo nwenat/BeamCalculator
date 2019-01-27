@@ -62,7 +62,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CrossSectionCahracteristics.cs" />
+    <Compile Include="Beam.cs" />
+    <Compile Include="CalculateCommand.cs" />
+    <Compile Include="CrossSectionCharacteristics.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

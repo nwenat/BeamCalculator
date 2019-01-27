@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
         Title="Belka version 1.0" Height="350" Width="525">
+    <Window.Resources>
+        <local:Beam x:Key="beam" />
+    </Window.Resources>
+    
     <Border Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -16,26 +20,26 @@
             <!-- Left column Input Data -->
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox x:Name="hight" Padding="2"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Height, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Szerokość belki b=  " VerticalAlignment="Center"/>
-                    <TextBox x:Name="width" Padding="2"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Width, Source={StaticResource beam}}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <Button x:Name="resultBtn" Click="resultBtn_Click" Content="Oblicz!!!" Margin="40 10"/>
+                <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
             </StackPanel>
 
             <!-- Right column Output Data -->
             <StackPanel Grid.Column="1">
                 <TextBlock Text="Wyniki" FontWeight="Bold"/>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel  Orientation="Horizontal">
                     <TextBlock Text="Pole przekroju belki=  " VerticalAlignment="Center"/>
-                    <TextBox x:Name="field" Padding="2"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Area, Mode=OneWay, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
                 </StackPanel>
              </StackPanel>
