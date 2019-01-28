@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Belka version 1.0" Height="350" Width="525">
+        Title="Belka version 1.0" Height="600" Width="570">
     <Window.Resources>
         <local:Beam x:Key="beam" />
     </Window.Resources>
@@ -18,6 +18,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Left column Input Data -->
+            <!-- Size concrete -->
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
@@ -30,6 +31,18 @@
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Width, Source={StaticResource beam}}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
+                
+                <!-- Steel -->
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Ilość prętów zbrojeniowych As1, n=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.CountAs1, Source={StaticResource beam}}" />
+                    <TextBlock Text=" szt" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Przekrój prętów As1, φ=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.FiAs1, Source={StaticResource beam}}" />
+                    <TextBlock Text=" mm" VerticalAlignment="Center"/>
+                </StackPanel>
 
                 <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
             </StackPanel>
@@ -38,8 +51,13 @@
             <StackPanel Grid.Column="1">
                 <TextBlock Text="Wyniki" FontWeight="Bold"/>
                 <StackPanel  Orientation="Horizontal">
-                    <TextBlock Text="Pole przekroju belki=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Area, Mode=OneWay, Source={StaticResource beam}}"/>
+                    <TextBlock Text="Pole pow. betonu Ac=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaConcrete, Mode=OneWay, Source={StaticResource beam}}" />
+                    <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal">
+                    <TextBlock Text="Pole pow. stali zbrojeniowej dolnej As1=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaAs1, Mode=OneWay, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
                 </StackPanel>
              </StackPanel>
