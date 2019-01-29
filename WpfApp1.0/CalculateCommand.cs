@@ -35,6 +35,11 @@ namespace WpfApp1._0
             {
                 crossSectionCharacteristics.UpdateData();
             }
+            StaticScheme staticScheme = beam.StaticScheme;
+            if (staticScheme != null)
+            {
+                staticScheme.UpdateData();
+            }
         }
     }
 }

@@ -44,21 +44,39 @@
                     <TextBlock Text=" mm" VerticalAlignment="Center"/>
                 </StackPanel>
 
+                <!-- Static scheme / simple beam -->
+                <TextBlock Text="Schemat statyczny" FontWeight="Bold"/>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Rozpiętość L=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding StaticScheme.Length, Source={StaticResource beam}}" />
+                    <TextBlock Text=" m" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Obciążenie ciągłe q=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding StaticScheme.ContinuosusLoad, Source={StaticResource beam}}" />
+                    <TextBlock Text=" kN/m" VerticalAlignment="Center"/>
+                </StackPanel>
+
                 <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
             </StackPanel>
 
             <!-- Right column Output Data -->
             <StackPanel Grid.Column="1">
                 <TextBlock Text="Wyniki" FontWeight="Bold"/>
-                <StackPanel  Orientation="Horizontal">
+                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Pole pow. betonu Ac=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaConcrete, Mode=OneWay, Source={StaticResource beam}}" />
                     <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel  Orientation="Horizontal">
+                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Pole pow. stali zbrojeniowej dolnej As1=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaAs1, Mode=OneWay, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Maksymalny moment zginający M=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding StaticScheme.MaxBendingMoment, Mode=OneWay, Source={StaticResource beam}}" />
+                    <TextBlock Text=" kNm;" VerticalAlignment="Center"/>
                 </StackPanel>
              </StackPanel>
 
