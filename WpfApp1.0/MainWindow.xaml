@@ -76,7 +76,12 @@
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Maksymalny moment zginający M=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding StaticScheme.MaxBendingMoment, Mode=OneWay, Source={StaticResource beam}}" />
-                    <TextBlock Text=" kNm;" VerticalAlignment="Center"/>
+                    <TextBlock Text=" kNm" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Maksymalna siła tnąca T=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2"  />
+                    <TextBlock Text=" kN" VerticalAlignment="Center"/>
                 </StackPanel>
              </StackPanel>
 
