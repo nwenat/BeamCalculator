@@ -5,12 +5,17 @@ namespace WpfApp1._0
 {
     class CrossSectionCharacteristics : INotifyPropertyChanged
     {
-        private Double width = 0.0;
-        private Double height = 0.0;
-        private Double areaConcrete = 0.0;
+        private Double width = 5.0;
+        private Double height = 10.0;
         private int countAs1 = 2;
-        private Double fiAsi = 8;
+        private int countAp = 2;
+        // fi in [mm]
+        private int fiAs1 = 8;
+        private int fiAp = 8;
+        // area in [cm2]
+        private Double areaConcrete = 0.0;
         private Double areaAs1 = 0.0;
+        private Double areaAp = 0.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -59,17 +64,47 @@ namespace WpfApp1._0
             }
         }
 
-        public Double FiAs1
+        public int CountAp
         {
             get
             {
-                return fiAsi;
+                return countAp;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    countAp = value;
+                }
+            }
+        }
+
+        public int FiAs1
+        {
+            get
+            {
+                return fiAs1;
             }
             set
             {
                 if (value > 0)
                 {
-                    fiAsi = value;
+                    fiAs1 = value;
+                }
+            }
+        }
+
+        public int FiAp
+        {
+            get
+            {
+                return fiAp;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    fiAp = value;
                 }
             }
         }
@@ -90,12 +125,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double AreaAp
+        {
+            get
+            {
+                return areaAp;
+            }
+        }
+
         public void UpdateData()
         {
-            areaAs1 = 1;
-            areaConcrete = width * height - areaAs1;
+            areaAs1 = Math.PI * 0.25 * fiAs1 * fiAs1 * 0.01 * countAs1;
+            areaAp = Math.PI * 0.25 * fiAp * fiAp * 0.01 * countAp;
+            areaConcrete = width * height - areaAs1 - areaAp;
             PropertyChanged(this, new PropertyChangedEventArgs("AreaConcrete"));
             PropertyChanged(this, new PropertyChangedEventArgs("AreaAs1"));
+            PropertyChanged(this, new PropertyChangedEventArgs("AreaAp"));
         }
     }
 }

@@ -40,6 +40,11 @@ namespace WpfApp1._0
             {
                 staticScheme.UpdateData();
             }
+            ConcreteParameters concreteParameters = beam.ConcreteParameters;
+            if (concreteParameters != null)
+            {
+                concreteParameters.UpdateData();
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ namespace WpfApp1._0
     {
         private CrossSectionCharacteristics crossSectionCharacteristics = new CrossSectionCharacteristics();
         private StaticScheme staticScheme = new StaticScheme();
+        private ConcreteParameters concreteParameters = new ConcreteParameters();
         private CalculateCommand calculateCommand = new CalculateCommand();
 
         public CrossSectionCharacteristics CrossSectionCharacteristics
@@ -18,6 +19,12 @@ namespace WpfApp1._0
         {
             get { return staticScheme; }
             set { staticScheme = value; }
+        }
+
+        public ConcreteParameters ConcreteParameters
+        {
+            get { return concreteParameters; }
+            set { concreteParameters = value; }
         }
 
         public ICommand CalculateCommand
