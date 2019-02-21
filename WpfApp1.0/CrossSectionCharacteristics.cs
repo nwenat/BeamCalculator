@@ -135,12 +135,17 @@ namespace WpfApp1._0
 
         public void UpdateData()
         {
-            areaAs1 = Math.PI * 0.25 * fiAs1 * fiAs1 * 0.01 * countAs1;
-            areaAp = Math.PI * 0.25 * fiAp * fiAp * 0.01 * countAp;
-            areaConcrete = width * height - areaAs1 - areaAp;
+            Calculate();
             PropertyChanged(this, new PropertyChangedEventArgs("AreaConcrete"));
             PropertyChanged(this, new PropertyChangedEventArgs("AreaAs1"));
             PropertyChanged(this, new PropertyChangedEventArgs("AreaAp"));
+        }
+
+        public void Calculate()
+        {
+            areaAs1 = Math.PI * 0.25 * fiAs1 * fiAs1 * 0.01 * countAs1;
+            areaAp = Math.PI * 0.25 * fiAp * fiAp * 0.01 * countAp;
+            areaConcrete = width * height - areaAs1 - areaAp;
         }
     }
 }
