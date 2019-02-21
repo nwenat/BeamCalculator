@@ -45,6 +45,11 @@ namespace WpfApp1._0
             {
                 concreteParameters.UpdateData();
             }
+            CrossSectionType crossSectionType = beam.CrossSectionType;
+            if (crossSectionType != null)
+            {
+                crossSectionType.UpdateData();
+            }
         }
     }
 }

@@ -21,10 +21,7 @@
             <!-- Size concrete -->
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
-                <ComboBox Width="200" SelectedIndex="0" ItemsSource="{Binding CrossSectionType.ListOfType, Source={StaticResource beam}}" Cursor="Arrow"/>
-                <ComboBox Width="200"  >
-                    <ComboBoxItem Content="{Binding CrossSectionType.ListOfType, Source={StaticResource beam}}"/>
-                </ComboBox>
+                <ComboBox Width="200" ItemsSource="{Binding CrossSectionType.ArrayOfType, Source={StaticResource beam}}" Cursor="Arrow" SelectedItem="{Binding CrossSectionType.Type, Source={StaticResource beam}}"/>
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>

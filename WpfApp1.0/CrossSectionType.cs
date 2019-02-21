@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WpfApp1._0
@@ -18,14 +19,11 @@ namespace WpfApp1._0
             { type = value; }
         }
 
-        public List<TypeOfCrossSection> ListOfType
+        public Array ArrayOfType
         {
             get
             {
-                listOfType.Clear();
-                listOfType.Add(TypeOfCrossSection.prostokatny);
-                listOfType.Add(TypeOfCrossSection.teowy);
-                return listOfType;
+                return Enum.GetValues(typeof(TypeOfCrossSection));
             }
         }
 
