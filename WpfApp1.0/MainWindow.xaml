@@ -25,7 +25,7 @@
                 <Image Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
 
                 <TextBlock Text="Rodzaj sprężenia" FontWeight="Bold"/>
-                <ComboBox Width="200"/>
+                <ComboBox Width="200" ItemsSource="{Binding CompressionType.ArrayOfTypeCompression, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding CompressionType.Compression, Source={StaticResource beam}}" />
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>

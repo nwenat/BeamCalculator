@@ -21,6 +21,14 @@ namespace WpfApp1._0
             { compression = value; }
         }
 
+        public Array ArrayOfTypeCompression
+        {
+            get
+            {
+                return Enum.GetValues(typeof(CompressionBeamType));
+            }
+        }
+
         public void UpdateData()
         {
             PropertyChanged(this, new PropertyChangedEventArgs("CompressionBeamType"));
