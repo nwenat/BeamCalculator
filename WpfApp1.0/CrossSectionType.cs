@@ -7,7 +7,7 @@ namespace WpfApp1._0
     class CrossSectionType : INotifyPropertyChanged
     {
         private TypeOfCrossSection type = TypeOfCrossSection.prostokatny;
-        private List<TypeOfCrossSection> listOfType = new List<TypeOfCrossSection>();
+        private String pathToDraw = "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka1.jpg";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,6 +17,14 @@ namespace WpfApp1._0
             { return type; }
             set
             { type = value; }
+        }
+
+        public String PathToDraw
+        {
+            get
+            { return pathToDraw; }
+            set
+            { pathToDraw = value; }
         }
 
         public Array ArrayOfType
@@ -30,6 +38,7 @@ namespace WpfApp1._0
         public void UpdateData()
         {
             PropertyChanged(this, new PropertyChangedEventArgs("Type"));
+            PropertyChanged(this, new PropertyChangedEventArgs("PathToDraw"));
         }
 
         public enum TypeOfCrossSection

@@ -9,6 +9,7 @@ namespace WpfApp1._0
         private StaticScheme staticScheme = new StaticScheme();
         private ConcreteParameters concreteParameters = new ConcreteParameters();
         private CalculateCommand calculateCommand = new CalculateCommand();
+        private CompressionType compressionType = new CompressionType();
 
         public CrossSectionCharacteristics CrossSectionCharacteristics
         {
@@ -32,6 +33,12 @@ namespace WpfApp1._0
         {
             get { return concreteParameters; }
             set { concreteParameters = value; }
+        }
+
+        public CompressionType CompressionType
+        {
+            get { return compressionType; }
+            set { compressionType = value; }
         }
 
         public ICommand CalculateCommand

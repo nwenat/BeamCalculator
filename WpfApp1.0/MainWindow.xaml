@@ -22,6 +22,10 @@
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
                 <ComboBox Width="200" ItemsSource="{Binding CrossSectionType.ArrayOfType, Source={StaticResource beam}}" Cursor="Arrow" SelectedItem="{Binding CrossSectionType.Type, Source={StaticResource beam}}"/>
+                <Image Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
+
+                <TextBlock Text="Rodzaj sprężenia" FontWeight="Bold"/>
+                <ComboBox Width="200"/>
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
