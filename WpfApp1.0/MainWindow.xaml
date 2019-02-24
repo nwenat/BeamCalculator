@@ -22,14 +22,11 @@
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
                 <ComboBox Width="200" ItemsSource="{Binding CrossSectionType.ArrayOfType, Source={StaticResource beam}}" Cursor="Arrow" SelectedItem="{Binding CrossSectionType.Type, Source={StaticResource beam}}"/>
-                <Image Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
-
-                <TextBlock Text="Rodzaj sprężenia" FontWeight="Bold"/>
-                <ComboBox Width="200" ItemsSource="{Binding CompressionType.ArrayOfTypeCompression, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding CompressionType.Compression, Source={StaticResource beam}}" />
+                <Image Margin="10" Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox x:Name="properties" Padding="2" Text="{Binding CrossSectionCharacteristics.Height, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Height, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
@@ -38,6 +35,20 @@
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
                 
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wyskokość półki hf=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.HeightF, Source={StaticResource beam}}"/>
+                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Szerokość półki beff=  " VerticalAlignment="Center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.WidthEff, Source={StaticResource beam}}"/>
+                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Text="Rodzaj sprężenia" FontWeight="Bold"/>
+                <ComboBox Width="200" ItemsSource="{Binding CompressionType.ArrayOfTypeCompression, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding CompressionType.Compression, Source={StaticResource beam}}" />
+
                 <!-- Steel -->
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Ilość prętów zbrojeniowych As1, n=  " VerticalAlignment="Center"/>

@@ -7,6 +7,8 @@ namespace WpfApp1._0
     {
         private Double width = 5.0;
         private Double height = 10.0;
+        private Double widthEff = 10.0;
+        private Double heightF = 5.0;
         private int countAs1 = 2;
         private int countAp = 2;
         // fi in [mm]
@@ -45,6 +47,36 @@ namespace WpfApp1._0
                 if (value > 0)
                 {
                     height = value;
+                }
+            }
+        }
+
+        public Double WidthEff
+        {
+            get
+            {
+                return widthEff;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    widthEff = value;
+                }
+            }
+        }
+
+        public Double HeightF
+        {
+            get
+            {
+                return heightF;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    heightF = value;
                 }
             }
         }
