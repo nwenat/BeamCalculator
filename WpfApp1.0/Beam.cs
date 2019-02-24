@@ -10,6 +10,7 @@ namespace WpfApp1._0
         private ConcreteParameters concreteParameters = new ConcreteParameters();
         private CalculateCommand calculateCommand = new CalculateCommand();
         private CompressionType compressionType = new CompressionType();
+        private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
 
         public CrossSectionCharacteristics CrossSectionCharacteristics
         {
@@ -44,6 +45,11 @@ namespace WpfApp1._0
         public ICommand CalculateCommand
         {
             get { return calculateCommand; }
+        }
+
+        public ICommand ShowCrossSectionData
+        {
+            get { return dataCrossSectionCommand; }
         }
     }
 }

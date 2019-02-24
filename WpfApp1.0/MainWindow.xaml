@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Belka version 1.0" Height="600" Width="570">
+        Title="Belka version 1.0" Height="650" Width="570">
     <Window.Resources>
         <local:Beam x:Key="beam" />
     </Window.Resources>
@@ -20,6 +20,7 @@
             <!-- Left column Input Data -->
             <!-- Size concrete -->
             <StackPanel Grid.Column="0">
+                <Button Content="Dane materiałowe" Margin="40 10" Width="100" Command="{Binding ShowCrossSectionData, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
                 <ComboBox Width="200" ItemsSource="{Binding CrossSectionType.ArrayOfType, Source={StaticResource beam}}" Cursor="Arrow" SelectedItem="{Binding CrossSectionType.Type, Source={StaticResource beam}}"/>
                 <Image Margin="10" Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
