@@ -34,13 +34,13 @@
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Width, Source={StaticResource beam}}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
-                
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wyskokość półki hf=  " VerticalAlignment="Center"/>
+
+                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
+                    <TextBlock Text="Wyskokość półki hf=  " VerticalAlignment="Center" />
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.HeightF, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
+                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
                     <TextBlock Text="Szerokość półki beff=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.WidthEff, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>

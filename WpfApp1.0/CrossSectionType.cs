@@ -51,6 +51,22 @@ namespace WpfApp1._0
         {
             PropertyChanged(this, new PropertyChangedEventArgs("Type"));
             PropertyChanged(this, new PropertyChangedEventArgs("PathToDraw"));
+            PropertyChanged(this, new PropertyChangedEventArgs("IsTeowy"));
+        }
+
+        public bool IsTeowy
+        {
+            get
+            {
+                if (type.Equals(TypeOfCrossSection.prostokatny))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         public enum TypeOfCrossSection
