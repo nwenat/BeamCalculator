@@ -14,15 +14,27 @@ namespace WpfApp1._0
         public TypeOfCrossSection Type
         {
             get
-            { return type; }
+            { return type; } 
             set
-            { type = value; }
+            {
+                type = value;
+                UpdateData();
+            }
         }
 
         public String PathToDraw
         {
             get
-            { return pathToDraw; }
+            {
+                if (type.Equals(TypeOfCrossSection.prostokatny))
+                {
+                    return pathToDraw;
+                }
+                else
+                {
+                    return "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka2.jpg";
+                }
+            }
             set
             { pathToDraw = value; }
         }
