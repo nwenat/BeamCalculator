@@ -4,13 +4,13 @@ namespace WpfApp1._0
 {
     class Beam
     {
-        private CrossSectionCharacteristics crossSectionCharacteristics = new CrossSectionCharacteristics();
-        private CrossSectionType crossSectionType = new CrossSectionType();
-        private StaticScheme staticScheme = new StaticScheme();
-        private ConcreteParameters concreteParameters = new ConcreteParameters();
-        private CalculateCommand calculateCommand = new CalculateCommand();
-        private CompressionType compressionType = new CompressionType();
-        private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
+        private static CrossSectionCharacteristics crossSectionCharacteristics = new CrossSectionCharacteristics();
+        private static CrossSectionType crossSectionType = new CrossSectionType();
+        private static StaticScheme staticScheme = new StaticScheme();
+        private static ConcreteParameters concreteParameters = new ConcreteParameters();
+        private static CalculateCommand calculateCommand = new CalculateCommand();
+        private static CompressionType compressionType = new CompressionType();
+        private static DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
 
         public CrossSectionCharacteristics CrossSectionCharacteristics
         {
