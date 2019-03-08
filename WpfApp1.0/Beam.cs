@@ -4,24 +4,24 @@ namespace WpfApp1._0
 {
     class Beam
     {
-        private static CrossSectionCharacteristics crossSectionCharacteristics = new CrossSectionCharacteristics();
-        private static CrossSectionType crossSectionType = new CrossSectionType();
-        private static StaticScheme staticScheme = new StaticScheme();
-        private static ConcreteParameters concreteParameters = new ConcreteParameters();
-        private static CalculateCommand calculateCommand = new CalculateCommand();
-        private static CompressionType compressionType = new CompressionType();
-        private static DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
+        private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics();
+        private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
+        private StaticScheme staticScheme = new StaticScheme();
+        private ConcreteParameters concreteParameters = new ConcreteParameters();
+        private CalculateCommand calculateCommand = new CalculateCommand();
+        private CompressionType compressionType = new CompressionType();
+        private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
 
-        public CrossSectionCharacteristics CrossSectionCharacteristics
+        public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
         {
-            get { return crossSectionCharacteristics; }
-            set { crossSectionCharacteristics = value; }
+            get { return crossSectionCalculatedCharacteristics; }
+            set { crossSectionCalculatedCharacteristics = value; }
         }
 
-        public CrossSectionType CrossSectionType
+        public CrossSectionProperties CrossSectionProperties
         {
-            get { return crossSectionType; }
-            set { crossSectionType = value; }
+            get { return crossSectionProperties; }
+            set { crossSectionProperties = value; }
         }
 
         public StaticScheme StaticScheme

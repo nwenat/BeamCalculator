@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
         Title="Belka version 1.0" Height="650" Width="570">
+
     <Window.Resources>
         <local:Beam x:Key="beam" />
     </Window.Resources>
-    
+
     <Border Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -20,57 +21,56 @@
             <!-- Left column Input Data -->
             <!-- Size concrete -->
             <StackPanel Grid.Column="0">
-                <Button Content="Dane materiałowe" Margin="40 10" Width="100" Command="{Binding ShowCrossSectionData, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
+                <Button Content="Dane materiałowe" Margin="40 10" Width="100" Command="{Binding ShowCrossSectionData, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
                 <TextBlock Text="Przekrój belki" FontWeight="Bold"/>
-                <ComboBox Width="200" ItemsSource="{Binding CrossSectionType.ArrayOfType, Source={StaticResource beam}}" Cursor="Arrow" SelectedItem="{Binding CrossSectionType.Type, Source={StaticResource beam}}"/>
-                <Image Margin="10" Width="200" Source="{Binding CrossSectionType.PathToDraw, Source={StaticResource beam}}" />
+                <ComboBox Width="200" ItemsSource="{Binding CrossSectionProperties.ArrayOfType, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding CrossSectionProperties.Type, Source={StaticResource beam}}"  />
+                <Image Margin="10" Width="200" Source="{Binding CrossSectionProperties.PathToDraw, Source={StaticResource beam}}"  />
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Height, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Height, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Szerokość belki b=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Width, Source={StaticResource beam}}" />
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Width, Source={StaticResource beam}}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
+                <StackPanel Margin="0 2" Orientation="Horizontal"  IsEnabled="{Binding CrossSectionProperties.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
                     <TextBlock Text="Wyskokość półki hf=  " VerticalAlignment="Center" />
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.HeightF, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.HeightF, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
+                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionProperties.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
                     <TextBlock Text="Szerokość półki beff=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.WidthEff, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.WidthEff, Source={StaticResource beam}}"/>
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
-
                 <TextBlock Text="Rodzaj sprężenia" FontWeight="Bold"/>
                 <ComboBox Width="200" ItemsSource="{Binding CompressionType.ArrayOfTypeCompression, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding CompressionType.Compression, Source={StaticResource beam}}" />
 
                 <!-- Steel -->
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Ilość prętów zbrojeniowych As1, n=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.CountAs1, Source={StaticResource beam}}" />
+                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.CountAs1, Source={StaticResource beam}}" />
                     <TextBlock Text=" szt" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Przekrój prętów As1, φ=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.FiAs1, Source={StaticResource beam}}" />
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.FiAs1, Source={StaticResource beam}}" />
                     <TextBlock Text=" mm" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!-- Compressed Steel -->
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Ilość cięgien sprężających Ap, n=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.CountAp, Source={StaticResource beam}}" />
+                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.CountAp, Source={StaticResource beam}}" />
                     <TextBlock Text=" szt" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Przekrój cięgien Ap, φ=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.FiAp, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.FiAp, Source={StaticResource beam}}"/>
                     <TextBlock Text=" mm" VerticalAlignment="Center"/>
                 </StackPanel>
 
@@ -86,45 +86,45 @@
                     <TextBox Padding="2" Text="{Binding StaticScheme.ContinuosusLoad, Source={StaticResource beam}}" />
                     <TextBlock Text=" kN/m" VerticalAlignment="Center"/>
                 </StackPanel>
-
-                <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
+                <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}"/>
+                
             </StackPanel>
 
-            <!-- Right column Output Data -->
+
+            <!-- right column output data -->
             <StackPanel Grid.Column="1" Margin="5,0,-5,0">
-                <TextBlock Text="Wyniki" FontWeight="Bold"/>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Pole pow. betonu Ac=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaConcrete, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="True"/>
-                    <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
+                <TextBlock Text="wyniki" FontWeight="bold"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="pole pow. betonu ac=  " VerticalAlignment="center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.AreaConcrete, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
+                    <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Pole pow. stali zbrojeniowej dolnej As1=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaAs1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}"/>
-                    <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="pole pow. stali zbrojeniowej dolnej as1=  " VerticalAlignment="center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.AreaAs1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
+                    <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Pole pow. cięgien sprężających Ap=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.AreaAp, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}"/>
-                    <TextBlock Text=" cm&#x00B2;" VerticalAlignment="Center"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="pole pow. cięgien sprężających ap=  " VerticalAlignment="center"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.AreaAp, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
+                    <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Maksymalny moment zginający M=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding StaticScheme.MaxBendingMoment, Mode=OneWay, Source={StaticResource beam}}" />
-                    <TextBlock Text=" kNm" VerticalAlignment="Center"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="maksymalny moment zginający m=  " VerticalAlignment="center"/>
+                    <TextBox Padding="2" Text="{Binding StaticScheme.MaxBendingMoment, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
+                    <TextBlock Text=" knm" VerticalAlignment="center"/>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Maksymalna siła tnąca T=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding StaticScheme.MaxShearForce, Mode=OneWay, Source={StaticResource beam}}"  />
-                    <TextBlock Text=" kN" VerticalAlignment="Center"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="maksymalna siła tnąca t=  " VerticalAlignment="center"/>
+                    <TextBox Padding="2" Text="{Binding StaticScheme.MaxShearForce, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
+                    <TextBlock Text=" kn" VerticalAlignment="center"/>
                 </StackPanel>
-
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Przekrój  " VerticalAlignment="Center"/>
-                    <TextBlock Padding="2" Text="{Binding CrossSectionType.Type, Source={StaticResource beam}}" FontWeight="Bold" />
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="przekrój  " VerticalAlignment="center"/>
+                    <TextBlock Padding="2" Text="{Binding CrossSectionProperties.Type, Mode=OneWay, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
-
+           
         </Grid>
     </Border>    
 </Window>

@@ -1,23 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WpfApp1._0
 {
-    class CrossSectionCharacteristics : INotifyPropertyChanged
+    class CrossSectionProperties : INotifyPropertyChanged
     {
         private Double width = 5.0;
         private Double height = 10.0;
         private Double widthEff = 10.0;
         private Double heightF = 5.0;
-        private int countAs1 = 2;
-        private int countAp = 2;
         // fi in [mm]
         private int fiAs1 = 8;
         private int fiAp = 8;
-        // area in [cm2]
-        private Double areaConcrete = 0.0;
-        private Double areaAs1 = 0.0;
-        private Double areaAp = 0.0;
+        private TypeOfCrossSection type = TypeOfCrossSection.prostokatny;
+        private String pathToDraw = "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka1.jpg";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,6 +29,7 @@ namespace WpfApp1._0
                 if (value > 0)
                 {
                     width = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("Width"));
                 }
             }
         }
@@ -47,6 +45,7 @@ namespace WpfApp1._0
                 if (value > 0)
                 {
                     height = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("Height"));
                 }
             }
         }
@@ -81,36 +80,6 @@ namespace WpfApp1._0
             }
         }
 
-        public int CountAs1
-        {
-            get
-            {
-                return countAs1;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    countAs1 = value;
-                }
-            }
-        }
-
-        public int CountAp
-        {
-            get
-            {
-                return countAp;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    countAp = value;
-                }
-            }
-        }
-
         public int FiAs1
         {
             get
@@ -141,43 +110,68 @@ namespace WpfApp1._0
             }
         }
 
-        public Double AreaConcrete
+        public TypeOfCrossSection Type
         {
             get
+            { return type; } 
+            set
             {
-                return areaConcrete;
+                type = value;
+                UpdateData();
             }
         }
 
-        public Double AreaAs1
+        public String PathToDraw
         {
             get
             {
-                return areaAs1;
+                if (type.Equals(TypeOfCrossSection.prostokatny))
+                {
+                    return pathToDraw;
+                }
+                else
+                {
+                    return "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka2.jpg";
+                }
             }
+            set
+            { pathToDraw = value; }
         }
 
-        public Double AreaAp
+        public Array ArrayOfType
         {
             get
             {
-                return areaAp;
+                return Enum.GetValues(typeof(TypeOfCrossSection));
             }
         }
 
         public void UpdateData()
         {
-            Calculate();
-            PropertyChanged(this, new PropertyChangedEventArgs("AreaConcrete"));
-            PropertyChanged(this, new PropertyChangedEventArgs("AreaAs1"));
-            PropertyChanged(this, new PropertyChangedEventArgs("AreaAp"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Type"));
+            PropertyChanged(this, new PropertyChangedEventArgs("PathToDraw"));
+            PropertyChanged(this, new PropertyChangedEventArgs("IsTeowy"));
         }
 
-        public void Calculate()
+        public bool IsTeowy
         {
-            areaAs1 = Math.PI * 0.25 * fiAs1 * fiAs1 * 0.01 * countAs1;
-            areaAp = Math.PI * 0.25 * fiAp * fiAp * 0.01 * countAp;
-            areaConcrete = width * height - areaAs1 - areaAp;
+            get
+            {
+                if (type.Equals(TypeOfCrossSection.prostokatny))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        public enum TypeOfCrossSection
+        {
+            prostokatny,
+            teowy
         }
     }
 }

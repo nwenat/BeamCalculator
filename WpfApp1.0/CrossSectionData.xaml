@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="CrossSectionData" Height="300" Width="300">
 
-    <Window.Resources>
-        <local:Beam x:Key="beam" />
-    </Window.Resources>
-    
-    
+    <Window.DataContext>
+        <local:Beam/>
+    </Window.DataContext>
 
     <Border Padding="10">
         <Grid>
@@ -19,36 +17,15 @@
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Height, Source={StaticResource beam}}"/>
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Height}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Szerokość belki b=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.Width, Source={StaticResource beam}}" />
+                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Width}" />
                     <TextBlock Text=" cm" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
-                    <TextBlock Text="Wyskokość półki hf=  " VerticalAlignment="Center" />
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.HeightF, Source={StaticResource beam}}"/>
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="{Binding CrossSectionType.IsTeowy, Mode=OneWay, Source={StaticResource beam}}">
-                    <TextBlock Text="Szerokość półki beff=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCharacteristics.WidthEff, Source={StaticResource beam}}"/>
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2"/>
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2"/>
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
-                </StackPanel>
             </StackPanel>    
         </Grid>
     </Border>

@@ -33,7 +33,7 @@ namespace WpfApp1._0
 
         public void Execute(object parameter)
         {
-            CrossSectionData crossSectionData = new CrossSectionData();
+            CrossSectionData crossSectionData = new CrossSectionData() { DataContext = parameter };
             crossSectionData.ShowDialog();
         }
     }

@@ -60,7 +60,7 @@
     <Compile Include="CrossSectionData.xaml.cs">
       <DependentUpon>CrossSectionData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CrossSectionType.cs" />
+    <Compile Include="CrossSectionProperties.cs" />
     <Compile Include="DataCrossSectionCommand.cs" />
     <Compile Include="StaticScheme.cs" />
     <Page Include="CrossSectionData.xaml">
@@ -77,7 +77,7 @@
     </Compile>
     <Compile Include="Beam.cs" />
     <Compile Include="CalculateCommand.cs" />
-    <Compile Include="CrossSectionCharacteristics.cs" />
+    <Compile Include="CrossSectionCalculatedCharacteristics.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

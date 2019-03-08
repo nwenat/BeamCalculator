@@ -30,10 +30,10 @@ namespace WpfApp1._0
         public void Execute(object parameter)
         {
             Beam beam = parameter as Beam;
-            CrossSectionCharacteristics crossSectionCharacteristics = beam.CrossSectionCharacteristics;
-            if (crossSectionCharacteristics != null)
+            CrossSectionCalculatedCharacteristics crossSectionCalcuatedCharacteristics = beam.CrossSectionCalculatedCharacteristics;
+            if (crossSectionCalcuatedCharacteristics != null)
             {
-                crossSectionCharacteristics.UpdateData();
+                crossSectionCalcuatedCharacteristics.UpdateData(beam);
             }
             StaticScheme staticScheme = beam.StaticScheme;
             if (staticScheme != null)
@@ -45,10 +45,10 @@ namespace WpfApp1._0
             {
                 concreteParameters.UpdateData();
             }
-            CrossSectionType crossSectionType = beam.CrossSectionType;
-            if (crossSectionType != null)
+            CrossSectionProperties crossSectionProperties = beam.CrossSectionProperties;
+            if (crossSectionProperties != null)
             {
-                crossSectionType.UpdateData();
+                crossSectionProperties.UpdateData();
             }
         }
     }
