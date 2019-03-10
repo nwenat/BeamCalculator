@@ -30,10 +30,10 @@ namespace WpfApp1._0
         public void Execute(object parameter)
         {
             Beam beam = parameter as Beam;
-            CrossSectionCalculatedCharacteristics crossSectionCalcuatedCharacteristics = beam.CrossSectionCalculatedCharacteristics;
-            if (crossSectionCalcuatedCharacteristics != null)
+            CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = beam.CrossSectionCalculatedCharacteristics;
+            if (crossSectionCalculatedCharacteristics != null)
             {
-                crossSectionCalcuatedCharacteristics.UpdateData(beam);
+                crossSectionCalculatedCharacteristics.UpdateData(beam.CrossSectionProperties);
             }
             StaticScheme staticScheme = beam.StaticScheme;
             if (staticScheme != null)

@@ -30,7 +30,6 @@ namespace WpfApp1._0
         public void UpdateData()
         {
             fcd = fck / gamaF;
-                       
         }
 
         public enum ConcreteClasses

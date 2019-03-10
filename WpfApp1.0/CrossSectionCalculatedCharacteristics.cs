@@ -71,19 +71,26 @@ namespace WpfApp1._0
             }
         }
 
-        public void UpdateData(Beam beam)
+        public void UpdateData(CrossSectionProperties crossSectionProperties)
         {
-            Calculate(beam);
+            Calculate(crossSectionProperties);
             PropertyChanged(this, new PropertyChangedEventArgs("AreaConcrete"));
             PropertyChanged(this, new PropertyChangedEventArgs("AreaAs1"));
             PropertyChanged(this, new PropertyChangedEventArgs("AreaAp"));
         }
 
-        public void Calculate(Beam beam)
+        public void Calculate(CrossSectionProperties properties)
         {
-            //areaAs1 = Math.PI * 0.25 * fiAs1 * fiAs1 * 0.01 * countAs1;
-            //areaAp = Math.PI * 0.25 * fiAp * fiAp * 0.01 * countAp;
-            //areaConcrete = width * height - areaAs1 - areaAp;
+            areaAs1 = Math.PI * 0.25 * properties.FiAs1 * properties.FiAs1 * 0.01 * countAs1;
+            areaAp = Math.PI * 0.25 * properties.FiAp * properties.FiAp * 0.01 * countAp;
+            if (properties.IsTeowy)
+            {
+                areaConcrete = properties.Width * properties.Height + properties.WidthEff * properties.HeightF - areaAs1 - areaAp;
+            } else
+            {
+                areaConcrete = properties.Width * properties.Height - areaAs1 - areaAp;
+            }
+
         }
     }
 }
