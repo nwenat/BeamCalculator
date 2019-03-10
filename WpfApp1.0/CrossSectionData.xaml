@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="CrossSectionData" Height="300" Width="300">
+        Title="Cross Section Data" Height="300" Width="300">
 
     <Window.DataContext>
         <local:Beam/>
@@ -16,16 +16,24 @@
             <StackPanel>
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wyskokość belki h=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Height}" />
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
+                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClass}" />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Szerokość belki b=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionProperties.Width}" />
-                    <TextBlock Text=" cm" VerticalAlignment="Center"/>
+                    <TextBlock Text="Ciężar obiętościowy betonu" VerticalAlignment="Center"/>
+                    <ComboBox Margin="20 0" />
+                    <TextBlock VerticalAlignment="Center" Text=" kN/m&#x00b3;"/>
                 </StackPanel>
 
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Klasa i gatunek stali" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <ComboBox Margin="20 0"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="beton:   "/>
+                    <TextBox FontWeight="Bold" Text="{Binding ConcreteParameters.ConcreteClass}" />
+                </StackPanel>
             </StackPanel>    
         </Grid>
     </Border>

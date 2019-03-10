@@ -22,12 +22,26 @@ namespace WpfApp1._0
             get
             { return concreteClass; }
             set
-            { concreteClass = value; }
+            { concreteClass = value;
+                UpdateData();
+            }
         }
 
-        
+        public Array TypesOfConcrete
+        {
+            get
+            {
+                return Enum.GetValues(typeof(ConcreteClasses));
+            }
+        }
 
         public void UpdateData()
+        {
+            Calculate();
+            PropertyChanged(this, new PropertyChangedEventArgs("ConcreteClass"));
+        }
+
+        public void Calculate()
         {
             fcd = fck / gamaF;
         }
