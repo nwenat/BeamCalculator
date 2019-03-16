@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="CrossSectionProperties.cs" />
     <Compile Include="DataCrossSectionCommand.cs" />
+    <Compile Include="EnumDescribe.cs" />
     <Compile Include="StaticScheme.cs" />
     <Page Include="CrossSectionData.xaml">
       <SubType>Designer</SubType>

@@ -17,7 +17,7 @@
 
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClass}" />
+                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClassDescription}"  />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Ciężar obiętościowy betonu" VerticalAlignment="Center"/>
@@ -33,6 +33,11 @@
                 <StackPanel>
                     <TextBlock Text="beton:   "/>
                     <TextBox FontWeight="Bold" Text="{Binding ConcreteParameters.ConcreteClass}" />
+                </StackPanel>
+
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Kl beton sprawdzenie  " VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBox Margin="20 0" Text="{Binding ConcreteParameters.ConcreteClassDescription, Mode=OneWay}" />
                 </StackPanel>
             </StackPanel>    
         </Grid>
