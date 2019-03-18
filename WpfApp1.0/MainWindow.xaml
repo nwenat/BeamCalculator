@@ -52,22 +52,12 @@
 
                 <!-- Steel -->
                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Ilość prętów zbrojeniowych As1, n=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.CountAs1, Source={StaticResource beam}}" />
-                    <TextBlock Text=" szt" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Przekrój prętów As1, φ=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding CrossSectionProperties.FiAs1, Source={StaticResource beam}}" />
                     <TextBlock Text=" mm" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!-- Compressed Steel -->
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Ilość cięgien sprężających Ap, n=  " VerticalAlignment="Center"/>
-                    <TextBox Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.CountAp, Source={StaticResource beam}}" />
-                    <TextBlock Text=" szt" VerticalAlignment="Center"/>
-                </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Przekrój cięgien Ap, φ=  " VerticalAlignment="Center"/>
                     <TextBox Padding="2" Text="{Binding CrossSectionProperties.FiAp, Source={StaticResource beam}}"/>
@@ -86,8 +76,7 @@
                     <TextBox Padding="2" Text="{Binding StaticScheme.ContinuosusLoad, Source={StaticResource beam}}" />
                     <TextBlock Text=" kN/m" VerticalAlignment="Center"/>
                 </StackPanel>
-                <Button Content="Oblicz!!!" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}"/>
-                
+                <Button Content="Oblicz" Margin="40 10" Command="{Binding CalculateCommand, Mode=OneWay, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}"/>
             </StackPanel>
 
 
@@ -118,10 +107,6 @@
                     <TextBlock Text="maksymalna siła tnąca t=  " VerticalAlignment="center"/>
                     <TextBox Padding="2" Text="{Binding StaticScheme.MaxShearForce, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" IsReadOnly="true"/>
                     <TextBlock Text=" kn" VerticalAlignment="center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="horizontal">
-                    <TextBlock Text="przekrój  " VerticalAlignment="center"/>
-                    <TextBlock Padding="2" Text="{Binding CrossSectionProperties.Type, Mode=OneWay, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
            

@@ -9,37 +9,26 @@ namespace WpfApp1._0
 {
     class ConcreteParameters : INotifyPropertyChanged
     {
-        private ConcreteClasses concreteClass = ConcreteClasses.C20;
-        private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C20);
+        private ConcreteClasses concreteClass = ConcreteClasses.C40;
+        private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C40);
         private Double gamaC = 1.5;
+        // gamaB kN/m3
+        private int gamaB = 24;
         // fck and fcd in [MPa]
-        private int fck = 20;
+        private int fck = 40;
         private Double fcd = 0.0;
         // Ecm in [Gpa]
-        private Double eCm = 30.0;
+        private Double eCm = 35.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public ConcreteClasses ConcreteClass
-        {
-            get
-            { return concreteClass; }
-            set
-            {
-                concreteClass = EnumDescribe.GetValueFromDescription<ConcreteClasses>(value.ToString());
-                
-                UpdateData();
-            }
-        }
 
         public Array TypesOfConcrete
         {
             get
             {
-                var abc =  Enum.GetValues(typeof(ConcreteClasses));
-                List<ConcreteClasses> arr = abc.OfType<ConcreteClasses>().ToList();
-                List<String> result = new List<string>();
-                foreach (ConcreteClasses cC in arr)
+                List<ConcreteClasses> list = Enum.GetValues(typeof(ConcreteClasses)).OfType<ConcreteClasses>().ToList();
+                List<String> result = new List<String>();
+                foreach (ConcreteClasses cC in list)
                 {
                     var descript = EnumDescribe.GetDescribe(cC);
                     result.Add(descript);
@@ -48,32 +37,28 @@ namespace WpfApp1._0
             }
         }
 
-
         public String ConcreteClassDescription
         {
             set
             {
                 concreteClassDescription = value;
                 concreteClass = EnumDescribe.GetValueFromDescription<ConcreteClasses>(concreteClassDescription);
-                UpdateData();
                 switch (concreteClass)
                 {
-                    case ConcreteClasses.C16:
-                        fck = 16;
-                        eCm = 29;
-                        Calculate();
+                    case ConcreteClasses.C40:
+                        fck = 40;
+                        eCm = 35;
                         break;
-                    case ConcreteClasses.C20:
-                        fck = 20;
-                        eCm = 30;
-                        Calculate();
+                    case ConcreteClasses.C45:
+                        fck = 45;
+                        eCm = 36;
                         break;
-                    case ConcreteClasses.C25:
-                        fck = 25;
-                        eCm = 31;
-                        Calculate();
+                    case ConcreteClasses.C50:
+                        fck = 50;
+                        eCm = 37;
                         break;
                 }
+                UpdateData();
             }
             get
             {
@@ -96,12 +81,12 @@ namespace WpfApp1._0
 
         public enum ConcreteClasses
         {
-            [Description("C16/20")]
-            C16,
-            [Description("C20/25")]
-            C20,
-            [Description("C25/30")]
-            C25
+            [Description("C40/50")]
+            C40,
+            [Description("C45/55")]
+            C45,
+            [Description("C50/60")]
+            C50
         }
     }
 }

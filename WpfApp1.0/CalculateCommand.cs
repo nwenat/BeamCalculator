@@ -43,7 +43,7 @@ namespace WpfApp1._0
             ConcreteParameters concreteParameters = beam.ConcreteParameters;
             if (concreteParameters != null)
             {
-                concreteParameters.UpdateData();
+                //concreteParameters.UpdateData();
             }
             CrossSectionProperties crossSectionProperties = beam.CrossSectionProperties;
             if (crossSectionProperties != null)
