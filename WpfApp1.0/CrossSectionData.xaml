@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Cross Section Data" Height="300" Width="300">
+        Title="Cross Section Data" Height="500" Width="400">
 
     <Window.DataContext>
         <local:Beam/>
@@ -15,13 +15,54 @@
         <Grid>
             <StackPanel>
 
+                <!-- Concrete -->
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
                     <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClassDescription}"  />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Współczynnik bezbieczeństwa 𝛾𝑐 = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.GamaC, Mode=OneWay}" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość charakterystyczna na ściskanie fck = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fck, Mode=OneWay}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość średnia na ściskanie fcm = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fcm, Mode=OneWay}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość obliczeniowa na ściskanie fcd = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fcd, Mode=OneWay, StringFormat={}{0:n2}}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość charakterystyczna na rozciąganie fctk = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fctk, Mode=OneWay}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość średnia na rozciąganie fctm = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fctm, Mode=OneWay}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Wytrzymałość obliczeniowa na rozciąganie fctd = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.Fctd, Mode=OneWay, StringFormat={}{0:n2}}"/>
+                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Średni moduł sprężystości Ecm = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.ECm, Mode=OneWay}"/>
+                    <TextBlock Text=" GPa" VerticalAlignment="Center"/>
+                </StackPanel>
+                
+                <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Ciężar obiętościowy betonu" VerticalAlignment="Center"/>
-                    <ComboBox Margin="20 0" />
+                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.GammaBArray}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.GamaB}" />
                     <TextBlock VerticalAlignment="Center" Text=" kN/m&#x00b3;"/>
                 </StackPanel>
 
@@ -30,15 +71,12 @@
                     <ComboBox Margin="20 0"/>
                 </StackPanel>
 
-                <StackPanel>
-                    <TextBlock Text="beton:   "/>
-                    <TextBox FontWeight="Bold" Text="{Binding ConcreteParameters.ConcreteClass}" />
+                <StackPanel Margin="0 2" Orientation="Horizontal">
+                    <TextBlock Text="Średni moduł sprężystości Ecm = " VerticalAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.GamaB, Mode=OneWay}"/>
+                    <TextBlock Text=" GPa" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Kl beton sprawdzenie  " VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBox Margin="20 0" Text="{Binding ConcreteParameters.ConcreteClassDescription, Mode=OneWay}" />
-                </StackPanel>
             </StackPanel>    
         </Grid>
     </Border>
