@@ -14,7 +14,7 @@ namespace WpfApp1._0
         private int fiAs1 = 8;
         private int fiAp = 8;
         private TypeOfCrossSection type = TypeOfCrossSection.prostokatny;
-        private String pathToDraw = "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka1.jpg";
+        private String pathToDraw = "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka1.jpgggg.";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -31,6 +31,7 @@ namespace WpfApp1._0
                     width = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("Width"));
                 }
+                UpdateData();
             }
         }
 
@@ -47,6 +48,7 @@ namespace WpfApp1._0
                     height = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("Height"));
                 }
+                UpdateData();
             }
         }
 
@@ -62,6 +64,7 @@ namespace WpfApp1._0
                 {
                     widthEff = value;
                 }
+                UpdateData();
             }
         }
 
@@ -77,6 +80,7 @@ namespace WpfApp1._0
                 {
                     heightF = value;
                 }
+                UpdateData();
             }
         }
 
@@ -92,6 +96,7 @@ namespace WpfApp1._0
                 {
                     fiAs1 = value;
                 }
+                UpdateData();
             }
         }
 
@@ -107,8 +112,9 @@ namespace WpfApp1._0
                 {
                     fiAp = value;
                 }
+                UpdateData();
             }
-        }
+    }
 
         public TypeOfCrossSection Type
         {
@@ -131,11 +137,13 @@ namespace WpfApp1._0
                 }
                 else
                 {
-                    return "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka2.jpg";
+                    return "D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/foka2.jpggggg";
                 }
             }
             set
-            { pathToDraw = value; }
+            { pathToDraw = value;
+                UpdateData();
+            }
         }
 
         public Array ArrayOfType

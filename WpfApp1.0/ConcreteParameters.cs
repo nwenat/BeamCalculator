@@ -43,6 +43,7 @@ namespace WpfApp1._0
             set
             {
                 gamaB = value;
+                UpdateData();
             }
         }
         public int Fck

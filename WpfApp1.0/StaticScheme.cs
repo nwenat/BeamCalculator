@@ -23,6 +23,7 @@ namespace WpfApp1._0
                 if (value > 0)
                 {
                     length = value;
+                    UpdateData();
                 }
             }
         }
@@ -36,6 +37,7 @@ namespace WpfApp1._0
             set
             {
                 continuosusLoad = value;
+                UpdateData();
             }
         }
 
@@ -43,6 +45,7 @@ namespace WpfApp1._0
         {
             get
             {
+                Calculate();
                 return maxBendingMoment;
             }
         }
@@ -51,14 +54,20 @@ namespace WpfApp1._0
         {
             get
             {
+                Calculate();
                 return maxShearForce;
             }
         }
 
-        public void UpdateData()
+        public void Calculate()
         {
             maxBendingMoment = (continuosusLoad * length * length) / 8;
             maxShearForce = 0.5 * continuosusLoad * length;
+        }
+
+        public void UpdateData()
+        {
+            Calculate();
             PropertyChanged(this, new PropertyChangedEventArgs("MaxBendingMoment"));
             PropertyChanged(this, new PropertyChangedEventArgs("MaxShearForce"));
         }

@@ -29,27 +29,27 @@ namespace WpfApp1._0
 
         public void Execute(object parameter)
         {
-            Beam beam = parameter as Beam;
-            CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = beam.CrossSectionCalculatedCharacteristics;
-            if (crossSectionCalculatedCharacteristics != null)
-            {
-                crossSectionCalculatedCharacteristics.UpdateData(beam.CrossSectionProperties);
-            }
-            StaticScheme staticScheme = beam.StaticScheme;
-            if (staticScheme != null)
-            {
-                staticScheme.UpdateData();
-            }
-            ConcreteParameters concreteParameters = beam.ConcreteParameters;
-            if (concreteParameters != null)
-            {
-                //concreteParameters.UpdateData();
-            }
-            CrossSectionProperties crossSectionProperties = beam.CrossSectionProperties;
-            if (crossSectionProperties != null)
-            {
-                crossSectionProperties.UpdateData();
-            }
+            //Beam beam = parameter as Beam;
+            //CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = beam.CrossSectionCalculatedCharacteristics;
+            //if (crossSectionCalculatedCharacteristics != null)
+            //{
+            //    crossSectionCalculatedCharacteristics.UpdateData(beam.CrossSectionProperties);
+            //}
+            //StaticScheme staticScheme = beam.StaticScheme;
+            //if (staticScheme != null)
+            //{
+            //    staticScheme.UpdateData();
+            //}
+            //ConcreteParameters concreteParameters = beam.ConcreteParameters;
+            //if (concreteParameters != null)
+            //{
+            //    //concreteParameters.UpdateData();
+            //}
+            //CrossSectionProperties crossSectionProperties = beam.CrossSectionProperties;
+            //if (crossSectionProperties != null)
+            //{
+            //    crossSectionProperties.UpdateData();
+            //}
         }
     }
 }

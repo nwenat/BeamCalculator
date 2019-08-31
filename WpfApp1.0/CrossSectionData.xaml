@@ -71,12 +71,6 @@
                     <ComboBox Margin="20 0"/>
                 </StackPanel>
 
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Średni moduł sprężystości Ecm = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding ConcreteParameters.GamaB, Mode=OneWay}"/>
-                    <TextBlock Text=" GPa" VerticalAlignment="Center"/>
-                </StackPanel>
-
             </StackPanel>    
         </Grid>
     </Border>
