@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BeamUnderLoad.cs" />
     <Compile Include="CompressionType.cs" />
     <Compile Include="ConcreteParameters.cs" />
     <Compile Include="CrossSectionData.xaml.cs">
@@ -63,6 +64,7 @@
     <Compile Include="CrossSectionProperties.cs" />
     <Compile Include="DataCrossSectionCommand.cs" />
     <Compile Include="EnumDescribe.cs" />
+    <Compile Include="Forces.cs" />
     <Compile Include="StaticScheme.cs" />
     <Page Include="CrossSectionData.xaml">
       <SubType>Designer</SubType>

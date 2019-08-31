@@ -1,28 +1,34 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 
 namespace WpfApp1._0
 {
-    class Beam
+    class Beam : INotifyPropertyChanged
     {
-        private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics();
-        private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
+        //private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics();
+        //private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
         private StaticScheme staticScheme = new StaticScheme();
-        private ConcreteParameters concreteParameters = new ConcreteParameters();
-        private CalculateCommand calculateCommand = new CalculateCommand();
-        private CompressionType compressionType = new CompressionType();
-        private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
+        //private ConcreteParameters concreteParameters = new ConcreteParameters();
+        //private CalculateCommand calculateCommand = new CalculateCommand();
+        //private CompressionType compressionType = new CompressionType();
+        //private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
 
-        public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
+        public Beam()
         {
-            get { return crossSectionCalculatedCharacteristics; }
-            set { crossSectionCalculatedCharacteristics = value; }
+            staticScheme.PropertyChanged += InputPropertyChangedEventHandler;
         }
 
-        public CrossSectionProperties CrossSectionProperties
-        {
-            get { return crossSectionProperties; }
-            set { crossSectionProperties = value; }
-        }
+        //public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
+        //{
+        //    get { return crossSectionCalculatedCharacteristics; }
+        //    set { crossSectionCalculatedCharacteristics = value; }
+        //}
+
+        //public CrossSectionProperties CrossSectionProperties
+        //{
+        //    get { return crossSectionProperties; }
+        //    set { crossSectionProperties = value; }
+        //}
 
         public StaticScheme StaticScheme
         {
@@ -30,26 +36,33 @@ namespace WpfApp1._0
             set { staticScheme = value; }
         }
 
-        public ConcreteParameters ConcreteParameters
-        {
-            get { return concreteParameters; }
-            set { concreteParameters = value; }
-        }
+        //public ConcreteParameters ConcreteParameters
+        //{
+        //    get { return concreteParameters; }
+        //    set { concreteParameters = value; }
+        //}
 
-        public CompressionType CompressionType
-        {
-            get { return compressionType; }
-            set { compressionType = value; }
-        }
+        //public CompressionType CompressionType
+        //{
+        //    get { return compressionType; }
+        //    set { compressionType = value; }
+        //}
 
-        public ICommand CalculateCommand
-        {
-            get { return calculateCommand; }
-        }
+        //public ICommand CalculateCommand
+        //{
+        //    get { return calculateCommand; }
+        //}
 
-        public ICommand ShowCrossSectionData
+        //public ICommand ShowCrossSectionData
+        //{
+        //    get { return dataCrossSectionCommand; }
+        //}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void InputPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
-            get { return dataCrossSectionCommand; }
+            PropertyChanged(sender, e);
         }
     }
 }

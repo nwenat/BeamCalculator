@@ -5,10 +5,12 @@ namespace WpfApp1._0
 {
     class StaticScheme : INotifyPropertyChanged
     {
+        // length m
         private Double length = 5.0;
-        private Double continuosusLoad = 1.0;
-        private Double maxBendingMoment = 0.0;
-        private Double maxShearForce = 0.0;
+        // load kN/m
+        private Double dGLoad = 1.0;
+        private Double qLoad = 1.0;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,53 +25,35 @@ namespace WpfApp1._0
                 if (value > 0)
                 {
                     length = value;
-                    UpdateData();
+                    PropertyChanged(this, new PropertyChangedEventArgs("Length"));
                 }
             }
         }
 
-        public Double ContinuosusLoad
+        public Double DGLoad
         {
             get
             {
-                return continuosusLoad;
+                return dGLoad;
             }
             set
             {
-                continuosusLoad = value;
-                UpdateData();
+                dGLoad = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("DGLoad"));
             }
         }
 
-        public Double MaxBendingMoment
+        public Double QLoad
         {
             get
             {
-                Calculate();
-                return maxBendingMoment;
+                return qLoad;
             }
-        }
-
-        public Double MaxShearForce
-        {
-            get
+            set
             {
-                Calculate();
-                return maxShearForce;
+                qLoad = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("QLoad"));
             }
-        }
-
-        public void Calculate()
-        {
-            maxBendingMoment = (continuosusLoad * length * length) / 8;
-            maxShearForce = 0.5 * continuosusLoad * length;
-        }
-
-        public void UpdateData()
-        {
-            Calculate();
-            PropertyChanged(this, new PropertyChangedEventArgs("MaxBendingMoment"));
-            PropertyChanged(this, new PropertyChangedEventArgs("MaxShearForce"));
         }
     }
 }
