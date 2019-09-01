@@ -7,7 +7,8 @@ namespace WpfApp1._0
     {
         //private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics();
         //private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
-        private StaticScheme staticScheme = new StaticScheme();
+        private Loads loads = new Loads();
+        private Dimensions dimensions = new Dimensions();
         //private ConcreteParameters concreteParameters = new ConcreteParameters();
         //private CalculateCommand calculateCommand = new CalculateCommand();
         //private CompressionType compressionType = new CompressionType();
@@ -15,7 +16,8 @@ namespace WpfApp1._0
 
         public Beam()
         {
-            staticScheme.PropertyChanged += InputPropertyChangedEventHandler;
+            loads.PropertyChanged += InputPropertyChangedEventHandler;
+            dimensions.PropertyChanged += InputPropertyChangedEventHandler;
         }
 
         //public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
@@ -30,10 +32,18 @@ namespace WpfApp1._0
         //    set { crossSectionProperties = value; }
         //}
 
-        public StaticScheme StaticScheme
+        
+
+        public Loads Loads
         {
-            get { return staticScheme; }
-            set { staticScheme = value; }
+            get { return loads; }
+            set { loads = value; }
+        }
+
+        public Dimensions Dimensions
+        {
+            get { return dimensions; }
+            set { dimensions = value; }
         }
 
         //public ConcreteParameters ConcreteParameters

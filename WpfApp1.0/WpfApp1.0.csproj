@@ -35,8 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Svg, Version=3.0.0.0, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.3.0.49\lib\net452\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,16 +61,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BeamUnderLoad.cs" />
-    <Compile Include="CompressionType.cs" />
     <Compile Include="ConcreteParameters.cs" />
     <Compile Include="CrossSectionData.xaml.cs">
       <DependentUpon>CrossSectionData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CrossSectionProperties.cs" />
     <Compile Include="DataCrossSectionCommand.cs" />
+    <Compile Include="Dimensions.cs" />
+    <Compile Include="DimensionsRange.cs" />
     <Compile Include="EnumDescribe.cs" />
     <Compile Include="Forces.cs" />
-    <Compile Include="StaticScheme.cs" />
+    <Compile Include="Loads.cs" />
     <Page Include="CrossSectionData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,7 +84,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Beam.cs" />
-    <Compile Include="CalculateCommand.cs" />
     <Compile Include="CrossSectionCalculatedCharacteristics.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -104,6 +108,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,6 +120,11 @@
   <ItemGroup>
     <Resource Include="Draws\foka1.jpg" />
     <Resource Include="Draws\foka2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\parametry_materialowe.jpg" />
+    <Resource Include="Draws\przekroj.jpg" />
+    <Resource Include="Draws\schemat_statyczny.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

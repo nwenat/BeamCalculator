@@ -11,11 +11,13 @@ namespace WpfApp1._0
     {
         private Beam beam = new Beam();
         private Forces forces;
+        private DimensionsRange dimensionsRange;
 
         public BeamUnderLoad()
         {
             beam.PropertyChanged += BeamPropertyChangedEventHandler;
             forces = new Forces(this);
+            dimensionsRange = new DimensionsRange(this);
         }
 
         public Beam Beam
@@ -28,6 +30,11 @@ namespace WpfApp1._0
             get { return forces; }
         }
 
+        public DimensionsRange DimensionsRange
+        {
+            get { return dimensionsRange; }
+        }
+
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
             Calculate();
@@ -36,6 +43,7 @@ namespace WpfApp1._0
         void Calculate()
         {
             forces.Calculate(this);
+            dimensionsRange.Calculate(this);
         }
     }
 }

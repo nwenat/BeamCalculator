@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Belka version 1.0" Height="650" Width="900">
+        Title="Belka version 1.0" Height="700" Width="900">
 
     <Window.Resources>
         <local:BeamUnderLoad x:Key="beam" />
@@ -14,13 +14,13 @@
     <Border Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.2*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- First column -->
-            <StackPanel Grid.Column="0" Margin="0" >
+            <StackPanel Grid.Column="0" Margin="0">
                 <!-- Układ belki -->
                 <StackPanel>
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
@@ -34,18 +34,18 @@
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="Układ belki" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Obciążęnie stałe DELTAg=  " VerticalAlignment="center" Foreground="Red"/>
-                                <TextBox Padding="2" Text="{Binding Beam.StaticScheme.DGLoad, Source={StaticResource beam}}"/>
+                                <TextBlock Text="Obciążęnie stałe &#x0394;g=  " VerticalAlignment="center" />
+                                    <TextBox Padding="2" Text="{Binding Beam.Loads.DGLoad, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Obciążęnie zmienne=  " VerticalAlignment="center"/>
-                                    <TextBox Padding="2" Text="{Binding Beam.StaticScheme.QLoad, Source={StaticResource beam}}"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Loads.QLoad, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Rozpiętość belki  " VerticalAlignment="center"/>
-                                    <TextBox Padding="2" Text="{Binding Beam.StaticScheme.Length, Source={StaticResource beam}}"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.Length, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" m" VerticalAlignment="center"/>
                             </StackPanel>
                         </StackPanel>
@@ -68,36 +68,36 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="Dane podstawowe" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
-                                <!--<StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center"/>
+                                <StackPanel Margin="0 2" Orientation="Horizontal">
+                                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClassDescription }"  />
-                                </StackPanel>-->
+                                </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Klasa stali zbrojeniowej" VerticalAlignment="Center" />
+                                    <TextBlock Text="Klasa stali zbrojeniowej" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Średnica zbroj. podłużnego fi" VerticalAlignment="Center" />
+                                    <TextBlock Text="Średnica zbroj. podłużnego &#x03C6;" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Średnica strzemin fis" VerticalAlignment="Center" />
+                                    <TextBlock Text="Średnica strzemin &#x03C6;&#x209B;" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Klasa stali sprężającej" VerticalAlignment="Center" />
+                                    <TextBlock Text="Klasa stali sprężającej" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Typ cięgien" VerticalAlignment="Center" />
+                                    <TextBlock Text="Typ cięgien" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
                             </StackPanel>
-                            <!--<StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <Button Name="Dane"  Width="40" Command="{Binding ShowCrossSectionData, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}">
                                     <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/parametry_materialowe.jpg"/>
                                 </Button>
-                            </StackPanel>-->
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </StackPanel>
@@ -107,41 +107,97 @@
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.2*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
 
-
                             </Grid.ColumnDefinitions>
-                            <!--<StackPanel Grid.Column="0">
+                            <StackPanel Grid.Column="0">
                                 <TextBlock Text="Wymiary przekoju" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="Obciążęnie stałe DELTAg=  " VerticalAlignment="center" Foreground="Red"/>
-                                    <TextBox Padding="2" Text="{Binding StaticScheme.DGLoad, Source={StaticResource beam}}"/>
-                                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                                    <TextBlock Text="Zalecane długości:" VerticalAlignment="center" Foreground="Blue"/>
+                                </StackPanel>
+                                
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Leff/25 &#x2264; h &#x2264; Leff/15 " VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="Obciążęnie zmienne=  " VerticalAlignment="center"/>
-                                    <TextBox Padding="2" Text="{Binding StaticScheme.QLoad, Source={StaticResource beam}}"/>
-                                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; h= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimH, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="0,12h &#x2264; d&#x2081; &#x2264; 0,2h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="Rozpiętość belki  " VerticalAlignment="center"/>
-                                    <TextBox Padding="2" Text="{Binding StaticScheme.Length, Source={StaticResource beam}}"/>
-                                    <TextBlock Text=" m" VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; d&#x2081;= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
-                            </StackPanel>-->
+                                
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="0,3h &#x2264; bd&#x2081; &#x2264; 0,6h" VerticalAlignment="center" />
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; bd&#x2081;= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="0,1h &#x2264; d&#x2082; &#x2264; 0,15h" VerticalAlignment="center" />
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; d&#x2082;= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="0,4h &#x2264; bd&#x2082; &#x2264; 0,8h" VerticalAlignment="center" />
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; bd&#x2082;= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="0,1h &#x2264; b &#x2264; 0,12h" VerticalAlignment="center" />
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="{Binding DimensionsRange.MinDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" &#x2264; b= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
+                                    <TextBlock Text="{Binding DimensionsRange.MaxDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Pole przekoju betonowego Ac= " VerticalAlignment="center"/>
+                                    <TextBlock Padding="2" Text="..." FontWeight="bold"/>
+                                    <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
+                                </StackPanel>
+
+                            </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                <Image Width="80" Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/przekroj.jpg" VerticalAlignment="Center"/>
+                                <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/przekroj.jpg" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </StackPanel>
-                <StackPanel Margin="0 2" Orientation="horizontal">
-                    <TextBlock Text="Siła=  " VerticalAlignment="center" Foreground="Red"/>
-                    <TextBox Padding="2" Text="{Binding Forces.Force, Mode=OneWay, Source={StaticResource beam}}" IsReadOnly="true"/>
-                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
-                </StackPanel>
+                
 
 
 
@@ -149,9 +205,14 @@
 
             
             <!-- Second column -->
-            <!--<StackPanel Grid.Column="1">
-                <Button Content="Dane materiałowe" Margin="40 10" Width="100" Command="{Binding ShowCrossSectionData, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}" />
-            </StackPanel>-->
+            <StackPanel Grid.Column="1" Margin="0" >
+                <TextBlock Text="Chwilowe sprawdzenie" FontWeight="bold" Foreground="BlueViolet" HorizontalAlignment="Center" Margin="0,2"/>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Siła=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Forces.Force, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                </StackPanel>
+            </StackPanel>
 
             <!-- Third column -->
             <StackPanel Grid.Column="2">
