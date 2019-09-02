@@ -5,14 +5,10 @@ namespace WpfApp1._0
 {
     class Beam : INotifyPropertyChanged
     {
-        //private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics();
-        //private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
         private Loads loads = new Loads();
         private Dimensions dimensions = new Dimensions();
         private ConcreteParameters concreteParameters = new ConcreteParameters();
-        //private CalculateCommand calculateCommand = new CalculateCommand();
-        //private CompressionType compressionType = new CompressionType();
-        //private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
+        private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
 
         public Beam()
         {
@@ -20,20 +16,6 @@ namespace WpfApp1._0
             dimensions.PropertyChanged += InputPropertyChangedEventHandler;
             concreteParameters.PropertyChanged += InputPropertyChangedEventHandler;
         }
-
-        //public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
-        //{
-        //    get { return crossSectionCalculatedCharacteristics; }
-        //    set { crossSectionCalculatedCharacteristics = value; }
-        //}
-
-        //public CrossSectionProperties CrossSectionProperties
-        //{
-        //    get { return crossSectionProperties; }
-        //    set { crossSectionProperties = value; }
-        //}
-
-        
 
         public Loads Loads
         {
@@ -53,21 +35,10 @@ namespace WpfApp1._0
             set { concreteParameters = value; }
         }
 
-        //public CompressionType CompressionType
-        //{
-        //    get { return compressionType; }
-        //    set { compressionType = value; }
-        //}
-
-        //public ICommand CalculateCommand
-        //{
-        //    get { return calculateCommand; }
-        //}
-
-        //public ICommand ShowCrossSectionData
-        //{
-        //    get { return dataCrossSectionCommand; }
-        //}
+        public ICommand ShowMaterialParameters
+        {
+            get { return materialParametersCommand; }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -62,16 +62,16 @@
     </ApplicationDefinition>
     <Compile Include="BeamUnderLoad.cs" />
     <Compile Include="ConcreteParameters.cs" />
-    <Compile Include="CrossSectionData.xaml.cs">
-      <DependentUpon>CrossSectionData.xaml</DependentUpon>
+    <Compile Include="MaterialParametersView.xaml.cs">
+      <DependentUpon>MaterialParametersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataCrossSectionCommand.cs" />
+    <Compile Include="MaterialParametersCommand.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="DimensionsRange.cs" />
     <Compile Include="EnumDescribe.cs" />
     <Compile Include="Forces.cs" />
     <Compile Include="Loads.cs" />
-    <Page Include="CrossSectionData.xaml">
+    <Page Include="MaterialParametersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

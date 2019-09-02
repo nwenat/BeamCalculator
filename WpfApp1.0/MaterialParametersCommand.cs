@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace WpfApp1._0
 {
-    class DataCrossSectionCommand : ICommand
+    class MaterialParametersCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -33,7 +33,7 @@ namespace WpfApp1._0
 
         public void Execute(object parameter)
         {
-            CrossSectionData crossSectionData = new CrossSectionData() { DataContext = parameter };
+            MaterialParametersView crossSectionData = new MaterialParametersView() { DataContext = parameter };
             crossSectionData.ShowDialog();
         }
     }

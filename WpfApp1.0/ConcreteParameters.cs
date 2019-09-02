@@ -165,8 +165,8 @@ namespace WpfApp1._0
         public void UpdateData()
         {
             Calculate();
-            PropertyChanged(this, new PropertyChangedEventArgs("ConcreteClass"));
             PropertyChanged(this, new PropertyChangedEventArgs("ConcreteClassDescription"));
+            PropertyChanged(this, new PropertyChangedEventArgs("ConcreteClass"));
             PropertyChanged(this, new PropertyChangedEventArgs("GamaC"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fck"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fcm"));

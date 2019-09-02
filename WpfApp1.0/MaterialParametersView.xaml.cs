@@ -17,9 +17,9 @@ namespace WpfApp1._0
     /// <summary>
     /// Interaction logic for CrossSectionData.xaml
     /// </summary>
-    public partial class CrossSectionData : Window
+    public partial class MaterialParametersView : Window
     {
-        public CrossSectionData()
+        public MaterialParametersView()
         {
             InitializeComponent();
         }

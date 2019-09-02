@@ -70,8 +70,10 @@
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="Dane podstawowe" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete, Source={StaticResource beam}}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClassDescription }"  />
+                                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center" />
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.ConcreteParameters.TypesOfConcrete, 
+                                        Source={StaticResource beam}}" SelectedIndex="0" 
+                                              SelectedItem="{Binding Beam.ConcreteParameters.ConcreteClassDescription, Source={StaticResource beam}}"/>
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Klasa stali zbrojeniowej" VerticalAlignment="Center" Foreground="Red"/>
@@ -81,7 +83,7 @@
                                     <TextBlock Text="Średnica zbroj. podłużnego &#x03C6;" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
-                                <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="False">
                                     <TextBlock Text="Średnica strzemin &#x03C6;&#x209B;" VerticalAlignment="Center" Foreground="Red"/>
                                     <ComboBox Margin="20 0" />
                                 </StackPanel>
@@ -95,7 +97,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <Button Name="Dane"  Width="40" Command="{Binding ShowCrossSectionData, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}">
+                                <Button Name="Dane"  Width="40" Command="{Binding Beam.ShowMaterialParameters, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}">
                                     <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/parametry_materialowe.jpg"/>
                                 </Button>
                             </StackPanel>
@@ -198,9 +200,6 @@
                         </Grid>
                     </Border>
                 </StackPanel>
-                
-
-
 
             </StackPanel>
 
@@ -212,6 +211,18 @@
                     <TextBlock Text="Siła=  " VerticalAlignment="center" Foreground="Red"/>
                     <TextBlock Padding="2" Text="{Binding Forces.Force, Source={StaticResource beam}}" FontWeight="bold" />
                     <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Beton=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.ConcreteParameters.ConcreteClassDescription, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Fck=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.ConcreteParameters.Fck, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Fcd=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.ConcreteParameters.Fcd, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
 
