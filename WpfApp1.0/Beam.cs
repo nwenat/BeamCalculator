@@ -9,7 +9,7 @@ namespace WpfApp1._0
         //private CrossSectionProperties crossSectionProperties = new CrossSectionProperties();
         private Loads loads = new Loads();
         private Dimensions dimensions = new Dimensions();
-        //private ConcreteParameters concreteParameters = new ConcreteParameters();
+        private ConcreteParameters concreteParameters = new ConcreteParameters();
         //private CalculateCommand calculateCommand = new CalculateCommand();
         //private CompressionType compressionType = new CompressionType();
         //private DataCrossSectionCommand dataCrossSectionCommand = new DataCrossSectionCommand();
@@ -18,6 +18,7 @@ namespace WpfApp1._0
         {
             loads.PropertyChanged += InputPropertyChangedEventHandler;
             dimensions.PropertyChanged += InputPropertyChangedEventHandler;
+            concreteParameters.PropertyChanged += InputPropertyChangedEventHandler;
         }
 
         //public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
@@ -46,11 +47,11 @@ namespace WpfApp1._0
             set { dimensions = value; }
         }
 
-        //public ConcreteParameters ConcreteParameters
-        //{
-        //    get { return concreteParameters; }
-        //    set { concreteParameters = value; }
-        //}
+        public ConcreteParameters ConcreteParameters
+        {
+            get { return concreteParameters; }
+            set { concreteParameters = value; }
+        }
 
         //public CompressionType CompressionType
         //{

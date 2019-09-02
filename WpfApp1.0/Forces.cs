@@ -84,24 +84,21 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            //momentDGK = (dGLoad * length * length) / 8;
-            //momentDG = (dGLoad * 1.2 * length * length) / 8;
-            ////momentGK = (Ac * gamac * length * length) / 8;
-            ////momentGK = (Ac * gamac * length * length) / 8;
-            //momentQK = (qLoad * length * length) / 8;
-            //momentQ = (qLoad * length * length) / 8;
-
-            //force = dGLoad * length / 2;
-
-
-            //momentDGK = (dGLoad * length * length) / 8;
-            //momentDG = (dGLoad * 1.2 * length * length) / 8;
-            ////momentGK = (Ac * gamac * length * length) / 8;
-            ////momentGK = (Ac * gamac * length * length) / 8;
-            //momentQK = (qLoad * length * length) / 8;
-            //momentQ = (qLoad * length * length) / 8;
+            momentDGK = (beam.Beam.Loads.DGLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            momentDG = (beam.Beam.Loads.DGLoad * 1.2 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            //momentGK = (Ac * gamac * length * length) / 8;
+            //momentGK = (Ac * gamac * length * length) / 8;
+            momentQK = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            momentQ = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
 
             force = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentGK"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentG"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentDGK"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentDG"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQK"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQ"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Force"));
         }
 

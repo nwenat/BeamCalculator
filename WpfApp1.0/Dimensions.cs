@@ -131,6 +131,5 @@ namespace WpfApp1._0
                 }
             }
         }
-       
     }
 }

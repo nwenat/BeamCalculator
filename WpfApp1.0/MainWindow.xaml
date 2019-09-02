@@ -8,10 +8,11 @@
         Title="Belka version 1.0" Height="700" Width="900">
 
     <Window.Resources>
-        <local:BeamUnderLoad x:Key="beam" />
+        <local:BeamUnderLoad x:Key="beam"/>
+        <!--<local:BeamUnderLoad x:Key="beam" />-->
     </Window.Resources>
 
-    <Border Padding="10">
+    <Border Padding="5">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
@@ -184,8 +185,8 @@
                                 </StackPanel>
 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="Pole przekoju betonowego Ac= " VerticalAlignment="center"/>
-                                    <TextBlock Padding="2" Text="..." FontWeight="bold"/>
+                                    <TextBlock Text="Pole przekoju A= " VerticalAlignment="center"/>
+                                    <TextBlock Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.Area, Mode=OneWay, Source={StaticResource beam}}" FontWeight="bold"/>
                                     <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
                                 </StackPanel>
 

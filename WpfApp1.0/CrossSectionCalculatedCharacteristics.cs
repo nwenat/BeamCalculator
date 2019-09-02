@@ -5,45 +5,24 @@ namespace WpfApp1._0
 {
     class CrossSectionCalculatedCharacteristics : INotifyPropertyChanged
     {
-        
-        private int countAs1 = 2;
-        private int countAp = 2;
         // area in [cm2]
+        private Double area = 0.0;
         private Double areaConcrete = 0.0;
         private Double areaAs1 = 0.0;
         private Double areaAp = 0.0;
 
+        // Sx in [cm3]
+
+        // Ix in [cm4]
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
 
-        public int CountAs1
+        public Double Area
         {
             get
             {
-                return countAs1;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    countAs1 = value;
-                }
-            }
-        }
-
-        public int CountAp
-        {
-            get
-            {
-                return countAp;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    countAp = value;
-                }
+                return area;
             }
         }
 
@@ -69,6 +48,19 @@ namespace WpfApp1._0
             {
                 return areaAp;
             }
+        }
+
+        public CrossSectionCalculatedCharacteristics(BeamUnderLoad beam)
+        {
+            Calculate(beam);
+        }
+
+        public void Calculate(BeamUnderLoad beam)
+        {
+            area = beam.Beam.Dimensions.DimB * (beam.Beam.Dimensions.DimH - beam.Beam.Dimensions.DimD1 - beam.Beam.Dimensions.DimD2)
+                + beam.Beam.Dimensions.DimD1 * beam.Beam.Dimensions.DimBD1 + beam.Beam.Dimensions.DimD2 * beam.Beam.Dimensions.DimBD2;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
         }
 
     }

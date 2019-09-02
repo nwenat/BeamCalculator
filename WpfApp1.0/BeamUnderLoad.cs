@@ -10,12 +10,14 @@ namespace WpfApp1._0
     class BeamUnderLoad
     {
         private Beam beam = new Beam();
+        private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
         private Forces forces;
         private DimensionsRange dimensionsRange;
 
         public BeamUnderLoad()
         {
             beam.PropertyChanged += BeamPropertyChangedEventHandler;
+            crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics(this);
             forces = new Forces(this);
             dimensionsRange = new DimensionsRange(this);
         }
@@ -30,6 +32,11 @@ namespace WpfApp1._0
             get { return forces; }
         }
 
+        public CrossSectionCalculatedCharacteristics CrossSectionCalculatedCharacteristics
+        {
+            get { return crossSectionCalculatedCharacteristics; }
+        }
+
         public DimensionsRange DimensionsRange
         {
             get { return dimensionsRange; }
@@ -42,6 +49,7 @@ namespace WpfApp1._0
 
         void Calculate()
         {
+            crossSectionCalculatedCharacteristics.Calculate(this);
             forces.Calculate(this);
             dimensionsRange.Calculate(this);
         }

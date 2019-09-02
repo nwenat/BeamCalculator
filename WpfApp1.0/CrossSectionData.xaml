@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="Cross Section Data" Height="500" Width="400">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:Beam/>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <Border Padding="10">
         <Grid>
-            <StackPanel>
+            <!--<StackPanel>
 
-                <!-- Concrete -->
+                --><!-- Concrete --><!--
                 <StackPanel Margin="0 2" Orientation="Horizontal">
                     <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
                     <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding ConcreteParameters.ConcreteClassDescription}"  />
@@ -71,7 +71,7 @@
                     <ComboBox Margin="20 0"/>
                 </StackPanel>
 
-            </StackPanel>    
+            </StackPanel>-->    
         </Grid>
     </Border>
 </Window>
