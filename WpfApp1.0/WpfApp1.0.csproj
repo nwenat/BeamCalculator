@@ -71,6 +71,15 @@
     <Compile Include="EnumDescribe.cs" />
     <Compile Include="Forces.cs" />
     <Compile Include="Loads.cs" />
+    <Compile Include="SteelParameters.cs" />
+    <Page Include="Draws\przekroj.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Draws\uklad.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MaterialParametersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

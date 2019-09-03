@@ -9,7 +9,6 @@
 
     <Window.Resources>
         <local:BeamUnderLoad x:Key="beam"/>
-        <!--<local:BeamUnderLoad x:Key="beam" />-->
     </Window.Resources>
 
     <Border Padding="5">
@@ -52,7 +51,7 @@
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                            <Image Width="80" Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/schemat_statyczny.jpg" VerticalAlignment="Center"/>
+                            <Image Width="80" Source="Draws/schemat_statyczny.jpg" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                     </Border>
@@ -195,7 +194,8 @@
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/przekroj.jpg" VerticalAlignment="Center"/>
+                                <Image Source="Draws/przekroj.jpg" VerticalAlignment="Center"/>
+                                
                             </StackPanel>
                         </Grid>
                     </Border>
