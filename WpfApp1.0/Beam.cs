@@ -8,6 +8,7 @@ namespace WpfApp1._0
         private Loads loads = new Loads();
         private Dimensions dimensions = new Dimensions();
         private ConcreteParameters concreteParameters = new ConcreteParameters();
+        private SteelParameters steelParameters = new SteelParameters();
         private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
 
         public Beam()
@@ -15,6 +16,7 @@ namespace WpfApp1._0
             loads.PropertyChanged += InputPropertyChangedEventHandler;
             dimensions.PropertyChanged += InputPropertyChangedEventHandler;
             concreteParameters.PropertyChanged += InputPropertyChangedEventHandler;
+            steelParameters.PropertyChanged += InputPropertyChangedEventHandler;
         }
 
         public Loads Loads
@@ -33,6 +35,12 @@ namespace WpfApp1._0
         {
             get { return concreteParameters; }
             set { concreteParameters = value; }
+        }
+
+        public SteelParameters SteelParameters
+        {
+            get { return steelParameters; }
+            set { steelParameters = value; }
         }
 
         public ICommand ShowMaterialParameters

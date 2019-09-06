@@ -17,9 +17,123 @@ namespace WpfApp1._0
         private Double fyd = 434.78;
         // Es in [Gpa]
         private Double eS = 200.0;
-
+        // fi [mm]
+        private int fi = 12;
+        private int fiS = 8;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Double GamaS
+        {
+            get
+            {
+                return gamaS;
+            }
+        }
+
+        public Double Fyk
+        {
+            get
+            {
+                return fyk;
+            }
+        }
+
+        public Double Fyd
+        {
+            get
+            {
+                return fyd;
+            }
+        }
+
+        public Double ES
+        {
+            get
+            {
+                return eS;
+            }
+        }
+
+        public String SteelClassDescription
+        {
+            set
+            {
+                steelClassDescription = value;
+                steelClasses = EnumDescribe.GetValueFromDescription<SteelClasses>(steelClassDescription);
+                switch (steelClasses)
+                {
+                    case SteelClasses.a:
+                        break;
+                    case SteelClasses.b:
+                        break;
+                    case SteelClasses.c:
+                        break;
+                }
+                UpdateData();
+            }
+            get
+            {
+                return steelClassDescription;
+            }
+        }
+
+        public int Fi
+        {
+            set
+            {
+                fi = value;
+                UpdateData();
+            }
+            get
+            {
+                return fi;
+            }
+        }
+
+        public int FiS
+        {
+            set
+            {
+                fiS = value;
+                UpdateData();
+            }
+            get
+            {
+                return fiS;
+            }
+        }
+
+        public Array TypesOfSteel
+        {
+            get
+            {
+                List<SteelClasses> list = Enum.GetValues(typeof(SteelClasses)).OfType<SteelClasses>().ToList();
+                List<String> result = new List<String>();
+                foreach (SteelClasses sC in list)
+                {
+                    var descript = EnumDescribe.GetDescribe(sC);
+                    result.Add(descript);
+                }
+                return result.ToArray();
+            }
+        }
+
+        public Array FiArray
+        {
+            get
+            {
+                return new int[] { 8, 10, 12, 16, 20, 22 };
+            }
+        }
+
+        public Array FiSArray
+        {
+            get
+            {
+                return new int[] { 6, 8 };
+            }
+        }
 
         public void UpdateData()
         {
@@ -29,6 +143,8 @@ namespace WpfApp1._0
             PropertyChanged(this, new PropertyChangedEventArgs("GamaC"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fck"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fcm"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fi"));
+            PropertyChanged(this, new PropertyChangedEventArgs("FiS"));
         }
 
         public void Calculate()

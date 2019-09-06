@@ -76,15 +76,21 @@
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Klasa stali zbrojeniowej" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" />
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.TypesOfSteel, 
+                                        Source={StaticResource beam}}" SelectedIndex="0" 
+                                              SelectedItem="{Binding Beam.SteelParameters.SteelClassDescription, Source={StaticResource beam}}"/>
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Średnica zbroj. podłużnego &#x03C6;" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" />
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.FiArray, 
+                                        Source={StaticResource beam}}" SelectedIndex="0" 
+                                              SelectedItem="{Binding Beam.SteelParameters.Fi, Source={StaticResource beam}}"/>
                                 </StackPanel>
-                                <StackPanel Margin="0 2" Orientation="Horizontal" IsEnabled="False">
+                                <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Średnica strzemin &#x03C6;&#x209B;" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" />
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.FiSArray, 
+                                        Source={StaticResource beam}}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}"/>
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Klasa stali sprężającej" VerticalAlignment="Center" Foreground="Red"/>
@@ -223,6 +229,18 @@
                 <StackPanel Margin="0 2" Orientation="horizontal">
                     <TextBlock Text="Fcd=  " VerticalAlignment="center" Foreground="Red"/>
                     <TextBlock Padding="2" Text="{Binding Beam.ConcreteParameters.Fcd, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Stal=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.SteelClassDescription, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="Fi=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.Fi, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="FiS=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
 
