@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WpfApp1._0
 {
-    class SteelParameters : INotifyPropertyChanged
+    class PrestressingSteelParameters : INotifyPropertyChanged
     {
-        private SteelClasses steelClasses = SteelClasses.a;
-        private String steelClassDescription = EnumDescribe.GetDescribe(SteelClasses.a);
+        private PrestressingSteelClasses prestressingSteelClasses = PrestressingSteelClasses.a;
+        private String steelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.a);
         private Double gamaS = 1.15;
         // fck and fyd in [MPa]
         private int fyk = 500;
@@ -18,8 +18,7 @@ namespace WpfApp1._0
         // Es in [Gpa]
         private Double eS = 200.0;
         // fi [mm]
-        private int fi = 12;
-        private int fiS = 8;
+        private int fiP = 12;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -60,14 +59,14 @@ namespace WpfApp1._0
             set
             {
                 steelClassDescription = value;
-                steelClasses = EnumDescribe.GetValueFromDescription<SteelClasses>(steelClassDescription);
-                switch (steelClasses)
+                prestressingSteelClasses = EnumDescribe.GetValueFromDescription<PrestressingSteelClasses>(steelClassDescription);
+                switch (prestressingSteelClasses)
                 {
-                    case SteelClasses.a:
+                    case PrestressingSteelClasses.a:
                         break;
-                    case SteelClasses.b:
+                    case PrestressingSteelClasses.b:
                         break;
-                    case SteelClasses.c:
+                    case PrestressingSteelClasses.c:
                         break;
                 }
                 UpdateData();
@@ -78,41 +77,29 @@ namespace WpfApp1._0
             }
         }
 
-        public int Fi
+        public int FiP
         {
             set
             {
-                fi = value;
+                fiP = value;
                 UpdateData();
             }
             get
             {
-                return fi;
+                return fiP;
             }
         }
 
-        public int FiS
-        {
-            set
-            {
-                fiS = value;
-                UpdateData();
-            }
-            get
-            {
-                return fiS;
-            }
-        }
 
         public Array TypesOfSteel
         {
             get
             {
-                List<SteelClasses> list = Enum.GetValues(typeof(SteelClasses)).OfType<SteelClasses>().ToList();
+                List<PrestressingSteelClasses> list = Enum.GetValues(typeof(PrestressingSteelClasses)).OfType<PrestressingSteelClasses>().ToList();
                 List<String> result = new List<String>();
-                foreach (SteelClasses sC in list)
+                foreach (PrestressingSteelClasses pSC in list)
                 {
-                    var descript = EnumDescribe.GetDescribe(sC);
+                    var descript = EnumDescribe.GetDescribe(pSC);
                     result.Add(descript);
                 }
                 return result.ToArray();
@@ -152,27 +139,31 @@ namespace WpfApp1._0
             fyd = fyk / gamaS;
         }
 
-        public enum SteelClasses
+        public enum PrestressingSteelClasses
         {
-            [Description("RB500 W")]
+            [Description("cos 1")]
             a,
-            [Description("cos2")]
+            [Description("cos 2")]
             b,
-            [Description("cos")]
-            c,
-            [Description("\u03C62,5")]
+            [Description("cos 3")]
+            c
+        }
+
+        public enum PrestressingCrossSections
+        {
+            [Description("\u03C6 2,5mm")]
             p25,
-            [Description("\u03C65")]
+            [Description("\u03C6 5mm")]
             p5,
-            [Description("\u03C67")]
+            [Description("\u03C6 7mm")]
             p7,
-            [Description("2x \u03C62,5")]
+            [Description("2x \u03C6 2,5mm")]
             s225,
-            [Description("7x \u03C62,5")]
+            [Description("7x \u03C6 2,5mm")]
             s725,
-            [Description("19x \u03C62,5")]
+            [Description("19x \u03C6 2,5mm")]
             s1925,
-            [Description("7x \u03C65")]
+            [Description("7x \u03C6 5mm")]
             s75
         }
     }

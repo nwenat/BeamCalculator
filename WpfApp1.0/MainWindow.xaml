@@ -39,12 +39,12 @@
                                 <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Obciążęnie zmienne=  " VerticalAlignment="center"/>
+                                <TextBlock Text="Obciążęnie zmienne q=  " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Loads.QLoad, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Rozpiętość belki  " VerticalAlignment="center"/>
+                                <TextBlock Text="Rozpiętość belki L=  " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.Length, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" m" VerticalAlignment="center"/>
                             </StackPanel>
