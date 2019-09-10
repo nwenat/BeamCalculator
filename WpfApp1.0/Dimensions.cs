@@ -12,11 +12,11 @@ namespace WpfApp1._0
         // length m
         private Double length = 5.0;
         // dimensiton cm
-        private Double dimH = 15.0;
-        private Double dimD1 = 0.0;
-        private Double dimBD1 = 0.0;
-        private Double dimD2 = 0.0;
-        private Double dimBD2 = 0.0;
+        private Double dimH = 100.0;
+        private Double dimD1 = 20.0;
+        private Double dimBD1 = 40.0;
+        private Double dimD2 = 10.0;
+        private Double dimBD2 = 70.0;
         private Double dimB = 10.0;
 
         public event PropertyChangedEventHandler PropertyChanged;

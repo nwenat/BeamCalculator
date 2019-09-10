@@ -244,12 +244,12 @@
                     <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.SteelClassDescription, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="horizontal">
-                    <TextBlock Text="Fi=  " VerticalAlignment="center" Foreground="Red"/>
-                    <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.Fi, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Text="Sc=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.SC, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="horizontal">
-                    <TextBlock Text="FiS=  " VerticalAlignment="center" Foreground="Red"/>
-                    <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Text="Ixc=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.IXC, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="horizontal">
                     <TextBlock Text="klasa stali sprężającej=  " VerticalAlignment="center" Foreground="Red"/>

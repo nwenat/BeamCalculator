@@ -10,12 +10,14 @@ namespace WpfApp1._0
         private Double areaConcrete;
         private Double areaAs1;
         private Double areaAp;
-
         // Sx in [cm3] wzg. gornej krawedzi
         private Double sC;
         // Ix in [cm4]
         // iXC wzg. gornej krawedzi
         private Double iXC;
+        // yc in [cm]
+        private Double yc;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -75,10 +77,42 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            area = beam.Beam.Dimensions.DimB * (beam.Beam.Dimensions.DimH - beam.Beam.Dimensions.DimD1 - beam.Beam.Dimensions.DimD2)
-                + beam.Beam.Dimensions.DimD1 * beam.Beam.Dimensions.DimBD1 + beam.Beam.Dimensions.DimD2 * beam.Beam.Dimensions.DimBD2;
+            Dimensions d = beam.Beam.Dimensions;
+
+            if (d.DimBD1 == 0 & d.DimBD2 == 0)
+            {
+                area = d.DimB * d.DimH;
+            }
+            else if (d.DimBD1 != 0 & d.DimBD2 == 0)
+            {
+                area = d.DimB * (d.DimH - d.DimD1) + d.DimD1 * d.DimBD1;
+            }
+            else if (d.DimBD1 == 0 & d.DimBD2 != 0)
+            {
+                area = d.DimB * (d.DimH - d.DimD2) + d.DimD2 * d.DimBD2;
+            }
+            else
+            {
+                area = d.DimB * (d.DimH - d.DimD1 - d.DimD2)
+                + d.DimD1 * d.DimBD1 + d.DimD2 * d.DimBD2;
+            }
+
+            sC = (d.DimBD1 * d.DimD1 * d.DimD1) / 2
+                + d.DimB * (d.DimH - d.DimD1 - d.DimD2)
+                * ((d.DimH - d.DimD1 - d.DimD2) /2 + d.DimD1)
+                + d.DimBD2 * d.DimD2 * (d.DimH - d.DimD2 / 2);
+
+            yc = sC / area;
+
+            iXC = d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) / 12
+                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (yc - (d.DimH + d.DimD1 - d.DimD2)/2) * (yc - (d.DimH + d.DimD1 - d.DimD2) / 2)
+                + d.DimBD2 * d.DimD2 * d.DimD2 * d.DimD2 / 12
+                + d.DimBD2 * d.DimD2 * (yc - d.DimH + d.DimD2/2) * (yc - d.DimH + d.DimD2 / 2)
+                + d.DimBD1 * d.DimD1 * d.DimD1 * d.DimD1 / 12 + d.DimBD1 * d.DimD1 * (yc - d.DimD1/2) * (yc - d.DimD1 / 2);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SC"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXC"));
         }
 
     }
