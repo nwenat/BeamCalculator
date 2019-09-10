@@ -14,65 +14,89 @@
     <Border Padding="10">
         <Grid>
             <StackPanel>
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+                    <Grid>
+                        <StackPanel>
+                            <!--Concrete-->
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <ComboBox Margin="20 0" ItemsSource="{Binding Beam.ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding Beam.ConcreteParameters.ConcreteClassDescription}"  />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Współczynnik bezbieczeństwa 𝛾𝑐 = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.ConcreteParameters.GamaC}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość charakterystyczna na ściskanie fck = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fck}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość średnia na ściskanie fcm = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fcm}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość obliczeniowa na ściskanie fcd = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fcd, StringFormat={}{0:n2}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość charakterystyczna na rozciąganie fctk = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fctk}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość średnia na rozciąganie fctm = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fctm}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Wytrzymałość obliczeniowa na rozciąganie fctd = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.Fctd, StringFormat={}{0:n2}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Średni moduł sprężystości betonu Ecm = " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Beam.ConcreteParameters.ECm}" FontWeight="Bold" />
+                                <TextBlock Text=" GPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
-                 <!--Concrete--> 
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Klasa betonu" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.ConcreteParameters.TypesOfConcrete}" SelectedIndex="0" SelectedItem="{Binding Beam.ConcreteParameters.ConcreteClassDescription}"  />
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Współczynnik bezbieczeństwa 𝛾𝑐 = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.GamaC, Mode=OneWay}" />
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość charakterystyczna na ściskanie fck = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fck, Mode=OneWay}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość średnia na ściskanie fcm = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fcm, Mode=OneWay}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość obliczeniowa na ściskanie fcd = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fcd, Mode=OneWay, StringFormat={}{0:n2}}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość charakterystyczna na rozciąganie fctk = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fctk, Mode=OneWay}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość średnia na rozciąganie fctm = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fctm, Mode=OneWay}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Wytrzymałość obliczeniowa na rozciąganie fctd = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.Fctd, Mode=OneWay, StringFormat={}{0:n2}}"/>
-                    <TextBlock Text=" MPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Średni moduł sprężystości Ecm = " VerticalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Text="{Binding Beam.ConcreteParameters.ECm, Mode=OneWay}"/>
-                    <TextBlock Text=" GPa" VerticalAlignment="Center"/>
-                </StackPanel>
-                
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Ciężar obiętościowy betonu" VerticalAlignment="Center"/>
-                    <ComboBox Margin="20 0" ItemsSource="{Binding ConcreteParameters.GammaBArray}" SelectedIndex="0"
-                              SelectedItem="{Binding ConcreteParameters.GamaB}" />
-                    <TextBlock VerticalAlignment="Center" Text=" kN/m&#x00b3;"/>
-                </StackPanel>
-
-                <StackPanel Margin="0 2" Orientation="Horizontal">
-                    <TextBlock Text="Klasa i gatunek stali" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <ComboBox Margin="20 0"/>
-                </StackPanel>
-
-            </StackPanel>    
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+                    <Grid>
+                        <StackPanel>
+                            <!--Steel-->
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Gatunek stali" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.TypesOfSteel}" SelectedIndex="0" SelectedItem="{Binding Beam.SteelParameters.SteelClassDescription}"  />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Współczynnik bezbieczeństwa 𝛾s = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.SteelParameters.GamaS}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Charakterystyczna granica plastyczności fyk = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.SteelParameters.Fyk}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Obliczeniowa granica plastyczności fyd = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.SteelParameters.Fyd , StringFormat={}{0:n2}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Moduł sprężystości stali Es = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.SteelParameters.ES}" FontWeight="Bold" />
+                                <TextBlock Text=" GPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
         </Grid>
     </Border>
+    
 </Window>

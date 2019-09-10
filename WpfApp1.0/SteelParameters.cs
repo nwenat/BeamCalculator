@@ -9,8 +9,8 @@ namespace WpfApp1._0
 {
     class SteelParameters : INotifyPropertyChanged
     {
-        private SteelClasses steelClasses = SteelClasses.a;
-        private String steelClassDescription = EnumDescribe.GetDescribe(SteelClasses.a);
+        private SteelClasses steelClasses = SteelClasses.rb500w;
+        private String steelClassDescription = EnumDescribe.GetDescribe(SteelClasses.rb500w);
         private Double gamaS = 1.15;
         // fck and fyd in [MPa]
         private int fyk = 500;
@@ -63,11 +63,14 @@ namespace WpfApp1._0
                 steelClasses = EnumDescribe.GetValueFromDescription<SteelClasses>(steelClassDescription);
                 switch (steelClasses)
                 {
-                    case SteelClasses.a:
+                    case SteelClasses.rb500w:
+                        fyk = 500;
                         break;
-                    case SteelClasses.b:
+                    case SteelClasses.rb500:
+                        fyk = 500;
                         break;
-                    case SteelClasses.c:
+                    case SteelClasses.g20:
+                        fyk = 490;
                         break;
                 }
                 UpdateData();
@@ -140,9 +143,9 @@ namespace WpfApp1._0
             Calculate();
             PropertyChanged(this, new PropertyChangedEventArgs("SteelClassDescription"));
             PropertyChanged(this, new PropertyChangedEventArgs("SteelClass"));
-            PropertyChanged(this, new PropertyChangedEventArgs("GamaC"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Fck"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Fcm"));
+            PropertyChanged(this, new PropertyChangedEventArgs("GamaS"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fyk"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fyd"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fi"));
             PropertyChanged(this, new PropertyChangedEventArgs("FiS"));
         }
@@ -154,26 +157,12 @@ namespace WpfApp1._0
 
         public enum SteelClasses
         {
-            [Description("RB500 W")]
-            a,
-            [Description("cos2")]
-            b,
-            [Description("cos")]
-            c,
-            [Description("\u03C62,5")]
-            p25,
-            [Description("\u03C65")]
-            p5,
-            [Description("\u03C67")]
-            p7,
-            [Description("2x \u03C62,5")]
-            s225,
-            [Description("7x \u03C62,5")]
-            s725,
-            [Description("19x \u03C62,5")]
-            s1925,
-            [Description("7x \u03C65")]
-            s75
+            [Description("RB500W")]
+            rb500w,
+            [Description("RB500")]
+            rb500,
+            [Description("20G2VY-b")]
+            g20
         }
     }
 }

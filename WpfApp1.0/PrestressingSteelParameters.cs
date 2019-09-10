@@ -9,24 +9,24 @@ namespace WpfApp1._0
 {
     class PrestressingSteelParameters : INotifyPropertyChanged
     {
-        private PrestressingSteelClasses prestressingSteelClasses = PrestressingSteelClasses.a;
-        private String steelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.a);
-        private Double gamaS = 1.15;
+        private PrestressingSteelClasses prestressingSteelClass = PrestressingSteelClasses.a;
+        private String prestressingSteelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.a);
+        private PrestressingTypes prestressingType = PrestressingTypes.p7;
+        private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.p7);
+        private Double gamaSP = 1.25;
         // fck and fyd in [MPa]
         private int fyk = 500;
         private Double fyd = 434.78;
         // Es in [Gpa]
-        private Double eS = 200.0;
-        // fi [mm]
-        private int fiP = 12;
+        private Double eP = 195.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Double GamaS
+        public Double GamaSP
         {
             get
             {
-                return gamaS;
+                return gamaSP;
             }
         }
 
@@ -46,21 +46,21 @@ namespace WpfApp1._0
             }
         }
 
-        public Double ES
+        public Double EP
         {
             get
             {
-                return eS;
+                return eP;
             }
         }
 
-        public String SteelClassDescription
+        public String PrestressingSteelClassDescription
         {
             set
             {
-                steelClassDescription = value;
-                prestressingSteelClasses = EnumDescribe.GetValueFromDescription<PrestressingSteelClasses>(steelClassDescription);
-                switch (prestressingSteelClasses)
+                prestressingSteelClassDescription = value;
+                prestressingSteelClass = EnumDescribe.GetValueFromDescription<PrestressingSteelClasses>(prestressingSteelClassDescription);
+                switch (prestressingSteelClass)
                 {
                     case PrestressingSteelClasses.a:
                         break;
@@ -73,23 +73,40 @@ namespace WpfApp1._0
             }
             get
             {
-                return steelClassDescription;
+                return prestressingSteelClassDescription;
             }
         }
 
-        public int FiP
+        public String PrestressingTypeDescription
         {
             set
             {
-                fiP = value;
+                prestressingTypeDescription = value;
+                prestressingType = EnumDescribe.GetValueFromDescription<PrestressingTypes>(prestressingTypeDescription);
+                switch (prestressingType)
+                {
+                    case PrestressingTypes.p25:
+                        break;
+                    case PrestressingTypes.p5:
+                        break;
+                    case PrestressingTypes.p7:
+                        break;
+                    case PrestressingTypes.s1925:
+                        break;
+                    case PrestressingTypes.s225:
+                        break;
+                    case PrestressingTypes.s725:
+                        break;
+                    case PrestressingTypes.s75:
+                        break;
+                }
                 UpdateData();
             }
             get
             {
-                return fiP;
+                return prestressingTypeDescription;
             }
         }
-
 
         public Array TypesOfSteel
         {
@@ -106,28 +123,27 @@ namespace WpfApp1._0
             }
         }
 
-        public Array FiArray
+        public Array TypesOfPrestressing
         {
             get
             {
-                return new int[] { 8, 10, 12, 16, 20, 22 };
-            }
-        }
-
-        public Array FiSArray
-        {
-            get
-            {
-                return new int[] { 6, 8 };
+                List<PrestressingTypes> list = Enum.GetValues(typeof(PrestressingTypes)).OfType<PrestressingTypes>().ToList();
+                List<String> result = new List<String>();
+                foreach (PrestressingTypes pT in list)
+                {
+                    var descript = EnumDescribe.GetDescribe(pT);
+                    result.Add(descript);
+                }
+                return result.ToArray();
             }
         }
 
         public void UpdateData()
         {
             Calculate();
-            PropertyChanged(this, new PropertyChangedEventArgs("SteelClassDescription"));
+            PropertyChanged(this, new PropertyChangedEventArgs("PrestressingSteelClassDescription"));
             PropertyChanged(this, new PropertyChangedEventArgs("SteelClass"));
-            PropertyChanged(this, new PropertyChangedEventArgs("GamaC"));
+            PropertyChanged(this, new PropertyChangedEventArgs("GamaSP"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fck"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fcm"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fi"));
@@ -136,7 +152,7 @@ namespace WpfApp1._0
 
         public void Calculate()
         {
-            fyd = fyk / gamaS;
+            fyd = fyk / gamaSP;
         }
 
         public enum PrestressingSteelClasses
@@ -149,7 +165,7 @@ namespace WpfApp1._0
             c
         }
 
-        public enum PrestressingCrossSections
+        public enum PrestressingTypes
         {
             [Description("\u03C6 2,5mm")]
             p25,
