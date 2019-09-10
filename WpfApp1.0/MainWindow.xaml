@@ -218,8 +218,13 @@
             <StackPanel Grid.Column="1" Margin="0" >
                 <TextBlock Text="Chwilowe sprawdzenie" FontWeight="bold" Foreground="BlueViolet" HorizontalAlignment="Center" Margin="0,2"/>
                 <StackPanel Margin="0 2" Orientation="horizontal">
-                    <TextBlock Text="Siła=  " VerticalAlignment="center" Foreground="Red"/>
-                    <TextBlock Padding="2" Text="{Binding Forces.Force, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Text="Ciezar wlasny=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Forces.G, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="MG=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Forces.MomentGK, Source={StaticResource beam}}" FontWeight="bold" />
                     <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="horizontal">

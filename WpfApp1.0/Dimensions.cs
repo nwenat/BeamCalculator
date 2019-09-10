@@ -13,10 +13,10 @@ namespace WpfApp1._0
         private Double length = 5.0;
         // dimensiton cm
         private Double dimH = 15.0;
-        private Double dimD1 = 14.0;
-        private Double dimBD1 = 13.0;
-        private Double dimD2 = 12.0;
-        private Double dimBD2 = 11.0;
+        private Double dimD1 = 0.0;
+        private Double dimBD1 = 0.0;
+        private Double dimD2 = 0.0;
+        private Double dimBD2 = 0.0;
         private Double dimB = 10.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,7 +60,7 @@ namespace WpfApp1._0
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     dimD1 = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DimD1"));
@@ -76,7 +76,7 @@ namespace WpfApp1._0
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     dimBD1 = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DimBD1"));
@@ -92,7 +92,7 @@ namespace WpfApp1._0
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     dimD2 = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DimD2"));
@@ -108,7 +108,7 @@ namespace WpfApp1._0
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     dimBD2 = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DimBD2"));

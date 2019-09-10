@@ -6,14 +6,16 @@ namespace WpfApp1._0
     class CrossSectionCalculatedCharacteristics : INotifyPropertyChanged
     {
         // area in [cm2]
-        private Double area = 0.0;
-        private Double areaConcrete = 0.0;
-        private Double areaAs1 = 0.0;
-        private Double areaAp = 0.0;
+        private Double area;
+        private Double areaConcrete;
+        private Double areaAs1;
+        private Double areaAp;
 
-        // Sx in [cm3]
-
+        // Sx in [cm3] wzg. gornej krawedzi
+        private Double sC;
         // Ix in [cm4]
+        // iXC wzg. gornej krawedzi
+        private Double iXC;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -47,6 +49,22 @@ namespace WpfApp1._0
             get
             {
                 return areaAp;
+            }
+        }
+
+        public Double SC
+        {
+            get
+            {
+                return sC;
+            }
+        }
+
+        public Double IXC
+        {
+            get
+            {
+                return iXC;
             }
         }
 

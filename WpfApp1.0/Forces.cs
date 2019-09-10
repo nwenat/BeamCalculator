@@ -9,17 +9,31 @@ namespace WpfApp1._0
 {
     class Forces : INotifyPropertyChanged
     {
+        //g [kN/m]
+        private Double g;
         // moment kNm
-        private Double momentGK = 0.0;
-        private Double momentG = 0.0;
-        private Double momentDGK = 0.0;
-        private Double momentDG = 0.0;
-        private Double momentQK = 0.0;
-        private Double momentQ = 0.0;
+        // k - charakterystyczne
+        // G - ciezar wlasny
+        private Double momentGK;
+        private Double momentG;
+        // DG - obc. stale
+        private Double momentDGK;
+        private Double momentDG;
+        // Q - obc. zmienne
+        private Double momentQK;
+        private Double momentQ;
         // force kN
-        private Double force = 0.0;
+        private Double force;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Double G
+        {
+            get
+            {
+                return g;
+            }
+        }
 
         public Double MomentGK
         {
@@ -84,12 +98,13 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
+            g = beam.CrossSectionCalculatedCharacteristics.Area * 0.0001 * beam.Beam.ConcreteParameters.GamaB;
             momentDGK = (beam.Beam.Loads.DGLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentDG = (beam.Beam.Loads.DGLoad * 1.2 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            //momentGK = (Ac * gamac * length * length) / 8;
-            //momentGK = (Ac * gamac * length * length) / 8;
+            momentDG = (beam.Beam.Loads.DGLoad * 1.35 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            momentGK = (g * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            momentG = (g * 1.35 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
             momentQK = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentQ = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+            momentQ = (beam.Beam.Loads.QLoad * 1.5 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
 
             force = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
 
@@ -99,10 +114,8 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentDG"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQK"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQ"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("G"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Force"));
         }
-
-
-
     }
 }

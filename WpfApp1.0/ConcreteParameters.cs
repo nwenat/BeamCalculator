@@ -13,7 +13,7 @@ namespace WpfApp1._0
         private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C40);
         private Double gamaC = 1.5;
         // gamaB kN/m3
-        private int gamaB = 24;
+        private int gamaB = 25;
         // fck and fcd in [MPa]
         private int fck = 40;
         private Double fcm = 48.0;
