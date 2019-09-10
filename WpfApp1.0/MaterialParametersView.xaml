@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Parametry Materiałów" Height="500" Width="400">
+        Title="Parametry Materiałów" Height="550" Width="600">
 
     <Window.DataContext>
         <local:BeamUnderLoad/>
@@ -70,7 +70,7 @@
                         <StackPanel>
                             <!--Steel-->
                             <StackPanel Margin="0 2" Orientation="Horizontal">
-                                <TextBlock Text="Gatunek stali" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Text="Gatunek stali pasywnej" VerticalAlignment="Center" FontWeight="Bold"/>
                                 <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.TypesOfSteel}" SelectedIndex="0" SelectedItem="{Binding Beam.SteelParameters.SteelClassDescription}"  />
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
@@ -90,6 +90,52 @@
                             <StackPanel Margin="0 2" Orientation="Horizontal">
                                 <TextBlock Text="Moduł sprężystości stali Es = " VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Beam.SteelParameters.ES}" FontWeight="Bold" />
+                                <TextBlock Text=" GPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+                    <Grid>
+                        <StackPanel>
+                            <!--Prestressing Steel-->
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Gatunek stali sprężającej" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfSteel}" SelectedIndex="0" SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingSteelClassDescription}"  />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Współczynnik częściowy dla stali sprężającej 𝛾s = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.GamaSP}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Charakterystyczna siła zrywająca cięgno Fpk = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.ForcePk, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text=" kN" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Obliczeniowa siła zrywająca cięgno Fpd = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.ForcePd, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text=" kN" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Charakterystyczna wytrzymałość na rozciąganie fpk = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpk, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Obliczeniowa wytrzymałość na rozciąganie fpd = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpd, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Charakterystyczna granica plastyczności fp0,1k = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fp01k, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text=" MPa" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Moduł sprężystości stali aktywnej Ep = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.EP}" FontWeight="Bold" />
                                 <TextBlock Text=" GPa" VerticalAlignment="Center"/>
                             </StackPanel>
                         </StackPanel>

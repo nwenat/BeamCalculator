@@ -94,15 +94,15 @@
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Klasa stali sprężającej" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.FiSArray, 
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfSteel, 
                                         Source={StaticResource beam}}" SelectedIndex="0" 
-                                              SelectedItem="{Binding Beam.SteelParameters., Source={StaticResource beam}}"/>
+                                              SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingSteelClassDescription, Source={StaticResource beam}}"/>
                                 </StackPanel>
                                 <!--<StackPanel Margin="0 2" Orientation="Horizontal">
                                     <TextBlock Text="Typ cięgien" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.SteelParameters.FiSArray, 
-                                        Source={StaticResource beam}}" SelectedIndex="1" 
-                                              SelectedItem="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}"/>
+                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfPrestressing, 
+                                        Source={StaticResource beam}}" SelectedIndex="0" 
+                                              SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingTypeDescription, Source={StaticResource beam}}"/>
                                 </StackPanel>-->
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
@@ -245,6 +245,14 @@
                 <StackPanel Margin="0 2" Orientation="horizontal">
                     <TextBlock Text="FiS=  " VerticalAlignment="center" Foreground="Red"/>
                     <TextBlock Padding="2" Text="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="klasa stali sprężającej=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.PrestressingSteelParameters.PrestressingSteelClassDescription, Source={StaticResource beam}}" FontWeight="bold" />
+                </StackPanel>
+                <StackPanel Margin="0 2" Orientation="horizontal">
+                    <TextBlock Text="typ cięgna=  " VerticalAlignment="center" Foreground="Red"/>
+                    <TextBlock Padding="2" Text="{Binding Beam.PrestressingSteelParameters.PrestressingTypeDescription, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
 

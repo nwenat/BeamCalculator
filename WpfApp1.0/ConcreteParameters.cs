@@ -17,14 +17,19 @@ namespace WpfApp1._0
         // fck and fcd in [MPa]
         private int fck = 40;
         private Double fcm = 48.0;
-        private Double fcd = 26.67;
+        private Double fcd;
         private Double fctk = 2.5;
         private Double fctm = 3.5;
-        private Double fctd = 1.67;
+        private Double fctd;
         // Ecm in [Gpa]
         private Double eCm = 35.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ConcreteParameters()
+        {
+            Calculate();
+        }
 
         public Double GamaC
         {

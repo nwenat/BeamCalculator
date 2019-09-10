@@ -14,7 +14,7 @@ namespace WpfApp1._0
         private Double gamaS = 1.15;
         // fck and fyd in [MPa]
         private int fyk = 500;
-        private Double fyd = 434.78;
+        private Double fyd;
         // Es in [Gpa]
         private Double eS = 200.0;
         // fi [mm]
@@ -22,6 +22,11 @@ namespace WpfApp1._0
         private int fiS = 8;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public SteelParameters()
+        {
+            Calculate();
+        }
 
         public Double GamaS
         {

@@ -9,18 +9,29 @@ namespace WpfApp1._0
 {
     class PrestressingSteelParameters : INotifyPropertyChanged
     {
-        private PrestressingSteelClasses prestressingSteelClass = PrestressingSteelClasses.a;
-        private String prestressingSteelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.a);
-        private PrestressingTypes prestressingType = PrestressingTypes.p7;
-        private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.p7);
+        private PrestressingSteelClasses prestressingSteelClass = PrestressingSteelClasses.y1860s7;
+        private String prestressingSteelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.y1860s7);
+        private PrestressingTypes prestressingType = PrestressingTypes.pp25;
+        private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.pp25);
         private Double gamaSP = 1.25;
-        // fck and fyd in [MPa]
-        private int fyk = 500;
-        private Double fyd = 434.78;
+        // fck and fpk in [MPa]
+        private Double fpk;
+        private Double fpd;
+        private Double fp01k;
+        // forces Fpk, Fpd in [kN]
+        private Double forcePk = 173.0;
+        private Double forcePd;
         // Es in [Gpa]
         private Double eP = 195.0;
+        // a in [mm2]
+        private Double aP1 = 93.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public PrestressingSteelParameters()
+        {
+            Calculate();
+        }
 
         public Double GamaSP
         {
@@ -30,19 +41,27 @@ namespace WpfApp1._0
             }
         }
 
-        public Double Fyk
+        public Double Fpk
         {
             get
             {
-                return fyk;
+                return fpk;
             }
         }
 
-        public Double Fyd
+        public Double Fpd
         {
             get
             {
-                return fyd;
+                return fpd;
+            }
+        }
+
+        public Double Fp01k
+        {
+            get
+            {
+                return fp01k;
             }
         }
 
@@ -54,6 +73,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double ForcePk
+        {
+            get
+            {
+                return forcePk;
+            }
+        }
+
+        public Double ForcePd
+        {
+            get
+            {
+                return forcePd;
+            }
+        }
+
         public String PrestressingSteelClassDescription
         {
             set
@@ -62,7 +97,7 @@ namespace WpfApp1._0
                 prestressingSteelClass = EnumDescribe.GetValueFromDescription<PrestressingSteelClasses>(prestressingSteelClassDescription);
                 switch (prestressingSteelClass)
                 {
-                    case PrestressingSteelClasses.a:
+                    case PrestressingSteelClasses.y1860s7:
                         break;
                     case PrestressingSteelClasses.b:
                         break;
@@ -142,23 +177,26 @@ namespace WpfApp1._0
         {
             Calculate();
             PropertyChanged(this, new PropertyChangedEventArgs("PrestressingSteelClassDescription"));
+            PropertyChanged(this, new PropertyChangedEventArgs("PrestressingTypeDescription"));
             PropertyChanged(this, new PropertyChangedEventArgs("SteelClass"));
             PropertyChanged(this, new PropertyChangedEventArgs("GamaSP"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Fck"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Fcm"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Fi"));
-            PropertyChanged(this, new PropertyChangedEventArgs("FiS"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fpk"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fpd"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Fp01k"));
         }
 
         public void Calculate()
         {
-            fyd = fyk / gamaSP;
+            forcePd = 0.9 * forcePk / gamaSP;
+            fpk = forcePk * 1000 / aP1;
+            fp01k = fpk * 0.9;
+            fpd = fpk / gamaSP;
         }
 
         public enum PrestressingSteelClasses
         {
-            [Description("cos 1")]
-            a,
+            [Description("Y1860 S7")]
+            y1860s7,
             [Description("cos 2")]
             b,
             [Description("cos 3")]
@@ -167,6 +205,8 @@ namespace WpfApp1._0
 
         public enum PrestressingTypes
         {
+            [Description("coś tu poszło nie tak")]
+            pp25,
             [Description("\u03C6 2,5mm")]
             p25,
             [Description("\u03C6 5mm")]

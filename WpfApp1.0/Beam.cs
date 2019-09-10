@@ -9,6 +9,7 @@ namespace WpfApp1._0
         private Dimensions dimensions = new Dimensions();
         private ConcreteParameters concreteParameters = new ConcreteParameters();
         private SteelParameters steelParameters = new SteelParameters();
+        private PrestressingSteelParameters prestressingSteelParameters = new PrestressingSteelParameters();
         private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
 
         public Beam()
@@ -41,6 +42,12 @@ namespace WpfApp1._0
         {
             get { return steelParameters; }
             set { steelParameters = value; }
+        }
+
+        public PrestressingSteelParameters PrestressingSteelParameters
+        {
+            get { return prestressingSteelParameters; }
+            set { prestressingSteelParameters = value; }
         }
 
         public ICommand ShowMaterialParameters
