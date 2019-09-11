@@ -23,8 +23,8 @@ namespace WpfApp1._0
         private Double forcePd;
         // Es in [Gpa]
         private Double eP = 195.0;
-        // a in [mm2]
-        private Double aP1 = 93.0;
+        // ap in [mm2] (pole 1 ciegna)
+        private Double ap = 93.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -86,6 +86,14 @@ namespace WpfApp1._0
             get
             {
                 return forcePd;
+            }
+        }
+
+        public Double Ap
+        {
+            get
+            {
+                return ap;
             }
         }
 
@@ -188,7 +196,7 @@ namespace WpfApp1._0
         public void Calculate()
         {
             forcePd = 0.9 * forcePk / gamaSP;
-            fpk = forcePk * 1000 / aP1;
+            fpk = forcePk * 1000 / ap;
             fp01k = fpk * 0.9;
             fpd = fpk / gamaSP;
         }

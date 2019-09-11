@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Parametry Materiałów" Height="550" Width="600">
+        Title="Parametry Materiałów" Height="550" Width="400">
 
     <Window.DataContext>
         <local:BeamUnderLoad/>

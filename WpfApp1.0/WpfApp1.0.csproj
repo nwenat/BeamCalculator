@@ -71,6 +71,7 @@
     <Compile Include="EnumDescribe.cs" />
     <Compile Include="Forces.cs" />
     <Compile Include="Loads.cs" />
+    <Compile Include="MaxForcesInActiveSteel.cs" />
     <Compile Include="PrestressingSteelParameters.cs" />
     <Compile Include="SteelParameters.cs" />
     <Page Include="Draws\przekroj.xaml">

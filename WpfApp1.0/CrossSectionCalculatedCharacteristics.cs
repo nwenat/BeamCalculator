@@ -7,16 +7,24 @@ namespace WpfApp1._0
     {
         // area in [cm2]
         private Double area;
-        private Double areaConcrete;
         private Double areaAs1;
-        private Double areaAp;
+        private Double areaAp = 0.0;
+        private Double areaAcs;
         // Sx in [cm3] wzg. gornej krawedzi
         private Double sC;
+        private Double sCS;
         // Ix in [cm4]
         // iXC wzg. gornej krawedzi
         private Double iXC;
+        private Double iXCS;
         // yc in [cm]
-        private Double yc;
+        private Double yC;
+        private Double yCS;
+        // Wcs in [cm3]
+        private Double wCSd;
+        private Double wCSg;
+
+        private Double alfa;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,14 +35,6 @@ namespace WpfApp1._0
             get
             {
                 return area;
-            }
-        }
-
-        public Double AreaConcrete
-        {
-            get
-            {
-                return areaConcrete;
             }
         }
 
@@ -102,13 +102,26 @@ namespace WpfApp1._0
                 * ((d.DimH - d.DimD1 - d.DimD2) /2 + d.DimD1)
                 + d.DimBD2 * d.DimD2 * (d.DimH - d.DimD2 / 2);
 
-            yc = sC / area;
+            yC = sC / area;
 
             iXC = d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) / 12
-                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (yc - (d.DimH + d.DimD1 - d.DimD2)/2) * (yc - (d.DimH + d.DimD1 - d.DimD2) / 2)
+                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (yC - (d.DimH + d.DimD1 - d.DimD2)/2) * (yC - (d.DimH + d.DimD1 - d.DimD2) / 2)
                 + d.DimBD2 * d.DimD2 * d.DimD2 * d.DimD2 / 12
-                + d.DimBD2 * d.DimD2 * (yc - d.DimH + d.DimD2/2) * (yc - d.DimH + d.DimD2 / 2)
-                + d.DimBD1 * d.DimD1 * d.DimD1 * d.DimD1 / 12 + d.DimBD1 * d.DimD1 * (yc - d.DimD1/2) * (yc - d.DimD1 / 2);
+                + d.DimBD2 * d.DimD2 * (yC - d.DimH + d.DimD2/2) * (yC - d.DimH + d.DimD2 / 2)
+                + d.DimBD1 * d.DimD1 * d.DimD1 * d.DimD1 / 12 + d.DimBD1 * d.DimD1 * (yC - d.DimD1/2) * (yC - d.DimD1 / 2);
+
+            alfa = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
+
+            areaAcs = area + (alfa - 1) * areaAp;
+
+            sCS = sC + (alfa - 1) * areaAp;
+
+            yCS = sCS / areaAcs;
+
+            iXCS = iXC + area * (yCS - yC) * (yCS - yC) + (alfa -1) * areaAp * (yCS);
+
+            wCSd = iXCS / yCS;
+            wCSg = iXCS / (d.DimH - yCS);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SC"));

@@ -13,6 +13,7 @@ namespace WpfApp1._0
         private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
         private Forces forces;
         private DimensionsRange dimensionsRange;
+        private MaxForcesInActiveSteel maxForcesInActiveSteel;
 
         public BeamUnderLoad()
         {
@@ -20,6 +21,7 @@ namespace WpfApp1._0
             crossSectionCalculatedCharacteristics = new CrossSectionCalculatedCharacteristics(this);
             forces = new Forces(this);
             dimensionsRange = new DimensionsRange(this);
+            maxForcesInActiveSteel = new MaxForcesInActiveSteel(this);
         }
 
         public Beam Beam
@@ -42,6 +44,11 @@ namespace WpfApp1._0
             get { return dimensionsRange; }
         }
 
+        public MaxForcesInActiveSteel MaxForcesInActiveSteel
+        {
+            get { return maxForcesInActiveSteel; }
+        }
+
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
             Calculate();
@@ -52,6 +59,7 @@ namespace WpfApp1._0
             crossSectionCalculatedCharacteristics.Calculate(this);
             forces.Calculate(this);
             dimensionsRange.Calculate(this);
+            maxForcesInActiveSteel.Calculate(this);
         }
     }
 }
