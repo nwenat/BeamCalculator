@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Belka version 1.0" Height="700" Width="900">
+        Title="Belka version 1.0" Height="750" Width="900">
 
     <Window.Resources>
         <local:BeamUnderLoad x:Key="beam"/>
@@ -93,23 +93,18 @@
                                               SelectedItem="{Binding Beam.SteelParameters.FiS, Source={StaticResource beam}}"/>
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Klasa stali sprężającej" VerticalAlignment="Center" Foreground="Red"/>
+                                    <TextBlock Text="Typ zbrojenia sprężającego" VerticalAlignment="Center" />
                                     <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfSteel, 
                                         Source={StaticResource beam}}" SelectedIndex="0" 
                                               SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingSteelClassDescription, Source={StaticResource beam}}"/>
                                 </StackPanel>
-                                <!--<StackPanel Margin="0 2" Orientation="Horizontal">
-                                    <TextBlock Text="Typ cięgien" VerticalAlignment="Center" Foreground="Red"/>
-                                    <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfPrestressing, 
-                                        Source={StaticResource beam}}" SelectedIndex="0" 
-                                              SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingTypeDescription, Source={StaticResource beam}}"/>
-                                </StackPanel>-->
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <Button Name="Dane"  Width="40" Command="{Binding Beam.ShowMaterialParameters, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}">
                                     <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/parametry_materialowe.jpg"/>
                                 </Button>
                             </StackPanel>
+                            
                         </Grid>
                     </Border>
                 </StackPanel>
@@ -133,72 +128,86 @@
                                     <TextBlock Text="Leff/25 &#x2264; h &#x2264; Leff/15 " VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; h= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimH, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimH, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="0,12h &#x2264; d&#x2081; &#x2264; 0,2h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; d&#x2081;= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="0,3h &#x2264; bd&#x2081; &#x2264; 0,6h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; bd&#x2081;= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimBD1, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="0,1h &#x2264; d&#x2082; &#x2264; 0,15h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; d&#x2082;= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="0,4h &#x2264; bd&#x2082; &#x2264; 0,8h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; bd&#x2082;= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimBD2, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="0,1h &#x2264; b &#x2264; 0,12h" VerticalAlignment="center" />
                                 </StackPanel>
                                 <StackPanel Margin="0 2" Orientation="horizontal">
-                                    <TextBlock Text="{Binding DimensionsRange.MinDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MinDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                     <TextBlock Text=" &#x2264; b= " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimB, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                     <TextBlock Text=" cm &#x2264; " VerticalAlignment="center"/>
-                                    <TextBlock Text="{Binding DimensionsRange.MaxDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Ranges.MaxDimB, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
-
                                 <StackPanel Margin="0 2" Orientation="horizontal">
                                     <TextBlock Text="Pole przekoju A= " VerticalAlignment="center"/>
                                     <TextBlock Padding="2" Text="{Binding CrossSectionCalculatedCharacteristics.Area, Mode=OneWay, Source={StaticResource beam}}" FontWeight="bold"/>
                                     <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Mimośród zbrojenia sprężającego" VerticalAlignment="center"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="od dolnej krawędzi e&#x2081;= " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.E1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Licza splotów n=  " VerticalAlignment="center" />
+                                    <TextBox Padding="2" Text="{Binding Beam.PrestressingSteelParameters.N, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text="    &#x2265; nmin=  " VerticalAlignment="center" />
+                                    <TextBlock Text="{Binding Ranges.MaxDimB, Mode=OneWay, Source={StaticResource beam}}" FontWeight="Bold" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                             </StackPanel>
@@ -207,6 +216,9 @@
                                 <Image Source="Draws/przekroj.jpg" VerticalAlignment="Center"/>
                                 
                             </StackPanel>
+                            <!--<StackPanel>
+                                <TextBlock Text="test"/>
+                            </StackPanel>-->
                         </Grid>
                     </Border>
                 </StackPanel>
@@ -257,7 +269,7 @@
                 </StackPanel>
                 <StackPanel Margin="0 2" Orientation="horizontal">
                     <TextBlock Text="typ cięgna=  " VerticalAlignment="center" Foreground="Red"/>
-                    <TextBlock Padding="2" Text="{Binding Beam.PrestressingSteelParameters.PrestressingTypeDescription, Source={StaticResource beam}}" FontWeight="bold" />
+                    <TextBlock Padding="2" Text="{Binding Beam.PrestressingSteelParameters.N, Source={StaticResource beam}}" FontWeight="bold" />
                 </StackPanel>
             </StackPanel>
 

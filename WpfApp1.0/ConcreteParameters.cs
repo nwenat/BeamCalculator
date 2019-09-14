@@ -13,7 +13,7 @@ namespace WpfApp1._0
         private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C40);
         private Double gamaC = 1.5;
         // gamaB kN/m3
-        private int gamaB = 25;
+        private int rhoB = 25;
         // fck and fcd in [MPa]
         private int fck = 40;
         private Double fcm = 48.0;
@@ -39,15 +39,15 @@ namespace WpfApp1._0
             }
         }
 
-        public int GamaB
+        public int RhoB
         {
             get
             {
-                return gamaB;
+                return rhoB;
             }
             set
             {
-                gamaB = value;
+                rhoB = value;
                 UpdateData();
             }
         }
@@ -180,7 +180,7 @@ namespace WpfApp1._0
             PropertyChanged(this, new PropertyChangedEventArgs("Fctm"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fctd"));
             PropertyChanged(this, new PropertyChangedEventArgs("ECm"));
-            PropertyChanged(this, new PropertyChangedEventArgs("GamaB"));
+            PropertyChanged(this, new PropertyChangedEventArgs("RhoB"));
         }
 
         public void Calculate()

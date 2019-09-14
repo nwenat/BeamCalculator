@@ -11,8 +11,8 @@ namespace WpfApp1._0
     {
         private PrestressingSteelClasses prestressingSteelClass = PrestressingSteelClasses.y1860s7;
         private String prestressingSteelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.y1860s7);
-        private PrestressingTypes prestressingType = PrestressingTypes.pp25;
-        private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.pp25);
+        //private PrestressingTypes prestressingType = PrestressingTypes.pp25;
+        //private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.pp25);
         private Double gamaSP = 1.25;
         // fck and fpk in [MPa]
         private Double fpk;
@@ -25,6 +25,8 @@ namespace WpfApp1._0
         private Double eP = 195.0;
         // ap in [mm2] (pole 1 ciegna)
         private Double ap = 93.0;
+
+        private int n = 3;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -97,6 +99,22 @@ namespace WpfApp1._0
             }
         }
 
+        public int N
+        {
+            set
+            {
+                if (value > 0)
+                {
+                    n = value;
+                    UpdateData();
+                }
+            }
+            get
+            {
+                return n;
+            }
+        }
+
         public String PrestressingSteelClassDescription
         {
             set
@@ -109,8 +127,6 @@ namespace WpfApp1._0
                         break;
                     case PrestressingSteelClasses.b:
                         break;
-                    case PrestressingSteelClasses.c:
-                        break;
                 }
                 UpdateData();
             }
@@ -120,36 +136,6 @@ namespace WpfApp1._0
             }
         }
 
-        public String PrestressingTypeDescription
-        {
-            set
-            {
-                prestressingTypeDescription = value;
-                prestressingType = EnumDescribe.GetValueFromDescription<PrestressingTypes>(prestressingTypeDescription);
-                switch (prestressingType)
-                {
-                    case PrestressingTypes.p25:
-                        break;
-                    case PrestressingTypes.p5:
-                        break;
-                    case PrestressingTypes.p7:
-                        break;
-                    case PrestressingTypes.s1925:
-                        break;
-                    case PrestressingTypes.s225:
-                        break;
-                    case PrestressingTypes.s725:
-                        break;
-                    case PrestressingTypes.s75:
-                        break;
-                }
-                UpdateData();
-            }
-            get
-            {
-                return prestressingTypeDescription;
-            }
-        }
 
         public Array TypesOfSteel
         {
@@ -166,21 +152,6 @@ namespace WpfApp1._0
             }
         }
 
-        public Array TypesOfPrestressing
-        {
-            get
-            {
-                List<PrestressingTypes> list = Enum.GetValues(typeof(PrestressingTypes)).OfType<PrestressingTypes>().ToList();
-                List<String> result = new List<String>();
-                foreach (PrestressingTypes pT in list)
-                {
-                    var descript = EnumDescribe.GetDescribe(pT);
-                    result.Add(descript);
-                }
-                return result.ToArray();
-            }
-        }
-
         public void UpdateData()
         {
             Calculate();
@@ -191,6 +162,7 @@ namespace WpfApp1._0
             PropertyChanged(this, new PropertyChangedEventArgs("Fpk"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fpd"));
             PropertyChanged(this, new PropertyChangedEventArgs("Fp01k"));
+            PropertyChanged(this, new PropertyChangedEventArgs("N"));
         }
 
         public void Calculate()
@@ -205,30 +177,9 @@ namespace WpfApp1._0
         {
             [Description("Y1860 S7")]
             y1860s7,
+            // cos dodac!!!
             [Description("cos 2")]
-            b,
-            [Description("cos 3")]
-            c
-        }
-
-        public enum PrestressingTypes
-        {
-            [Description("coś tu poszło nie tak")]
-            pp25,
-            [Description("\u03C6 2,5mm")]
-            p25,
-            [Description("\u03C6 5mm")]
-            p5,
-            [Description("\u03C6 7mm")]
-            p7,
-            [Description("2x \u03C6 2,5mm")]
-            s225,
-            [Description("7x \u03C6 2,5mm")]
-            s725,
-            [Description("19x \u03C6 2,5mm")]
-            s1925,
-            [Description("7x \u03C6 5mm")]
-            s75
+            b
         }
     }
 }

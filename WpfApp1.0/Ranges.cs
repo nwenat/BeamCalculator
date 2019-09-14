@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1._0
 {
-    class DimensionsRange : INotifyPropertyChanged
+    class Ranges : INotifyPropertyChanged
     {
         private Double minDimH;
         private Double minDimD1;
@@ -23,9 +23,11 @@ namespace WpfApp1._0
         private Double maxDimBD2;
         private Double maxDimB;
 
+        private Double nMin;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DimensionsRange(BeamUnderLoad beam)
+        public Ranges(BeamUnderLoad beam)
         {
             Calculate(beam);
         }
@@ -127,21 +129,37 @@ namespace WpfApp1._0
             }
         }
 
+        public Double NMin
+        {
+            get
+            {
+                return nMin;
+            }
+        }
+
         public void Calculate(BeamUnderLoad beam)
         {
-            minDimH = beam.Beam.Dimensions.Length * 100 / 25;
-            maxDimH = beam.Beam.Dimensions.Length * 100 / 15;
+            Dimensions d = beam.Beam.Dimensions;
 
-            minDimD1 = 0.12 * beam.Beam.Dimensions.DimH;
-            maxDimD1 = 0.2 * beam.Beam.Dimensions.DimH;
-            minDimBD1 = 0.3 * beam.Beam.Dimensions.DimH;
-            maxDimBD1 = 0.6 * beam.Beam.Dimensions.DimH;
-            minDimD2 = 0.1 * beam.Beam.Dimensions.DimH;
-            maxDimD2 = 0.15 * beam.Beam.Dimensions.DimH;
-            minDimBD2 = 0.4 * beam.Beam.Dimensions.DimH;
-            maxDimBD2 = 0.8 * beam.Beam.Dimensions.DimH;
-            minDimB = 0.1 * beam.Beam.Dimensions.DimH;
-            maxDimB = 0.12 * beam.Beam.Dimensions.DimH;
+            minDimH = d.Length * 100 / 25;
+            maxDimH = d.Length * 100 / 15;
+
+            minDimD1 = 0.12 * d.DimH;
+            maxDimD1 = 0.2 * d.DimH;
+            minDimBD1 = 0.3 * d.DimH;
+            maxDimBD1 = 0.6 * d.DimH;
+            minDimD2 = 0.1 * d.DimH;
+            maxDimD2 = 0.15 * d.DimH;
+            minDimBD2 = 0.4 * d.DimH;
+            maxDimBD2 = 0.8 * d.DimH;
+            minDimB = 0.1 * d.DimH;
+            maxDimB = 0.12 * d.DimH;
+
+            Double hz = d.DimH - d.E1;
+            Double x = hz - Math.Sqrt(hz * hz - 2 * beam.Forces.MomentQ / (beam.Beam.ConcreteParameters.Fcd * d.DimBD2));
+            Double aAp1 = beam.Beam.ConcreteParameters.Fcd / beam.Beam.PrestressingSteelParameters.Fpd * d.DimBD2 * x;
+
+            nMin = aAp1 / beam.Beam.PrestressingSteelParameters.Ap;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MinDimH"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxDimH"));
@@ -156,6 +174,8 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxDimBD2"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MinDimB"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxDimB"));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NMin"));
         }
     }
 }

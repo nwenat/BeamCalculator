@@ -18,6 +18,7 @@ namespace WpfApp1._0
         private Double dimD2 = 10.0;
         private Double dimBD2 = 70.0;
         private Double dimB = 10.0;
+        private Double e1 = 5.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -128,6 +129,22 @@ namespace WpfApp1._0
                 {
                     dimB = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DimB"));
+                }
+            }
+        }
+
+        public Double E1
+        {
+            get
+            {
+                return e1;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    e1 = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("E1"));
                 }
             }
         }

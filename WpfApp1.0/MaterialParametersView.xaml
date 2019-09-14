@@ -101,7 +101,7 @@
                         <StackPanel>
                             <!--Prestressing Steel-->
                             <StackPanel Margin="0 2" Orientation="Horizontal">
-                                <TextBlock Text="Gatunek stali sprężającej" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Text="Typ zbrojenia sprężającego" VerticalAlignment="Center" FontWeight="Bold"/>
                                 <ComboBox Margin="20 0" ItemsSource="{Binding Beam.PrestressingSteelParameters.TypesOfSteel}" SelectedIndex="0" SelectedItem="{Binding Beam.PrestressingSteelParameters.PrestressingSteelClassDescription}"  />
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">

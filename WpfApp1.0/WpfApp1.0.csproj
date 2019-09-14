@@ -67,13 +67,14 @@
     </Compile>
     <Compile Include="MaterialParametersCommand.cs" />
     <Compile Include="Dimensions.cs" />
-    <Compile Include="DimensionsRange.cs" />
+    <Compile Include="Ranges.cs" />
     <Compile Include="EnumDescribe.cs" />
     <Compile Include="Forces.cs" />
     <Compile Include="Loads.cs" />
     <Compile Include="MaxForcesInActiveSteel.cs" />
     <Compile Include="PrestressingSteelParameters.cs" />
     <Compile Include="SteelParameters.cs" />
+    <Compile Include="StratyTechnologiczne.cs" />
     <Page Include="Draws\przekroj.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

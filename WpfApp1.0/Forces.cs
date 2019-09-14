@@ -98,7 +98,7 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            g = beam.CrossSectionCalculatedCharacteristics.Area * 0.0001 * beam.Beam.ConcreteParameters.GamaB;
+            g = beam.CrossSectionCalculatedCharacteristics.Area * 0.0001 * beam.Beam.ConcreteParameters.RhoB;
             momentDGK = (beam.Beam.Loads.DGLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
             momentDG = (beam.Beam.Loads.DGLoad * 1.35 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
             momentGK = (g * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
