@@ -13,6 +13,7 @@ namespace WpfApp1._0
         private Double lToru;
         // deltaPs1 in [kN]
         private Double deltaPs1;
+        private Double p0s1;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,6 +26,7 @@ namespace WpfApp1._0
         {
             lToru = 3* beam.Beam.Dimensions.Length + 4 * 0.2;
             deltaPs1 = 3 / lToru * beam.Beam.PrestressingSteelParameters.EP * beam.CrossSectionCalculatedCharacteristics.AreaAp * 0.0001;
+            p0s1 = beam.MaxForcesInActiveSteel.P0Max - deltaPs1;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("?"));
         }

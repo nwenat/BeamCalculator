@@ -15,6 +15,14 @@ namespace WpfApp1._0
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Double P0Max
+        {
+            get
+            {
+                return p0Max;
+            }
+        }
+
         public MaxForcesInActiveSteel(BeamUnderLoad beam)
         {
             Calculate(beam);
