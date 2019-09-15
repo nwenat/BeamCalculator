@@ -70,6 +70,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double SCS
+        {
+            get
+            {
+                return sCS;
+            }
+        }
+
+        public Double IXCS
+        {
+            get
+            {
+                return iXCS;
+            }
+        }
+
         public CrossSectionCalculatedCharacteristics(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -128,6 +144,8 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXC"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SCS"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXCS"));
         }
 
     }
