@@ -38,11 +38,11 @@ namespace WpfApp1._0
             }
         }
 
-        public Double AreaAs1
+        public Double AreaAcs
         {
             get
             {
-                return areaAs1;
+                return areaAcs;
             }
         }
 
@@ -83,6 +83,30 @@ namespace WpfApp1._0
             get
             {
                 return iXCS;
+            }
+        }
+
+        public Double Alfa
+        {
+            get
+            {
+                return alfa;
+            }
+        }
+
+        public Double WCSd
+        {
+            get
+            {
+                return wCSd;
+            }
+        }
+
+        public Double WCSg
+        {
+            get
+            {
+                return wCSg;
             }
         }
 
@@ -146,6 +170,10 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SCS"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXCS"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WCSd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WCSg"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Alfa"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAcs"));
         }
 
     }
