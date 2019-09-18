@@ -144,11 +144,11 @@ namespace WpfApp1._0
 
             yC = sC / area;
 
-            iXC = d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) * (d.DimH - d.DimD1 - d.DimD2) / 12
-                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * (yC - (d.DimH + d.DimD1 - d.DimD2)/2) * (yC - (d.DimH + d.DimD1 - d.DimD2) / 2)
-                + d.DimBD2 * d.DimD2 * d.DimD2 * d.DimD2 / 12
-                + d.DimBD2 * d.DimD2 * (yC - d.DimH + d.DimD2/2) * (yC - d.DimH + d.DimD2 / 2)
-                + d.DimBD1 * d.DimD1 * d.DimD1 * d.DimD1 / 12 + d.DimBD1 * d.DimD1 * (yC - d.DimD1/2) * (yC - d.DimD1 / 2);
+            iXC = d.DimB * Math.Pow((d.DimH - d.DimD1 - d.DimD2), 3)  / 12
+                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * Math.Pow((yC - (d.DimH + d.DimD1 - d.DimD2) / 2), 2) 
+                + d.DimBD2 * Math.Pow(d.DimD2, 3) / 12
+                + d.DimBD2 * d.DimD2 * Math.Pow((yC - d.DimH + d.DimD2 / 2), 2)
+                + d.DimBD1 * Math.Pow(d.DimD1, 3) / 12 + d.DimBD1 * d.DimD1 * Math.Pow((yC - d.DimD1 / 2), 2);
 
             alfa = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
 

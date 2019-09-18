@@ -11,10 +11,10 @@
         <local:BeamUnderLoad/>
     </Window.DataContext>
 
-    <Border Padding="10">
+    <Border Margin="1.5, 0">
         <Grid>
-            <StackPanel>
-                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+            <StackPanel Margin="1.5">
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
                     <Grid>
                         <StackPanel>
                             <!--Concrete-->
@@ -65,7 +65,7 @@
                     </Grid>
                 </Border>
 
-                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 0, 0, 4">
                     <Grid>
                         <StackPanel>
                             <!--Steel-->
@@ -96,7 +96,7 @@
                     </Grid>
                 </Border>
 
-                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="2" Margin="0,0,0,5">
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 0, 0, 4">
                     <Grid>
                         <StackPanel>
                             <!--Prestressing Steel-->

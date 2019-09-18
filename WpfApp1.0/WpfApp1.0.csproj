@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="BeamUnderLoad.cs" />
     <Compile Include="ConcreteParameters.cs" />
+    <Compile Include="DifferentData.cs" />
     <Compile Include="MaterialParametersView.xaml.cs">
       <DependentUpon>MaterialParametersView.xaml</DependentUpon>
     </Compile>
@@ -137,6 +138,9 @@
     <Resource Include="Draws\parametry_materialowe.jpg" />
     <Resource Include="Draws\przekroj.jpg" />
     <Resource Include="Draws\schemat_statyczny.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\parametry_materialowe2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

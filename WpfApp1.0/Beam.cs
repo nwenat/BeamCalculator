@@ -10,14 +10,18 @@ namespace WpfApp1._0
         private ConcreteParameters concreteParameters = new ConcreteParameters();
         private SteelParameters steelParameters = new SteelParameters();
         private PrestressingSteelParameters prestressingSteelParameters = new PrestressingSteelParameters();
-        private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
+        private DifferentData differentData = new DifferentData();
 
+        private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
+        
         public Beam()
         {
             loads.PropertyChanged += InputPropertyChangedEventHandler;
             dimensions.PropertyChanged += InputPropertyChangedEventHandler;
             concreteParameters.PropertyChanged += InputPropertyChangedEventHandler;
             steelParameters.PropertyChanged += InputPropertyChangedEventHandler;
+            prestressingSteelParameters.PropertyChanged += InputPropertyChangedEventHandler;
+            differentData.PropertyChanged += InputPropertyChangedEventHandler;
         }
 
         public Loads Loads
@@ -48,6 +52,12 @@ namespace WpfApp1._0
         {
             get { return prestressingSteelParameters; }
             set { prestressingSteelParameters = value; }
+        }
+
+        public DifferentData DifferentData
+        {
+            get { return differentData; }
+            set { differentData = value; }
         }
 
         public ICommand ShowMaterialParameters
