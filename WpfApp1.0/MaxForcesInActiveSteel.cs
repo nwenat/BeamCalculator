@@ -49,11 +49,11 @@ namespace WpfApp1._0
             PrestressingSteelParameters p = beam.Beam.PrestressingSteelParameters;
             CrossSectionCalculatedCharacteristics ch = beam.CrossSectionCalculatedCharacteristics;
 
-            p0Max = Math.Min(0.8 * p.Fpk * ch.AreaAp,  0.9 * p.Fp01k * ch.AreaAp);
+            p0Max = Math.Min(0.8 * p.Fpk * ch.AreaAp,  0.9 * p.Fp01k * ch.AreaAp) / 10;
 
-            pM0Max = Math.Min(0.75 * p.Fpk * ch.AreaAp, 0.85 * p.Fp01k * ch.AreaAp);
+            pM0Max = Math.Min(0.75 * p.Fpk * ch.AreaAp, 0.85 * p.Fp01k * ch.AreaAp) / 10;
 
-            pMtMax = 0.65 * p.Fpk * ch.AreaAp;
+            pMtMax = 0.65 * p.Fpk * ch.AreaAp / 10;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("P0Max"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PM0Max"));
