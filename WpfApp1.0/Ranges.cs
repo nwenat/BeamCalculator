@@ -23,6 +23,10 @@ namespace WpfApp1._0
         private Double maxDimBD2;
         private Double maxDimB;
 
+        private Double hz;
+        private Double x;
+        private Double aAp1;
+
         private Double nMin;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -137,6 +141,30 @@ namespace WpfApp1._0
             }
         }
 
+        public Double Hz
+        {
+            get
+            {
+                return hz;
+            }
+        }
+
+        public Double X
+        {
+            get
+            {
+                return x;
+            }
+        }
+
+        public Double Ap1
+        {
+            get
+            {
+                return aAp1;
+            }
+        }
+
         public void Calculate(BeamUnderLoad beam)
         {
             Dimensions d = beam.Beam.Dimensions;
@@ -155,11 +183,13 @@ namespace WpfApp1._0
             minDimB = 0.1 * d.DimH;
             maxDimB = 0.12 * d.DimH;
 
-            Double hz = d.DimH - d.E1;
-            Double x = hz - Math.Sqrt(hz * hz - 2 * beam.Forces.MomentQ / (beam.Beam.ConcreteParameters.Fcd * d.DimBD2));
-            Double aAp1 = beam.Beam.ConcreteParameters.Fcd / beam.Beam.PrestressingSteelParameters.Fpd * d.DimBD2 * x;
+            hz = d.DimH - d.E1;
+            // Moment in [cm]
+            Double M = (beam.Forces.MomentQ + beam.Forces.MomentDG + beam.Forces.MomentG) * 100;
+            x = hz - Math.Sqrt(Math.Pow(hz, 2) - 2 * M / ((beam.Beam.ConcreteParameters.Fcd / 10) * d.DimBD2));
+            aAp1 = beam.Beam.ConcreteParameters.Fcd / beam.Beam.PrestressingSteelParameters.Fpd * d.DimBD2 * x;
 
-            nMin = aAp1 / beam.Beam.PrestressingSteelParameters.Ap;
+            nMin = aAp1 / (beam.Beam.PrestressingSteelParameters.Ap / 100);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MinDimH"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxDimH"));
@@ -176,6 +206,9 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxDimB"));
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NMin"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Hz"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("X"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ap1"));
         }
     }
 }

@@ -12,7 +12,7 @@
     </Window.DataContext>
 
     <Border Margin="1.5, 0">
-        <Grid>
+        <Grid Language="pl-PL">
             <StackPanel Margin="1.5">
                 <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
                     <Grid>

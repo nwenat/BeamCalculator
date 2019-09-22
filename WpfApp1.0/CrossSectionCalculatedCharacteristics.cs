@@ -152,7 +152,7 @@ namespace WpfApp1._0
 
             alfa = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
 
-            areaAp = beam.Beam.PrestressingSteelParameters.N * beam.Beam.PrestressingSteelParameters.Ap;
+            areaAp = beam.Beam.PrestressingSteelParameters.N * beam.Beam.PrestressingSteelParameters.Ap / 100;
 
             areaAcs = area + (alfa - 1) * areaAp;
 
@@ -174,6 +174,7 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WCSg"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Alfa"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAcs"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAp"));
         }
 
     }
