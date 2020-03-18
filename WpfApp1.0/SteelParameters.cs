@@ -15,7 +15,7 @@ namespace WpfApp1._0
         // fck and fyd in [MPa]
         private int fyk = 500;
         private Double fyd;
-        // Es in [Gpa]
+        // Es in [GPa]
         private Double eS = 200.0;
         // fi [mm]
         private int fi = 12;

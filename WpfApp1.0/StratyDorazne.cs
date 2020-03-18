@@ -14,5 +14,10 @@ namespace WpfApp1._0
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public StratyDorazne(BeamUnderLoad beam)
+        {
+            //Calculate(beam);
+        }
+
     }
 }

@@ -9,6 +9,7 @@ namespace WpfApp1._0
 {
     class MaxForcesInActiveSteel : INotifyPropertyChanged
     {
+        // [kN]
         private Double p0Max;
         private Double pM0Max;
         private Double pMtMax;
@@ -48,6 +49,8 @@ namespace WpfApp1._0
         {
             PrestressingSteelParameters p = beam.Beam.PrestressingSteelParameters;
             CrossSectionCalculatedCharacteristics ch = beam.CrossSectionCalculatedCharacteristics;
+
+            // MPa/10  * cm2  = kN
 
             p0Max = Math.Min(0.8 * p.Fpk * ch.AreaAp,  0.9 * p.Fp01k * ch.AreaAp) / 10;
 

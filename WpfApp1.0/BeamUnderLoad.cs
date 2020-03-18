@@ -10,11 +10,12 @@ namespace WpfApp1._0
     class BeamUnderLoad
     {
         private Beam beam = new Beam();
-        private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
         private Forces forces;
-        private MaxForcesInActiveSteel maxForcesInActiveSteel;
         private Ranges ranges;
-        private StratyTechnologiczne stratyTechnologiczne;
+        private MaxForcesInActiveSteel maxForcesInActiveSteel;
+        private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
+        private TechnologicalLosses technologicalLosses;
+        private StratyDorazne stratyDorazne;
 
         public BeamUnderLoad()
         {
@@ -23,7 +24,8 @@ namespace WpfApp1._0
             forces = new Forces(this);
             maxForcesInActiveSteel = new MaxForcesInActiveSteel(this);
             ranges = new Ranges(this);
-            stratyTechnologiczne = new StratyTechnologiczne(this);
+            technologicalLosses = new TechnologicalLosses(this);
+            stratyDorazne = new StratyDorazne(this);
         }
 
         public Beam Beam
@@ -51,9 +53,9 @@ namespace WpfApp1._0
             get { return maxForcesInActiveSteel; }
         }
 
-        public StratyTechnologiczne StratyTechnologiczne
+        public TechnologicalLosses TechnologicalLosses
         {
-            get { return stratyTechnologiczne; }
+            get { return technologicalLosses; }
         }
 
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
@@ -67,7 +69,7 @@ namespace WpfApp1._0
             forces.Calculate(this);
             maxForcesInActiveSteel.Calculate(this);
             ranges.Calculate(this);
-            stratyTechnologiczne.Calculate(this);
+            technologicalLosses.Calculate(this);
         }
     }
 }

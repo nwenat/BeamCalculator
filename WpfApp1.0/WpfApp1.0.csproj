@@ -76,7 +76,7 @@
     <Compile Include="PrestressingSteelParameters.cs" />
     <Compile Include="SteelParameters.cs" />
     <Compile Include="StratyDorazne.cs" />
-    <Compile Include="StratyTechnologiczne.cs" />
+    <Compile Include="TechnologicalLosses.cs" />
     <Page Include="Draws\przekroj.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +142,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Draws\parametry_materialowe2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\przekroj.bmp" />
+    <Resource Include="Draws\przekroj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\schemat_statyczny.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

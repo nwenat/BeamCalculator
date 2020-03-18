@@ -21,7 +21,7 @@ namespace WpfApp1._0
         // forces Fpk, Fpd in [kN]
         private Double forcePk = 173.0;
         private Double forcePd;
-        // Es in [Gpa]
+        // Ep in [Gpa]
         private Double eP = 195.0;
         // ap in [mm2] (pole 1 ciegna)
         private Double ap = 93.0;
