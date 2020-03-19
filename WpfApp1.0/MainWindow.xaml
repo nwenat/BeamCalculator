@@ -406,7 +406,34 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                
+                <!-- Sprawdzenie n min -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
+                        <StackPanel>
+                            <TextBlock Text="Straty doraźne" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Strata doraźna spowodowana wstępną relaksacją stali &#x0394;Pr = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Siła początkowa w chwili przekazania sprężenia na beton P0 = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Strata spowodowana sprężystym skurczem betonu &#x0394;Pel = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Siła sprężająca po uwzględnieniu strat doraźnych Pm0 = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
             </StackPanel>
 
         </Grid>

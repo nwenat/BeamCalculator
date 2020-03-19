@@ -15,7 +15,7 @@ namespace WpfApp1._0
         private MaxForcesInActiveSteel maxForcesInActiveSteel;
         private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
         private TechnologicalLosses technologicalLosses;
-        private StratyDorazne stratyDorazne;
+        private AdHocLosses adHocLosses;
 
         public BeamUnderLoad()
         {
@@ -25,7 +25,7 @@ namespace WpfApp1._0
             maxForcesInActiveSteel = new MaxForcesInActiveSteel(this);
             ranges = new Ranges(this);
             technologicalLosses = new TechnologicalLosses(this);
-            stratyDorazne = new StratyDorazne(this);
+            adHocLosses = new AdHocLosses(this);
         }
 
         public Beam Beam
@@ -58,6 +58,11 @@ namespace WpfApp1._0
             get { return technologicalLosses; }
         }
 
+        public AdHocLosses AdHocLosses
+        {
+            get { return adHocLosses; }
+        }
+
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
             Calculate();
@@ -70,6 +75,7 @@ namespace WpfApp1._0
             maxForcesInActiveSteel.Calculate(this);
             ranges.Calculate(this);
             technologicalLosses.Calculate(this);
+            adHocLosses.Calculate(this);
         }
     }
 }

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace WpfApp1._0
 {
-    class StratyDorazne : INotifyPropertyChanged
+    class AdHocLosses : INotifyPropertyChanged
     {
 
 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public StratyDorazne(BeamUnderLoad beam)
+        public AdHocLosses(BeamUnderLoad beam)
         {
             //Calculate(beam);
         }
