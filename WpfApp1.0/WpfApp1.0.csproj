@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdHocLosses.cs" />
     <Compile Include="BeamUnderLoad.cs" />
     <Compile Include="ConcreteParameters.cs" />
     <Compile Include="DifferentData.cs" />
@@ -74,8 +75,8 @@
     <Compile Include="Loads.cs" />
     <Compile Include="MaxForcesInActiveSteel.cs" />
     <Compile Include="PrestressingSteelParameters.cs" />
+    <Compile Include="SGU.cs" />
     <Compile Include="SteelParameters.cs" />
-    <Compile Include="StratyDorazne.cs" />
     <Compile Include="TechnologicalLosses.cs" />
     <Page Include="Draws\przekroj.xaml">
       <Generator>MSBuild:Compile</Generator>

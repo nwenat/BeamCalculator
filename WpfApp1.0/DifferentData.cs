@@ -9,7 +9,7 @@ namespace WpfApp1._0
 {
     class DifferentData : INotifyPropertyChanged
     {
-        // straty technologiczne - maksymalny poslizg ciegien
+        // straty technologiczne - maksymalny poslizg ciegien [mm]
         private Double as1 = 3.0;
 
         public event PropertyChangedEventHandler PropertyChanged;

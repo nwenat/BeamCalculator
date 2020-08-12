@@ -16,6 +16,7 @@ namespace WpfApp1._0
         private CrossSectionCalculatedCharacteristics crossSectionCalculatedCharacteristics;
         private TechnologicalLosses technologicalLosses;
         private AdHocLosses adHocLosses;
+        private SGU sgu;
 
         public BeamUnderLoad()
         {
@@ -26,6 +27,7 @@ namespace WpfApp1._0
             ranges = new Ranges(this);
             technologicalLosses = new TechnologicalLosses(this);
             adHocLosses = new AdHocLosses(this);
+            sgu = new SGU(this);
         }
 
         public Beam Beam
@@ -63,6 +65,11 @@ namespace WpfApp1._0
             get { return adHocLosses; }
         }
 
+        public SGU SGU
+        {
+            get { return sgu; }
+        }
+
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
             Calculate();
@@ -76,6 +83,7 @@ namespace WpfApp1._0
             ranges.Calculate(this);
             technologicalLosses.Calculate(this);
             adHocLosses.Calculate(this);
+            sgu.Calculate(this);
         }
     }
 }

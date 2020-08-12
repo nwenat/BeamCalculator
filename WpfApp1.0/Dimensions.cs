@@ -10,7 +10,7 @@ namespace WpfApp1._0
     class Dimensions : INotifyPropertyChanged
     {
         // length m
-        private Double length = 5.0;
+        private Double length = 12.0;
         // dimensiton cm
         private Double dimH = 100.0;
         private Double dimD1 = 20.0;

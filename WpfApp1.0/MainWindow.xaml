@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Belka version 1.0" Height="765" Width="1150">
+        Title="Belka version 1.0" Height="1000" Width="1500">
+    <!--height 765 -->
 
     <Window.Resources>
         <local:BeamUnderLoad x:Key="beam"/>
@@ -100,7 +101,7 @@
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <Button Name="Dane"  Width="90" Command="{Binding Beam.ShowMaterialParameters, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}"
                                         BorderThickness="2">
-                                    <Image Source="D:/DEV/C#/Magisterka/WpfApp1.0/WpfApp1.0/Draws/parametry_materialowe2.jpg"/>
+                                    <Image Source="D:\nwenat\GIT\Mgr\BeamCalculator\WpfApp1.0\Draws\parametry_materialowe2.jpg"/>
                                     <Button.ToolTip>
                                         <ToolTip>
                                             <TextBlock Text="Dane materiałowe"/>
@@ -369,7 +370,7 @@
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Procentowa wartość strat technologicznych " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding TechnologicalLosses.TechnologicalLosse, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
-                                <TextBlock Text=" %" VerticalAlignment="center"/>
+                                <TextBlock Text=" %??????????????????" VerticalAlignment="center"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>
@@ -406,30 +407,142 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <!-- Sprawdzenie n min -->
+                <!-- Straty doraźne -->
                 <StackPanel>
-                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
                         <StackPanel>
-                            <TextBlock Text="Straty doraźne" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <TextBlock Text="Straty doraźne" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Strata doraźna spowodowana wstępną relaksacją stali &#x0394;Pr = " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text="Strata siły sprężającej spowodowana wstępną relaksacją stali &#x0394;Pr = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.DeltaPr, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Siła początkowa w chwili przekazania sprężenia na beton P0 = " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.P0, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Strata spowodowana sprężystym skurczem betonu &#x0394;Pel = " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Text="Strata siły spowodowana sprężystym skurczem betonu &#x0394;Pel = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.DeltaPel, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Siła sprężająca po uwzględnieniu strat doraźnych Pm0 = " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Ranges.Hz, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n1}}" FontWeight="bold"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.PMo, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="wartość bezwzg. strat sprężenia wywołanych wst. relaksacją stali delta sigma pr = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.DeltaSigmaPr, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center" Foreground="Green"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="naprężenia sigma c = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding AdHocLosses.SigmaC, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center" Foreground="Green"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- Straty opóźnione -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
+                        <StackPanel>
+                            <TextBlock Text="Straty opóźnione" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła naciągu P0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.P0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła wstępna Pm.0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PM0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła trwała po uwzg. strat Pmt,max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PMtMax, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- Sprawdzenie nośności -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5">
+                        <StackPanel>
+                            <TextBlock Text="Sprawdzenie nośności" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła naciągu P0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.P0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła wstępna Pm.0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PM0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła trwała po uwzg. strat Pmt,max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PMtMax, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- Ścinanie -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
+                        <StackPanel>
+                            <TextBlock Text="Ścinanie" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła naciągu P0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.P0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła wstępna Pm.0.max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PM0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalna siła trwała po uwzg. strat Pmt,max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PMtMax, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- SGU -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5">
+                        <StackPanel>
+                            <TextBlock Text="SGU" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Efektywny moduł sprężystości betonu Eceff= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGU.ECeff, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center" Foreground="Red"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wartość ugięcia bez uwzględnienia strzałki odwrotnej u= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGU.U, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wartości strzałki odwrotnej s= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGU.S, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wartości ugięć końcowych U= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGU.UU, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Warunek ugięć U &#x2264; Leff/250 = " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGU.Condition, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

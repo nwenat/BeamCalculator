@@ -59,7 +59,7 @@ namespace WpfApp1._0
         public void Calculate(BeamUnderLoad beam)
         {
             lToru = 3* beam.Beam.Dimensions.Length + 4 * 0.2;
-            deltaPs1 = beam.Beam.DifferentData.As1 / lToru * beam.Beam.PrestressingSteelParameters.EP * beam.CrossSectionCalculatedCharacteristics.AreaAp * 0.0001;
+            deltaPs1 = (beam.Beam.DifferentData.As1 / lToru) * beam.Beam.PrestressingSteelParameters.EP * beam.CrossSectionCalculatedCharacteristics.AreaAp * 0.01;
             p0s1 = beam.MaxForcesInActiveSteel.P0Max - deltaPs1;
             technologicalLosse = deltaPs1 / beam.MaxForcesInActiveSteel.P0Max * 100;
 

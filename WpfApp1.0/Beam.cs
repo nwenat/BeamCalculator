@@ -13,7 +13,9 @@ namespace WpfApp1._0
         private DifferentData differentData = new DifferentData();
 
         private MaterialParametersCommand materialParametersCommand = new MaterialParametersCommand();
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Beam()
         {
             loads.PropertyChanged += InputPropertyChangedEventHandler;
@@ -65,7 +67,7 @@ namespace WpfApp1._0
             get { return materialParametersCommand; }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         void InputPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
