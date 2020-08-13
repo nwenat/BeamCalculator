@@ -411,7 +411,12 @@
                 <StackPanel>
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
                         <StackPanel>
-                            <TextBlock Text="Straty doraźne" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
+                            <TextBlock Text="Straty doraźne" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Jakis czas... t= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TDorazne, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                <TextBlock Text=" h" VerticalAlignment="center"/>
+                            </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Strata siły sprężającej spowodowana wstępną relaksacją stali &#x0394;Pr = " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding AdHocLosses.DeltaPr, Source={StaticResource beam}, StringFormat=\{0:n1\}}" FontWeight="bold"/>

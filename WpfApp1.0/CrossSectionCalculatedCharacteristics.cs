@@ -110,6 +110,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double YC
+        {
+            get
+            {
+                return yC;
+            }
+        }
+
+        public Double YCS
+        {
+            get
+            {
+                return yCS;
+            }
+        }
+
         public CrossSectionCalculatedCharacteristics(BeamUnderLoad beam)
         {
             Calculate(beam);

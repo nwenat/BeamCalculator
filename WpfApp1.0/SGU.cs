@@ -9,6 +9,8 @@ namespace WpfApp1._0
 {
     class SGU : INotifyPropertyChanged
     {
+        // qp in [kN/m] suma obciazen charakterystycznych
+        private Double q;
         // Eceff in [MPa] efektywny modul sprezystosci betonu
         private Double eCeff;
         // u in [cm] wartosc ugiec bez uwzg. strzalki odwrotnej
@@ -69,12 +71,13 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
+            q = beam.Beam.Loads.DGLoad + beam.Beam.Loads.QLoad + beam.Forces.G;
             // wzory ogarnac!!!!!!!!!
-            eCeff = 10.0;
-            s = 150.0;
-            u = 20.0;
-            uU = 30.0;
-            condition = 40.0;
+            eCeff = 9985.0; // zle
+            u = (5 * (q/100) * Math.Pow(beam.Beam.Dimensions.Length * 100, 4)) / (384 * (eCeff/10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
+            s = 150.0; // zle
+            uU = u + s;
+            condition = beam.Beam.Dimensions.Length*100 / 250;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ECeff"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("S"));
