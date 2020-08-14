@@ -13,6 +13,13 @@ namespace WpfApp1._0
         private Double as1 = 3.0;
         // czas ktory uplynol od sprezeniea [h] STRATY DORAZNA (AD HOC)
         private Double tDorazne = 336.0;
+
+        // klasa cementu: S, N, R
+        private string klasaCem = "N";
+
+        // wilgotnosc wzgledna otoczenia [%]
+        private int rH = 50;
+
         // czas dla ktorego obliczany jest calkowity skurcz betonu [lata] STRATY OPOZNIONE (DELAYED)
         private Double tOpoznione =57.0;
         // wiek betonu na poczatku procesu wysychania [dni] STRATY OPOZNIONE (DELAYED)
@@ -81,6 +88,32 @@ namespace WpfApp1._0
                     tsOpoznione = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("TsOpoznione"));
                 }
+            }
+        }
+
+        public String KlasaCem
+        {
+            get
+            {
+                return klasaCem;
+            }
+            set
+            {
+                klasaCem = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("KlasaCem"));
+            }
+        }
+
+        public int RH
+        {
+            get
+            {
+                return rH;
+            }
+            set
+            {
+                rH = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("RH"));
             }
         }
     }

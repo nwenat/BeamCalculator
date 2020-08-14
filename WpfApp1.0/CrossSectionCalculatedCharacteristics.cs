@@ -24,7 +24,7 @@ namespace WpfApp1._0
         private Double wCSd;
         private Double wCSg;
 
-        private Double alfa;
+        private Double alfaP;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -86,11 +86,11 @@ namespace WpfApp1._0
             }
         }
 
-        public Double Alfa
+        public Double AlfaP
         {
             get
             {
-                return alfa;
+                return alfaP;
             }
         }
 
@@ -166,17 +166,17 @@ namespace WpfApp1._0
                 + d.DimBD2 * d.DimD2 * Math.Pow((yC - d.DimH + d.DimD2 / 2), 2)
                 + d.DimBD1 * Math.Pow(d.DimD1, 3) / 12 + d.DimBD1 * d.DimD1 * Math.Pow((yC - d.DimD1 / 2), 2);
 
-            alfa = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
+            alfaP = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
 
             areaAp = beam.Beam.PrestressingSteelParameters.N * beam.Beam.PrestressingSteelParameters.Ap / 100;
 
-            areaAcs = area + (alfa - 1) * areaAp;
+            areaAcs = area + (alfaP - 1) * areaAp;
 
-            sCS = sC + (alfa - 1) * areaAp * d.E1;
+            sCS = sC + (alfaP - 1) * areaAp * d.E1;
 
             yCS = sCS / areaAcs;
 
-            iXCS = iXC + area * (yCS - yC) * (yCS - yC) + (alfa -1) * areaAp * (yCS - d.E1) * (yCS - d.E1);
+            iXCS = iXC + area * (yCS - yC) * (yCS - yC) + (alfaP - 1) * areaAp * (yCS - d.E1) * (yCS - d.E1);
 
             wCSd = iXCS / yCS;
             wCSg = iXCS / (d.DimH - yCS);
