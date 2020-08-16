@@ -618,20 +618,90 @@
                         <StackPanel>
                             <TextBlock Text="Sprawdzenie nośności" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Maksymalna siła naciągu P0.max= " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.P0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text="&#x03B2;cc= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.BetaCC, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" " VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="fctm(t)= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" " VerticalAlignment="center"/>
+                            </StackPanel>
+                            <TextBlock Text="Stadium początkowe" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Pk.sup= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.PKSup, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Maksymalna siła wstępna Pm.0.max= " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PM0Max, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text="Sprawdzenie naprężeń w przekroju przęsłowym" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2082;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig2F0, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   >  -fctm(t)= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2081;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig1F0, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   &#x2264;   0,6*fck(t)= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+
+                            <TextBlock Text="Stadium transportu i montażu" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Pd= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.PD1, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Maksymalna siła trwała po uwzg. strat Pmt,max= " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding MaxForcesInActiveSteel.PMtMax, Mode=OneWay, Source={StaticResource beam}, StringFormat={}{0:n2}}" FontWeight="bold"/>
+                                <TextBlock Text="Sprawdzenie naprężeń w przekroju przęsłowym" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2082;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig2F1, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   >  -fctm= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2081;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig1F1, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   &#x2264;   0,6*fck= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Stadium eksploatacji" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Pd= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.PD2, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Sprawdzenie naprężeń w przekroju przęsłowym" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2082;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig2F2, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   &#x2264;   0,6*fck= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Włókna górne &#x03C3;&#x2081;= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.Sig1F2, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa   >  -fctm= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.FCtmT, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
+                            </StackPanel>
+                            
                         </StackPanel>
                     </Border>
                 </StackPanel>

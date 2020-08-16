@@ -76,7 +76,9 @@
     <Compile Include="Loads.cs" />
     <Compile Include="MaxForcesInActiveSteel.cs" />
     <Compile Include="PrestressingSteelParameters.cs" />
+    <Compile Include="SGN.cs" />
     <Compile Include="SGU.cs" />
+    <Compile Include="Shear.cs" />
     <Compile Include="SteelParameters.cs" />
     <Compile Include="TechnologicalLosses.cs" />
     <Page Include="Draws\przekroj.xaml">

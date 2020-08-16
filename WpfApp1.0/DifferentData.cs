@@ -18,12 +18,15 @@ namespace WpfApp1._0
         private string klasaCem = "N";
 
         // wilgotnosc wzgledna otoczenia [%]
-        private int rH = 50;
+        private Double rH = 50;
 
         // czas dla ktorego obliczany jest calkowity skurcz betonu [lata] STRATY OPOZNIONE (DELAYED)
         private Double tOpoznione =57.0;
         // wiek betonu na poczatku procesu wysychania [dni] STRATY OPOZNIONE (DELAYED)
         private Double tsOpoznione = 57.0;
+
+        // sprawdzenie nośności czas do rozdeskowywania [dni] SGN
+        private Double tSGN = 5;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -91,6 +94,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double TSGN
+        {
+            get
+            {
+                return tSGN;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    tSGN = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("TSGN"));
+                }
+            }
+        }
+
         public String KlasaCem
         {
             get
@@ -104,7 +123,7 @@ namespace WpfApp1._0
             }
         }
 
-        public int RH
+        public Double RH
         {
             get
             {

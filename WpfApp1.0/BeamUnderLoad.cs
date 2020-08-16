@@ -17,6 +17,8 @@ namespace WpfApp1._0
         private TechnologicalLosses technologicalLosses;
         private AdHocLosses adHocLosses;
         private DelayedLosses delayedLosses;
+        private SGN sgn;
+        private Shear shear;
         private SGU sgu;
 
         public BeamUnderLoad()
@@ -29,6 +31,8 @@ namespace WpfApp1._0
             technologicalLosses = new TechnologicalLosses(this);
             adHocLosses = new AdHocLosses(this);
             delayedLosses = new DelayedLosses(this);
+            sgn = new SGN(this);
+            shear = new Shear(this);
             sgu = new SGU(this);
         }
 
@@ -72,6 +76,16 @@ namespace WpfApp1._0
             get { return delayedLosses; }
         }
 
+        public SGN SGN
+        {
+            get { return sgn; }
+        }
+
+        public Shear Shear
+        {
+            get { return shear; }
+        }
+
         public SGU SGU
         {
             get { return sgu; }
@@ -91,6 +105,8 @@ namespace WpfApp1._0
             technologicalLosses.Calculate(this);
             adHocLosses.Calculate(this);
             delayedLosses.Calculate(this);
+            sgn.Calculate(this);
+            shear.Calculate(this);
             sgu.Calculate(this);
         }
     }
