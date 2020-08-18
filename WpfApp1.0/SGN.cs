@@ -38,7 +38,8 @@ namespace WpfApp1._0
         private Double sig2F2;
         // sigma c1 Faza 2 in [MPa]
         private Double sig1F2;
-
+        // 0,6fck in [MPa]
+        private Double fck06;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -146,6 +147,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double Fck06
+        {
+            get
+            {
+                return fck06;
+            }
+        }
+
+        public Double Fckt06
+        {
+            get
+            {
+                return fCkT * 0.6;
+            }
+        }
+
         public SGN(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -158,32 +175,35 @@ namespace WpfApp1._0
             fCkT = fCmT - 8;
             fCtmT = betaCC * beam.Beam.ConcreteParameters.Fctm;
 
-            pKSup = 1.0;
-            sig2F0 = 2.0;
-            sig1F0 = 3.0;
-            pD1 = 4.0;
-            sig2F1 = 5.0;
-            sig1F1 = 6.0;
-            pD2 = 7.0;
-            sig2F2 = 8.0;
-            sig1F2 = 9.0;
+            pKSup = 1.05 * beam.AdHocLosses.PMo;
+            sig2F0 = ((pKSup / beam.CrossSectionCalculatedCharacteristics.AreaAcs) - ((pKSup * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSg) + (beam.Forces.MomentGK *100 / beam.CrossSectionCalculatedCharacteristics.WCSg)) * 10;
+            sig1F0 = ((pKSup / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pKSup * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (beam.Forces.MomentGK * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;
+            pD1 = 1.2 * beam.AdHocLosses.PMo;
+            sig2F1 = ((pD1 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) - ((pD1 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSg) + (beam.Forces.MomentG * 100 / beam.CrossSectionCalculatedCharacteristics.WCSg)) * 10;
+            sig1F1 = ((pD1 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pD1 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (beam.Forces.MomentG * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;
+            pD2 = 1.0 * beam.AdHocLosses.PMo;
+
+            Double moment = beam.Forces.MomentG + beam.Forces.MomentDG + beam.Forces.MomentQ;
+
+            sig2F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) - ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSg) + (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSg)) * 10;
+            sig1F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;
+            fck06 = beam.Beam.ConcreteParameters.Fck * 0.6;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BetaCC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCmT"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCkT"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCtmT"));
-
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PKSup"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig2F0"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig1F0"));
-
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PD1"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig2F1"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig1F1"));
-
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PD2"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig2F2"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig1F2"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Fck06"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Fckt06"));
         }
     }
 }
