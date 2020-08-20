@@ -13,6 +13,8 @@ namespace WpfApp1._0
         // Sx in [cm3] wzg. gornej krawedzi
         private Double sC;
         private Double sCS;
+        // Sx in [cm3] wzg. gornej krawedzi pola ponad osia (SCINANIE)
+        private Double sxCS2;
         // Ix in [cm4]
         // iXC wzg. gornej krawedzi
         private Double iXC;
@@ -126,6 +128,14 @@ namespace WpfApp1._0
             }
         }
 
+        public Double SxCS2
+        {
+            get
+            {
+                return sxCS2;
+            }
+        }
+
         public CrossSectionCalculatedCharacteristics(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -181,6 +191,8 @@ namespace WpfApp1._0
             wCSd = iXCS / yCS;
             wCSg = iXCS / (d.DimH - yCS);
 
+            sxCS2 = d.DimBD2 * d.DimD2 * (d.DimH - yCS - 0.5 * d.DimD2) + 0.5 * d.DimB * Math.Pow(d.DimH - yCS - d.DimD2, 2);
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXC"));
@@ -191,6 +203,7 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Alfa"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAcs"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAp"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SxCS2"));
         }
 
     }

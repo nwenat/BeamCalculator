@@ -9,16 +9,76 @@ namespace WpfApp1._0
 {
     class Shear : INotifyPropertyChanged
     {
-        // beta cc wspol. nosnosci zalezny od czasu dojrzewania materialu in [-]
-        private Double betaCC;
+        // sila scinajaca V Ed in [kN]
+        private Double vEd;
+        // Sxcx moment statyczny pola ponad osia przechodzaca przez srodek ciezkosci [cm3]
+        private Double sXCS;
+        // sigma cp naprezenia sciskajace w betonie na poziomie srodka ciezkosci przekroju zespolonego [MPa]
+        private Double sigmaCp;
+        // nosnosc przekroju niezarysowanego in [kN]
+        private Double vRdC;
+        // sigma cp naprezenia sciskajace w betonie od sily podluznej i sprezenia [MPa]
+        private Double sigmaCp2;
+        // alfa c wpolczynnik 
+        private Double alfaC;
+        // nosnosc krzyzulca betonowego in [kN]
+        private Double vRdMax;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Double BetaCC
+        public Double VEd
         {
             get
             {
-                return betaCC;
+                return vEd;
+            }
+        }
+
+        public Double SXCS
+        {
+            get
+            {
+                return sXCS;
+            }
+        }
+
+        public Double sSigmaCp
+        {
+            get
+            {
+                return sigmaCp;
+            }
+        }
+
+        public Double VRdC
+        {
+            get
+            {
+                return vRdC;
+            }
+        }
+
+        public Double SigmaCp2
+        {
+            get
+            {
+                return sigmaCp2;
+            }
+        }
+
+        public Double AlfaC
+        {
+            get
+            {
+                return alfaC;
+            }
+        }
+
+        public Double VRdMax
+        {
+            get
+            {
+                return vRdMax;
             }
         }
 
@@ -29,18 +89,30 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            //betaCC = 1.0;
-            //fCmT = 1.0;
-            //fCkT = 1.0;
-            //fCtmT = 1.0;
+            vEd = ((beam.Beam.Loads.DGLoad + beam.Forces.G) * 1.35 + beam.Beam.Loads.QLoad * 1.5) * beam.Beam.Dimensions.Length * 0.5;
+            sXCS = beam.CrossSectionCalculatedCharacteristics.SxCS2;
+            sigmaCp = (beam.DelayedLosses.Pmt / beam.CrossSectionCalculatedCharacteristics.AreaAcs) * 10;
+            vRdC = (beam.CrossSectionCalculatedCharacteristics.IXCS * beam.Beam.Dimensions.DimB / sXCS) * Math.Sqrt(Math.Pow(beam.Beam.ConcreteParameters.Fctd, 2) + (1 * sigmaCp * beam.Beam.ConcreteParameters.Fctd)) / 10;
+            sigmaCp2 = Math.Min(10 * beam.DelayedLosses.Pmt / beam.CrossSectionCalculatedCharacteristics.Area, 0.2 * beam.Beam.ConcreteParameters.Fcd);
+            alfaC = 0.0;
+            if (sigmaCp2 < 0.25 * beam.Beam.ConcreteParameters.Fcd)
+            {
+                alfaC = 1 + sigmaCp2 / beam.Beam.ConcreteParameters.Fcd;
+            }
+            // brakuje else!!!!!!!! i brakuje z
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BetaCC"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCmT"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCkT"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCtmT"));
+            double z = 50.0;
+            double v1 = 0.6 * (1 - beam.Beam.ConcreteParameters.Fck / 250);
+            
+            vRdMax = (alfaC * beam.Beam.Dimensions.DimB * z * v1 * beam.Beam.ConcreteParameters.Fcd) / 20;
 
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DeltaPel"));
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PMo"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VEd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SXCS"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SigmaCp"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VRdC"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SigmaCp2"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AlfaC"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VRdMax"));
         }
     }
 }
