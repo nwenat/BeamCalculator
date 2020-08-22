@@ -6,8 +6,8 @@ namespace WpfApp1._0
     class Loads : INotifyPropertyChanged
     {
         // load kN/m
-        private Double dGLoad = 26.0;
-        private Double qLoad = 15.0;
+        private Double dGLoad = 20.0;
+        private Double qLoad = 12.0;
         
         public event PropertyChangedEventHandler PropertyChanged;
 

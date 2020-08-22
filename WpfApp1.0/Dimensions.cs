@@ -18,7 +18,7 @@ namespace WpfApp1._0
         private Double dimD2 = 10.0;
         private Double dimBD2 = 70.0;
         private Double dimB = 10.0;
-        private Double e1 = 5.0;
+        private Double e1 = 7.5;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

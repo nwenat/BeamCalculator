@@ -99,8 +99,8 @@ namespace WpfApp1._0
             deltaSigmaPr = 0.66 * sigmaPi * 2.5 * Math.Pow(Math.E, 9.1 * mi) * Math.Pow( beam.Beam.DifferentData.TDorazne / 1000, 0.75 * (1 - mi)) * Math.Pow(10, -5);
             deltaPr = deltaSigmaPr * beam.CrossSectionCalculatedCharacteristics.AreaAp * 0.1;
             p0 = beam.TechnologicalLosses.P0s1 - deltaPr;
-            zcp = beam.CrossSectionCalculatedCharacteristics.YCS - (0.5 * beam.Beam.Dimensions.DimD1);
-            sigmaC = ((p0 * Math.Pow(zcp, 2) * 10) / beam.CrossSectionCalculatedCharacteristics.IXCS) + (p0 * 10 / beam.CrossSectionCalculatedCharacteristics.AreaAcs);
+            zcp = beam.CrossSectionCalculatedCharacteristics.YCS - beam.Beam.Dimensions.E1;
+            sigmaC = (((p0 * Math.Pow(zcp, 2)) / beam.CrossSectionCalculatedCharacteristics.IXCS) + (p0 / beam.CrossSectionCalculatedCharacteristics.AreaAcs)) * 10;
             deltaPel = (beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm) * beam.CrossSectionCalculatedCharacteristics.AreaAp * sigmaC * 0.1;
             pMo = p0 - deltaPel;
 

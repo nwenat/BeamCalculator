@@ -41,6 +41,9 @@ namespace WpfApp1._0
         // 0,6fck in [MPa]
         private Double fck06;
 
+        // procentowa wartosc wszystkich strat [%]
+        private Double allLossValue;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Double BetaCC
@@ -188,6 +191,8 @@ namespace WpfApp1._0
             sig2F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) - ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSg) + (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSg)) * 10;
             sig1F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;
             fck06 = beam.Beam.ConcreteParameters.Fck * 0.6;
+
+            allLossValue = (beam.TechnologicalLosses.DeltaPs1 + beam.AdHocLosses.DeltaPr + beam.AdHocLosses.DeltaPel + beam.DelayedLosses.DeltaPt) * 100 / beam.MaxForcesInActiveSteel.P0Max;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BetaCC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FCmT"));

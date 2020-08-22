@@ -21,9 +21,9 @@ namespace WpfApp1._0
         private Double rH = 50;
 
         // czas dla ktorego obliczany jest calkowity skurcz betonu [lata] STRATY OPOZNIONE (DELAYED)
-        private Double tOpoznione =57.0;
+        private Double tOpoznione = 57.0;
         // wiek betonu na poczatku procesu wysychania [dni] STRATY OPOZNIONE (DELAYED)
-        private Double tsOpoznione = 57.0;
+        private Double tsOpoznione = 5.0;
 
         // sprawdzenie nośności czas do rozdeskowywania [dni] SGN
         private Double tSGN = 5;

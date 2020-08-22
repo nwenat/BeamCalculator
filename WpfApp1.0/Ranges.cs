@@ -184,7 +184,7 @@ namespace WpfApp1._0
             maxDimB = 0.12 * d.DimH;
 
             hz = d.DimH - d.E1;
-            // Moment in [cm]
+            // Moment in [kNcm]
             Double M = (beam.Forces.MomentQ + beam.Forces.MomentDG + beam.Forces.MomentG) * 100;
             x = hz - Math.Sqrt(Math.Pow(hz, 2) - 2 * M / ((beam.Beam.ConcreteParameters.Fcd / 10) * d.DimBD2));
             aAp1 = beam.Beam.ConcreteParameters.Fcd / beam.Beam.PrestressingSteelParameters.Fpd * d.DimBD2 * x;

@@ -13,7 +13,7 @@ namespace WpfApp1._0
         private String prestressingSteelClassDescription = EnumDescribe.GetDescribe(PrestressingSteelClasses.y1860s7);
         //private PrestressingTypes prestressingType = PrestressingTypes.pp25;
         //private String prestressingTypeDescription = EnumDescribe.GetDescribe(PrestressingTypes.pp25);
-        private Double gamaSP = 1.25;
+        private Double gamaSP = 1.15;
         // fck and fpk in [MPa]
         private Double fpk;
         private Double fpd;
@@ -26,7 +26,7 @@ namespace WpfApp1._0
         // ap in [mm2] (pole 1 ciegna)
         private Double ap = 93.0;
 
-        private int n = 3;
+        private int n = 8;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -178,7 +178,7 @@ namespace WpfApp1._0
             [Description("Y1860 S7")]
             y1860s7,
             // cos dodac!!!
-            [Description("cos 2")]
+            [Description("")]
             b
         }
     }

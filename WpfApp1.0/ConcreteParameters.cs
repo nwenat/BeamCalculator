@@ -9,20 +9,20 @@ namespace WpfApp1._0
 {
     class ConcreteParameters : INotifyPropertyChanged
     {
-        private ConcreteClasses concreteClass = ConcreteClasses.C40;
-        private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C40);
+        private ConcreteClasses concreteClass = ConcreteClasses.C50;
+        private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C50);
         private Double gamaC = 1.5;
         // gamaB kN/m3
         private int rhoB = 25;
         // fck and fcd in [MPa]
-        private int fck = 40;
-        private Double fcm = 48.0;
+        private int fck = 50;
+        private Double fcm = 58.0;
         private Double fcd;
-        private Double fctk = 2.5;
-        private Double fctm = 3.5;
+        private Double fctk = 2.9;
+        private Double fctm = 4.1;
         private Double fctd;
         // Ecm in [Gpa]
-        private Double eCm = 35.0;
+        private Double eCm = 37.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

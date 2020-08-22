@@ -186,7 +186,7 @@ namespace WpfApp1._0
 
             yCS = sCS / areaAcs;
 
-            iXCS = iXC + area * (yCS - yC) * (yCS - yC) + (alfaP - 1) * areaAp * (yCS - d.E1) * (yCS - d.E1);
+            iXCS = iXC + area * Math.Pow(yCS - yC, 2) + (alfaP - 1) * areaAp * Math.Pow(yCS - d.E1, 2);
 
             wCSd = iXCS / yCS;
             wCSg = iXCS / (d.DimH - yCS);
@@ -200,7 +200,7 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IXCS"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WCSd"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WCSg"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Alfa"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AlfaP"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAcs"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAp"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SxCS2"));
