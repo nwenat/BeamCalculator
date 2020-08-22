@@ -166,6 +166,14 @@ namespace WpfApp1._0
             }
         }
 
+        public Double AllLossValue
+        {
+            get
+            {
+                return allLossValue;
+            }
+        }
+
         public SGN(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -209,6 +217,7 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sig1F2"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Fck06"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Fckt06"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllLossValue"));
         }
     }
 }

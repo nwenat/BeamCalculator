@@ -28,6 +28,9 @@ namespace WpfApp1._0
         // sprawdzenie nośności czas do rozdeskowywania [dni] SGN
         private Double tSGN = 5;
 
+        // d odleglosc od podpry [cm] SCINANIE
+        private Double d = 80;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Double As1
@@ -133,6 +136,19 @@ namespace WpfApp1._0
             {
                 rH = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("RH"));
+            }
+        }
+
+        public Double D
+        {
+            get
+            {
+                return d;
+            }
+            set
+            {
+                d = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("D"));
             }
         }
     }

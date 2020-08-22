@@ -453,6 +453,24 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
+                <!-- Podsumowanie strat -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5">
+                        <StackPanel>
+                            <TextBlock Text="Podsumowanie strat" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wartość siły sprężającej po uwzględnieniu wszystkich strat Pmt= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding DelayedLosses.Pmt, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Procentowa wartość strat całkowitych &#x0394;p= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding SGN.AllLossValue, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" %" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
             </StackPanel>
 
             <!--//////////////////////////  Third column  ////////////////////////// -->
@@ -645,6 +663,11 @@
                         <StackPanel>
                             <TextBlock Text="Sprawdzenie nośności" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
                             <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Czas rozdeskowania od chwili zabetonowania t0= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TSGN, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                <TextBlock Text=" dni" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="&#x03B2;cc= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGN.BetaCC, Source={StaticResource beam}, StringFormat=\{0:n5\}}" FontWeight="bold"/>
                                 <TextBlock Text=" " VerticalAlignment="center"/>
@@ -746,6 +769,16 @@
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Odległość od podpory d= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.D, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Ekstremalna siła tnąca w odległości d od podpory VEd.d= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Sxcs= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.SXCS, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" cm3" VerticalAlignment="center"/>
@@ -758,8 +791,8 @@
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Nośność przekroju niezarysowanego VRd,c= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.VRdC, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" kN   >  VEd= " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Shear.VEd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN   >  VEd.d= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
@@ -775,10 +808,24 @@
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Nośność krzyżulca betonowego VRd,max= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.VRdMax, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" kN   >  VEd= " VerticalAlignment="center"/>
+                                <TextBlock Text=" kN   >  VEd.d= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- Strzemiona -->
+                <StackPanel>
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
+                        <StackPanel>
+                            <TextBlock Text="Strzemiona" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Ekstremalna siła tnąca VEd= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.VEd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
+                            
                         </StackPanel>
                     </Border>
                 </StackPanel>

@@ -11,6 +11,8 @@ namespace WpfApp1._0
     {
         // sila scinajaca V Ed in [kN]
         private Double vEd;
+        // sila scinajaca w odleglosci d od podpory V Ed.d in [kN]
+        private Double vEdd;
         // Sxcx moment statyczny pola ponad osia przechodzaca przez srodek ciezkosci [cm3]
         private Double sXCS;
         // sigma cp naprezenia sciskajace w betonie na poziomie srodka ciezkosci przekroju zespolonego [MPa]
@@ -31,6 +33,14 @@ namespace WpfApp1._0
             get
             {
                 return vEd;
+            }
+        }
+
+        public Double VEdd
+        {
+            get
+            {
+                return vEdd;
             }
         }
 
@@ -89,7 +99,9 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            vEd = ((beam.Beam.Loads.DGLoad + beam.Forces.G) * 1.35 + beam.Beam.Loads.QLoad * 1.5) * beam.Beam.Dimensions.Length * 0.5;
+            double q = ((beam.Beam.Loads.DGLoad + beam.Forces.G) * 1.35 + beam.Beam.Loads.QLoad * 1.5);
+            vEd = q * beam.Beam.Dimensions.Length * 0.5;
+            vEdd = vEd - q * beam.Beam.DifferentData.D / 100;
             sXCS = beam.CrossSectionCalculatedCharacteristics.SxCS2;
             sigmaCp = (beam.DelayedLosses.Pmt / beam.CrossSectionCalculatedCharacteristics.AreaAcs) * 10;
             vRdC = (beam.CrossSectionCalculatedCharacteristics.IXCS * beam.Beam.Dimensions.DimB / sXCS) * Math.Sqrt(Math.Pow(beam.Beam.ConcreteParameters.Fctd, 2) + (1 * sigmaCp * beam.Beam.ConcreteParameters.Fctd)) / 10;
@@ -99,10 +111,10 @@ namespace WpfApp1._0
             {
                 alfaC = 1 + sigmaCp2 / beam.Beam.ConcreteParameters.Fcd;
             }
-            // brakuje else!!!!!!!! i brakuje z
+            // brakuje else!!!!!!!!
 
-            double z = 50.0;
-            double v1 = 0.6 * (1 - beam.Beam.ConcreteParameters.Fck / 250);
+            double z = 0.9 * (beam.Beam.Dimensions.DimH - beam.Beam.Dimensions.E1);
+            double v1 = 0.6 * (1.0 - beam.Beam.ConcreteParameters.Fck / 250.0);
             
             vRdMax = (alfaC * beam.Beam.Dimensions.DimB * z * v1 * beam.Beam.ConcreteParameters.Fcd) / 20;
 
