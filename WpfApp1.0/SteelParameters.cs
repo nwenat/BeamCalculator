@@ -13,13 +13,13 @@ namespace WpfApp1._0
         private String steelClassDescription = EnumDescribe.GetDescribe(SteelClasses.rb500w);
         private Double gamaS = 1.15;
         // fck and fyd in [MPa]
-        private int fyk = 500;
+        private Double fyk = 500.0;
         private Double fyd;
         // Es in [GPa]
         private Double eS = 200.0;
         // fi [mm]
-        private int fi = 12;
-        private int fiS = 8;
+        private Double fi = 12.0;
+        private Double fiS = 8.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -69,13 +69,13 @@ namespace WpfApp1._0
                 switch (steelClasses)
                 {
                     case SteelClasses.rb500w:
-                        fyk = 500;
+                        fyk = 500.0;
                         break;
                     case SteelClasses.rb500:
-                        fyk = 500;
+                        fyk = 500.0;
                         break;
                     case SteelClasses.g20:
-                        fyk = 490;
+                        fyk = 490.0;
                         break;
                 }
                 UpdateData();
@@ -86,7 +86,7 @@ namespace WpfApp1._0
             }
         }
 
-        public int Fi
+        public Double Fi
         {
             set
             {
@@ -99,7 +99,7 @@ namespace WpfApp1._0
             }
         }
 
-        public int FiS
+        public Double FiS
         {
             set
             {
@@ -131,7 +131,7 @@ namespace WpfApp1._0
         {
             get
             {
-                return new int[] { 8, 10, 12, 16, 20, 22 };
+                return new double[] { 8, 10, 12, 16, 20, 22 };
             }
         }
 
@@ -139,7 +139,7 @@ namespace WpfApp1._0
         {
             get
             {
-                return new int[] { 6, 8 };
+                return new double[] { 6, 8 };
             }
         }
 

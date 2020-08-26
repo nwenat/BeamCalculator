@@ -9,6 +9,10 @@ namespace WpfApp1._0
 {
     class Shear : INotifyPropertyChanged
     {
+        // obciazenie
+        private Double q;
+        // odleglosc [cm]
+        private Double z;
         // sila scinajaca V Ed in [kN]
         private Double vEd;
         // sila scinajaca w odleglosci d od podpory V Ed.d in [kN]
@@ -92,6 +96,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double Q
+        {
+            get
+            {
+                return q;
+            }
+        }
+
+        public Double Z
+        {
+            get
+            {
+                return z;
+            }
+        }
+
         public Shear(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -99,7 +119,7 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            double q = ((beam.Beam.Loads.DGLoad + beam.Forces.G) * 1.35 + beam.Beam.Loads.QLoad * 1.5);
+            q = ((beam.Beam.Loads.DGLoad + beam.Forces.G) * 1.35 + beam.Beam.Loads.QLoad * 1.5);
             vEd = q * beam.Beam.Dimensions.Length * 0.5;
             vEdd = vEd - q * beam.Beam.DifferentData.D / 100;
             sXCS = beam.CrossSectionCalculatedCharacteristics.SxCS2;
@@ -113,7 +133,7 @@ namespace WpfApp1._0
             }
             // brakuje else!!!!!!!!
 
-            double z = 0.9 * (beam.Beam.Dimensions.DimH - beam.Beam.Dimensions.E1);
+            z = 0.9 * (beam.Beam.Dimensions.DimH - beam.Beam.Dimensions.E1);
             double v1 = 0.6 * (1.0 - beam.Beam.ConcreteParameters.Fck / 250.0);
             
             vRdMax = (alfaC * beam.Beam.Dimensions.DimB * z * v1 * beam.Beam.ConcreteParameters.Fcd) / 20;
@@ -125,6 +145,8 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SigmaCp2"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AlfaC"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VRdMax"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Q"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Z"));
         }
     }
 }

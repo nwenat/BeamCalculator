@@ -19,7 +19,9 @@ namespace WpfApp1._0
         private DelayedLosses delayedLosses;
         private SGN sgn;
         private Shear shear;
+        private Stirrups stirrups;
         private SGU sgu;
+        private Conditions conditions;
 
         public BeamUnderLoad()
         {
@@ -33,7 +35,9 @@ namespace WpfApp1._0
             delayedLosses = new DelayedLosses(this);
             sgn = new SGN(this);
             shear = new Shear(this);
+            stirrups = new Stirrups(this);
             sgu = new SGU(this);
+            conditions = new Conditions(this);
         }
 
         public Beam Beam
@@ -86,9 +90,19 @@ namespace WpfApp1._0
             get { return shear; }
         }
 
+        public Stirrups Stirrups
+        {
+            get { return stirrups; }
+        }
+
         public SGU SGU
         {
             get { return sgu; }
+        }
+
+        public Conditions Conditions
+        {
+            get { return conditions; }
         }
 
         void BeamPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
@@ -107,7 +121,9 @@ namespace WpfApp1._0
             delayedLosses.Calculate(this);
             sgn.Calculate(this);
             shear.Calculate(this);
+            stirrups.Calculate(this);
             sgu.Calculate(this);
+            conditions.Calculate(this);
         }
     }
 }

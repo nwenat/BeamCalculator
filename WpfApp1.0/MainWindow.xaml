@@ -14,6 +14,9 @@
 
     <Border Margin="1.5, 0" Background="Honeydew">
         <Grid Language="pl-PL">
+            <Grid.Resources>
+                <local:BoolToVisibilityConverter x:Key="converter" />
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
                 <ColumnDefinition Width="*"/>
@@ -628,27 +631,27 @@
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Efektywny moduł sprężystości betonu Eceff= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGU.ECeff, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" MPa" VerticalAlignment="center" Foreground="Red"/>
+                                <TextBlock Text=" MPa" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Wartość ugięcia bez uwzględnienia strzałki odwrotnej u= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGU.U, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Wartości strzałki odwrotnej s= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGU.S, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Wartości ugięć końcowych U= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGU.UU, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Warunek ugięć U &#x2264; Leff/250 = " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding SGU.Condition, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
-                                <TextBlock Text=" cm" VerticalAlignment="center" Foreground="Red"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>
@@ -662,6 +665,12 @@
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
                         <StackPanel>
                             <TextBlock Text="Sprawdzenie nośności" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBox Background="LightSeaGreen" Visibility="{Binding Conditions.TestP, Source={StaticResource beam}, Converter={StaticResource converter}}">prawda!!!!!!!!!!!!!!</TextBox>
+                                <TextBox Background="LightPink" Visibility="{Binding Conditions.TestF, Source={StaticResource beam}, Converter={StaticResource converter}}">fałsz!!!!!!!!!!!!!!</TextBox>
+                            </StackPanel>
+
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Czas rozdeskowania od chwili zabetonowania t0= " VerticalAlignment="center"/>
                                 <TextBox Padding="2" Text="{Binding Beam.DifferentData.TSGN, Source={StaticResource beam}}" Background="LemonChiffon"/>
@@ -778,7 +787,7 @@
                                 <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
-                            <StackPanel Margin="0 2" Orientation="horizontal">
+                            <!--<StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Sxcs= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.SXCS, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" cm3" VerticalAlignment="center"/>
@@ -787,7 +796,7 @@
                                 <TextBlock Text="sigma cp= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.sSigmaCp, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" MPa" VerticalAlignment="center"/>
-                            </StackPanel>
+                            </StackPanel>-->
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Nośność przekroju niezarysowanego VRd,c= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.VRdC, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
@@ -795,7 +804,7 @@
                                 <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
                             </StackPanel>
-                            <StackPanel Margin="0 2" Orientation="horizontal">
+                            <!--<StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="sigma cp= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.SigmaCp2, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" MPa" VerticalAlignment="center"/>
@@ -804,7 +813,7 @@
                                 <TextBlock Text="alfa c= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.AlfaC, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" " VerticalAlignment="center"/>
-                            </StackPanel>
+                            </StackPanel>-->
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Nośność krzyżulca betonowego VRd,max= " VerticalAlignment="center"/>
                                 <TextBlock Padding="2" Text="{Binding Shear.VRdMax, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
@@ -819,11 +828,64 @@
                 <StackPanel>
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
                         <StackPanel>
-                            <TextBlock Text="Strzemiona" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Red"/>
+                            <TextBlock Text="Rozstaw strzemion" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
                             <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBlock Text="Ekstremalna siła tnąca VEd= " VerticalAlignment="center"/>
-                                <TextBlock Padding="2" Text="{Binding Shear.VEd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text="Rodzaj strzemion (dwucięte, czterocięte) m= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Beam.DifferentData.M, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" " VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Pole przekroju zbrojenia na ścinanie Asw= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.Asw, Source={StaticResource beam}, StringFormat=\{0:n4\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm&#x00b2;" VerticalAlignment="center"/>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Strzemiona odcinek aw" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Długość odcinka wymagającego dozbrojenia aw= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.Aw, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalny rozstaw strzemion Sw,max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.SwMax, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Przyjęty rozstaw strzemion Sw= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Beam.DifferentData.Swa, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Nośność VRd,s= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.VRds, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" kN   >  VEd.d= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Shear.VEdd, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
                                 <TextBlock Text=" kN" VerticalAlignment="center"/>
+                                
+                            </StackPanel>
+                            
+                            
+                            <TextBlock Text="Strzemiona odcinek poza aw" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Warunek normowy, maksymalny rozstaw strzemion Sw,max= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.SlMax, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Minimalny stopień zbrojenia ro w,min= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.RoWmin, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" %" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalny rozstaw strzemion Sw,max2= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Stirrups.SlMax2, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Przyjęty rozstaw strzemion Sw= " VerticalAlignment="center"/>
+                                <TextBlock Padding="2" Text="{Binding Beam.DifferentData.Sw, Source={StaticResource beam}, StringFormat=\{0:n2\}}" FontWeight="bold"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
                             </StackPanel>
                             
                         </StackPanel>

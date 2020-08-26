@@ -62,7 +62,9 @@
     </ApplicationDefinition>
     <Compile Include="AdHocLosses.cs" />
     <Compile Include="BeamUnderLoad.cs" />
+    <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="ConcreteParameters.cs" />
+    <Compile Include="Conditions.cs" />
     <Compile Include="DelayedLosses.cs" />
     <Compile Include="DifferentData.cs" />
     <Compile Include="MaterialParametersView.xaml.cs">
@@ -80,6 +82,7 @@
     <Compile Include="SGU.cs" />
     <Compile Include="Shear.cs" />
     <Compile Include="SteelParameters.cs" />
+    <Compile Include="Stirrups.cs" />
     <Compile Include="TechnologicalLosses.cs" />
     <Page Include="Draws\przekroj.xaml">
       <Generator>MSBuild:Compile</Generator>

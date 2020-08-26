@@ -13,9 +13,9 @@ namespace WpfApp1._0
         private String concreteClassDescription = EnumDescribe.GetDescribe(ConcreteClasses.C50);
         private Double gamaC = 1.5;
         // gamaB kN/m3
-        private int rhoB = 25;
+        private Double rhoB = 25;
         // fck and fcd in [MPa]
-        private int fck = 50;
+        private Double fck = 50.0;
         private Double fcm = 58.0;
         private Double fcd;
         private Double fctk = 2.9;
@@ -39,7 +39,7 @@ namespace WpfApp1._0
             }
         }
 
-        public int RhoB
+        public Double RhoB
         {
             get
             {
@@ -51,7 +51,7 @@ namespace WpfApp1._0
                 UpdateData();
             }
         }
-        public int Fck
+        public Double Fck
         {
             get
             {
@@ -138,25 +138,25 @@ namespace WpfApp1._0
                 switch (concreteClass)
                 {
                     case ConcreteClasses.C40:
-                        fck = 40;
-                        fcm = 48;
+                        fck = 40.0;
+                        fcm = 48.0;
                         fctk = 2.5;
                         fctm = 3.5;
-                        eCm = 35;
+                        eCm = 35.0;
                         break;
                     case ConcreteClasses.C45:
-                        fck = 45;
-                        fcm = 53;
+                        fck = 45.0;
+                        fcm = 53.0;
                         fctk = 2.7;
                         fctm = 3.8;
-                        eCm = 36;
+                        eCm = 36.0;
                         break;
                     case ConcreteClasses.C50:
-                        fck = 50;
-                        fcm = 58;
+                        fck = 50.0;
+                        fcm = 58.0;
                         fctk = 2.9;
                         fctm = 4.1;
-                        eCm = 37;
+                        eCm = 37.0;
                         break;
                 }
                 UpdateData();

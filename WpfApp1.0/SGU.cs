@@ -72,10 +72,10 @@ namespace WpfApp1._0
         public void Calculate(BeamUnderLoad beam)
         {
             q = beam.Beam.Loads.DGLoad + beam.Beam.Loads.QLoad + beam.Forces.G;
-            // wzory ogarnac!!!!!!!!!
-            eCeff = 9985.0; // zle
+            
+            eCeff = beam.Beam.ConcreteParameters.ECm * 1000 / (1 + beam.DelayedLosses.Fi8T0); // zle
             u = (5 * (q/100) * Math.Pow(beam.Beam.Dimensions.Length * 100, 4)) / (384 * (eCeff/10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
-            s = 150.0; // zle
+            s = (-1.0 / 8.0) * (beam.DelayedLosses.Pmt * beam.AdHocLosses.Zcp * Math.Pow(beam.Beam.Dimensions.Length * 100, 2) / ((eCeff / 10) * beam.CrossSectionCalculatedCharacteristics.IXCS));
             uU = u + s;
             condition = beam.Beam.Dimensions.Length*100 / 250;
 

@@ -26,10 +26,16 @@ namespace WpfApp1._0
         private Double tsOpoznione = 5.0;
 
         // sprawdzenie nośności czas do rozdeskowywania [dni] SGN
-        private Double tSGN = 5;
+        private Double tSGN = 5.0;
 
         // d odleglosc od podpry [cm] SCINANIE
-        private Double d = 80;
+        private Double d = 80.0;
+        // strzemiona dwuciete [cm] SCINANIE
+        private Double m = 2.0;
+        // przyjety rozstaw strzemon na odcinku aw [cm] SCINANIE
+        private Double swa = 13.0;
+        // przyjety rozstaw strzemon [cm] SCINANIE
+        private Double sw = 42.0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -149,6 +155,45 @@ namespace WpfApp1._0
             {
                 d = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("D"));
+            }
+        }
+
+        public Double M
+        {
+            get
+            {
+                return m;
+            }
+            set
+            {
+                m = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("M"));
+            }
+        }
+
+        public Double Swa
+        {
+            get
+            {
+                return swa;
+            }
+            set
+            {
+                swa = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Swa"));
+            }
+        }
+
+        public Double Sw
+        {
+            get
+            {
+                return sw;
+            }
+            set
+            {
+                sw = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Sw"));
             }
         }
     }
