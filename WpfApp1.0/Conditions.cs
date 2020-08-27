@@ -12,7 +12,107 @@ namespace WpfApp1._0
         private Boolean testp = true;
         private Boolean testf = false;
 
+        private Boolean pmtPmtmax = false;
+        private Boolean ns2f0 = false;
+        private Boolean ns1f0 = false;
+        private Boolean ns2f1 = false;
+        private Boolean ns1f1 = false;
+        private Boolean ns2f2 = false;
+        private Boolean ns1f2 = false;
+        private Boolean vrdcVedd = false;
+        private Boolean vrdmaxVedd = false;
+        private Boolean vrdsVedd = false;
+        private Boolean uLeff = false;
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Boolean PmtPmtmax
+        {
+            get
+            {
+                return pmtPmtmax;
+            }
+        }
+
+        public Boolean Ns2f0
+        {
+            get
+            {
+                return ns2f0;
+            }
+        }
+
+        public Boolean Ns1f0
+        {
+            get
+            {
+                return ns1f0;
+            }
+        }
+
+        public Boolean Ns2f1
+        {
+            get
+            {
+                return ns2f1;
+            }
+        }
+
+        public Boolean Ns1f1
+        {
+            get
+            {
+                return ns1f1;
+            }
+        }
+
+        public Boolean Ns2f2
+        {
+            get
+            {
+                return ns2f2;
+            }
+        }
+
+        public Boolean Ns1f2
+        {
+            get
+            {
+                return ns1f2;
+            }
+        }
+
+        public Boolean VrdcVedd
+        {
+            get
+            {
+                return vrdcVedd;
+            }
+        }
+
+        public Boolean VrdmaxVedd
+        {
+            get
+            {
+                return vrdmaxVedd;
+            }
+        }
+
+        public Boolean VrdsVedd
+        {
+            get
+            {
+                return vrdsVedd;
+            }
+        }
+
+        public Boolean ULeff
+        {
+            get
+            {
+                return uLeff;
+            }
+        }
 
         public Boolean TestP
         {
@@ -37,19 +137,119 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            //q = beam.Beam.Loads.DGLoad + beam.Beam.Loads.QLoad + beam.Forces.G;
+            if(beam.MaxForcesInActiveSteel.PMtMax > beam.DelayedLosses.Pmt)
+            {
+                pmtPmtmax = true;
+            }
+            else
+            {
+                pmtPmtmax = false;
+            }
 
-            //eCeff = beam.Beam.ConcreteParameters.ECm * 1000 / (1 + beam.DelayedLosses.Fi8T0); // zle
-            //u = (5 * (q / 100) * Math.Pow(beam.Beam.Dimensions.Length * 100, 4)) / (384 * (eCeff / 10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
-            //s = (-1.0 / 8.0) * (beam.DelayedLosses.Pmt * beam.AdHocLosses.Zcp * Math.Pow(beam.Beam.Dimensions.Length * 100, 2) / ((eCeff / 10) * beam.CrossSectionCalculatedCharacteristics.IXCS));
-            //uU = u + s;
-            //condition = beam.Beam.Dimensions.Length * 100 / 250;
+            if (beam.SGN.Sig2F0 > -beam.SGN.FCtmT)
+            {
+                ns2f0 = true;
+            }
+            else
+            {
+                ns2f0 = false;
+            }
+
+            if (beam.SGN.Sig1F0 <= beam.SGN.Fckt06)
+            {
+                ns1f0 = true;
+            }
+            else
+            {
+                ns1f0 = false;
+            }
+
+            if (beam.SGN.Sig2F1 > -beam.Beam.ConcreteParameters.Fctm)
+            {
+                ns2f1 = true;
+            }
+            else
+            {
+                ns2f1 = false;
+            }
+
+            if (beam.SGN.Sig1F1 <= 0.6 * beam.Beam.ConcreteParameters.Fck)
+            {
+                ns1f1 = true;
+            }
+            else
+            {
+                ns1f1 = false;
+            }
+
+            if (beam.SGN.Sig2F2 <= 0.6 * beam.Beam.ConcreteParameters.Fck)
+            {
+                ns2f2 = true;
+            }
+            else
+            {
+                ns2f2 = false;
+            }
+
+            if (beam.SGN.Sig1F2 > -beam.Beam.ConcreteParameters.Fctm)
+            {
+                ns1f2 = true;
+            }
+            else
+            {
+                ns1f2 = false;
+            }
+
+            if (beam.Shear.VRdC > beam.Shear.VEdd)
+            {
+                vrdcVedd = true;
+            }
+            else
+            {
+                vrdcVedd = false;
+            }
+
+            if (beam.Shear.VRdMax > beam.Shear.VEdd)
+            {
+                vrdmaxVedd = true;
+            }
+            else
+            {
+                vrdmaxVedd = false;
+            }
+
+            if (beam.Stirrups.VRds > beam.Shear.VEdd)
+            {
+                vrdsVedd = true;
+            }
+            else
+            {
+                vrdsVedd = false;
+            }
+
+            if (beam.SGU.UU < beam.SGU.Condition)
+            {
+                uLeff = true;
+            }
+            else
+            {
+                uLeff = false;
+            }
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestP"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestF"));
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("U"));
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("UU"));
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Condition"));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PmtPmtmax"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns2f0"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns1f0"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns2f1"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns1f1"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns2f2"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ns1f2"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VrdcVedd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VrdmaxVedd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VrdsVedd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ULeff"));
         }
     }
 }

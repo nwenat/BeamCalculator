@@ -16,6 +16,7 @@
         <Grid Language="pl-PL">
             <Grid.Resources>
                 <local:BoolToVisibilityConverter x:Key="converter" />
+                <local:InvertBooleanConverter x:Key="invertconverter" />
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
@@ -666,9 +667,14 @@
                         <StackPanel>
                             <TextBlock Text="Sprawdzenie nośności" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2" Foreground="Green"/>
 
-                            <StackPanel Margin="0 2" Orientation="horizontal">
-                                <TextBox Background="LightSeaGreen" Visibility="{Binding Conditions.TestP, Source={StaticResource beam}, Converter={StaticResource converter}}">prawda!!!!!!!!!!!!!!</TextBox>
-                                <TextBox Background="LightPink" Visibility="{Binding Conditions.TestF, Source={StaticResource beam}, Converter={StaticResource converter}}">fałsz!!!!!!!!!!!!!!</TextBox>
+                            <!--<StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBox Background="LightSeaGreen" Visibility="{Binding Conditions.TestF, Source={StaticResource beam}, Converter={StaticResource converter}}">fausz!!!!!!!!!!!!!!</TextBox>
+                                <TextBox Background="LightPink" Visibility="{Binding Conditions.TestP, Source={StaticResource beam}, Converter={StaticResource converter}}">prawda!!!!!!!!!!!!!!</TextBox>
+                            </StackPanel>-->
+
+                            <StackPanel Margin="0 2" Orientation="horizontal" HorizontalAlignment="Center" >
+                                <TextBlock Background="Aquamarine" Width="250" TextAlignment="Center" Visibility="{Binding Conditions.ULeff, Source={StaticResource beam}, Converter={StaticResource converter}}">Warunek spełniony.</TextBlock>
+                                <TextBlock Background="LightSalmon" Width="250" TextAlignment="Center" Visibility="{Binding Conditions.ULeff, Source={StaticResource beam}, Converter={StaticResource invertconverter}}">Warunek nie spełniony!</TextBlock>
                             </StackPanel>
 
                             <StackPanel Margin="0 2" Orientation="horizontal">

@@ -67,6 +67,7 @@
     <Compile Include="Conditions.cs" />
     <Compile Include="DelayedLosses.cs" />
     <Compile Include="DifferentData.cs" />
+    <Compile Include="InvertBooleanConverter.cs" />
     <Compile Include="MaterialParametersView.xaml.cs">
       <DependentUpon>MaterialParametersView.xaml</DependentUpon>
     </Compile>

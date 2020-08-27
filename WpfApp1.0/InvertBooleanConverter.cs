@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace WpfApp1._0
 {
-    class BoolToVisibilityConverter : IValueConverter
+    class InvertBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -17,11 +17,11 @@ namespace WpfApp1._0
 
             bool.TryParse(value.ToString(), out IsConditionFulfilled);
 
-            if(IsConditionFulfilled)
+            if (IsConditionFulfilled)
             {
-                return Visibility.Visible;
+                return Visibility.Collapsed;
             }
-            return Visibility.Collapsed;
+            return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
