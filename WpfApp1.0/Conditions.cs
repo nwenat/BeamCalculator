@@ -164,7 +164,7 @@ namespace WpfApp1._0
                 ns1f0 = false;
             }
 
-            if (beam.SGN.Sig2F1 > -beam.Beam.ConcreteParameters.Fctm)
+            if (beam.SGN.Sig2F1 > -beam.SGN.FCtmT)
             {
                 ns2f1 = true;
             }
@@ -173,7 +173,7 @@ namespace WpfApp1._0
                 ns2f1 = false;
             }
 
-            if (beam.SGN.Sig1F1 <= 0.6 * beam.Beam.ConcreteParameters.Fck)
+            if (beam.SGN.Sig1F1 <= beam.SGN.Fckt06)
             {
                 ns1f1 = true;
             }
