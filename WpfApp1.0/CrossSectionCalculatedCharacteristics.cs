@@ -145,41 +145,56 @@ namespace WpfApp1._0
         {
             Dimensions d = beam.Beam.Dimensions;
 
-            if (d.DimBD1 == 0 & d.DimBD2 == 0)
+            switch (d.BeamType)
             {
-                area = d.DimB * d.DimH;
-            }
-            else if (d.DimBD1 != 0 & d.DimBD2 == 0)
-            {
-                area = d.DimB * (d.DimH - d.DimD1) + d.DimD1 * d.DimBD1;
-            }
-            else if (d.DimBD1 == 0 & d.DimBD2 != 0)
-            {
-                area = d.DimB * (d.DimH - d.DimD2) + d.DimD2 * d.DimBD2;
-            }
-            else
-            {
-                area = d.DimB * (d.DimH - d.DimD1 - d.DimD2)
-                + d.DimD1 * d.DimBD1 + d.DimD2 * d.DimBD2;
-            }
+                case Dimensions.BeamTypes.prostokatny:
+                    area = d.PrH * d.PrB;
+                    sC = 0.5 * d.PrB * Math.Pow(d.PrH, 2);
+                    yC = sC / area;
+                    iXC = d.PrB * Math.Pow(d.PrH, 3) / 12;
+                    break;
+                case Dimensions.BeamTypes.dwuteowy:
+                    area = d.DimB * (d.DimH - d.DimD1 - d.DimD2)
+                        + d.DimD1 * d.DimBD1 + d.DimD2 * d.DimBD2;
 
-            sC = (d.DimBD1 * d.DimD1 * d.DimD1) / 2
-                + d.DimB * (d.DimH - d.DimD1 - d.DimD2)
-                * ((d.DimH - d.DimD1 - d.DimD2) /2 + d.DimD1)
-                + d.DimBD2 * d.DimD2 * (d.DimH - d.DimD2 / 2);
+                    sC = (d.DimBD1 * d.DimD1 * d.DimD1) / 2
+                        + d.DimB * (d.DimH - d.DimD1 - d.DimD2)
+                        * ((d.DimH - d.DimD1 - d.DimD2) / 2 + d.DimD1)
+                        + d.DimBD2 * d.DimD2 * (d.DimH - d.DimD2 / 2);
 
-            yC = sC / area;
+                    yC = sC / area;
 
-            iXC = d.DimB * Math.Pow((d.DimH - d.DimD1 - d.DimD2), 3)  / 12
-                + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * Math.Pow((yC - (d.DimH + d.DimD1 - d.DimD2) / 2), 2) 
-                + d.DimBD2 * Math.Pow(d.DimD2, 3) / 12
-                + d.DimBD2 * d.DimD2 * Math.Pow((yC - d.DimH + d.DimD2 / 2), 2)
-                + d.DimBD1 * Math.Pow(d.DimD1, 3) / 12 + d.DimBD1 * d.DimD1 * Math.Pow((yC - d.DimD1 / 2), 2);
+                    iXC = d.DimB * Math.Pow((d.DimH - d.DimD1 - d.DimD2), 3) / 12
+                        + d.DimB * (d.DimH - d.DimD1 - d.DimD2) * Math.Pow((yC - (d.DimH + d.DimD1 - d.DimD2) / 2), 2)
+                        + d.DimBD2 * Math.Pow(d.DimD2, 3) / 12
+                        + d.DimBD2 * d.DimD2 * Math.Pow((yC - d.DimH + d.DimD2 / 2), 2)
+                        + d.DimBD1 * Math.Pow(d.DimD1, 3) / 12 + d.DimBD1 * d.DimD1 * Math.Pow((yC - d.DimD1 / 2), 2);
+                    break;
+                case Dimensions.BeamTypes.skrzynkowy:
+                    area = d.SB1 * d.SH1 + d.SB2 * d.SH2 + 2 * d.SB3 * (d.SH - d.SH1 - d.SH2);
+                    sC = d.SB1 * d.SH1 * (d.SH - 0.5 * d.SH1) + 0.5 * d.SB2 * Math.Pow(d.SH2, 2) + 2 * (d.SB3 * (d.SH - d.SH1 - d.SH2) * (d.SH2 + 0.5 * (d.SH - d.SH1 - d.SH2)));
+                    yC = sC / area;
+
+                    iXC = d.SB1 * Math.Pow(d.SH1, 3) / 12 + d.SB1 * d.SH1 * Math.Pow(d.SH - 0.5 *d.SH1 - yC , 2) + d.SB2 * Math.Pow(d.SH2, 3) / 12 + d.SB2 * d.SH2 * Math.Pow(yC - d.SH2, 2)
+                        + 2 * (d.SB3 * Math.Pow((d.SH - d.SH1 - d.SH2), 3) / 12 + d.SB3 * (d.SH - d.SH1 - d.SH2) * Math.Pow(yC + d.SH2 - 0.5 * (d.SH - d.SH1 - d.SH2), 2));
+                    break;
+                case Dimensions.BeamTypes.belkatt:
+                    area = d.TtHf * d.TtB + 2 * (d.TtH - d.TtHf) * d.TtB1;
+                    sC = d.TtHf * d.TtB * (d.TtH - d.TtHf / 2) + d.TtB1 * Math.Pow(d.TtH - d.TtHf, 2);
+                    yC = sC / area;
+                    iXC = d.TtB * Math.Pow(d.TtHf, 3) / 12 + d.TtB * d.TtHf * Math.Pow(d.TtH - d.TtHf / 2 - yC , 2)
+                        + 2 * (d.TtB1 * Math.Pow(d.TtH - d.TtHf, 3) / 12 + d.TtB1 * (d.TtH - d.TtHf) * Math.Pow((d.TtH - d.TtHf) / 2 - yC, 2));
+                    break;
+                default:
+                    area = 1.1;
+                    sC = 1.1;
+                    yC = 1.1;
+                    iXC = 1.1;
+                    break;
+            }
 
             alfaP = beam.Beam.PrestressingSteelParameters.EP / beam.Beam.ConcreteParameters.ECm;
-
             areaAp = beam.Beam.PrestressingSteelParameters.N * beam.Beam.PrestressingSteelParameters.Ap / 100;
-
             areaAcs = area + (alfaP - 1) * areaAp;
 
             sCS = sC + (alfaP - 1) * areaAp * d.E1;
@@ -189,9 +204,30 @@ namespace WpfApp1._0
             iXCS = iXC + area * Math.Pow(yCS - yC, 2) + (alfaP - 1) * areaAp * Math.Pow(yCS - d.E1, 2);
 
             wCSd = iXCS / yCS;
-            wCSg = iXCS / (d.DimH - yCS);
-
-            sxCS2 = d.DimBD2 * d.DimD2 * (d.DimH - yCS - 0.5 * d.DimD2) + 0.5 * d.DimB * Math.Pow(d.DimH - yCS - d.DimD2, 2);
+            
+            switch (d.BeamType)
+            {
+                case Dimensions.BeamTypes.prostokatny:
+                    wCSg = iXCS / (d.PrH - yCS);
+                    sxCS2 = 0.5 * d.PrB * Math.Pow(d.PrH - yCS, 2);
+                    break;
+                case Dimensions.BeamTypes.dwuteowy:
+                    wCSg = iXCS / (d.DimH - yCS);
+                    sxCS2 = d.DimBD2 * d.DimD2 * (d.DimH - yCS - 0.5 * d.DimD2) + 0.5 * d.DimB * Math.Pow(d.DimH - yCS - d.DimD2, 2);
+                    break;
+                case Dimensions.BeamTypes.skrzynkowy:
+                    wCSg = iXCS / (d.SH - yCS);
+                    sxCS2 = d.SB1 * d.SH1 * (d.SH - yCS - 0.5 * d.SH1) + d.SB3 * Math.Pow(d.SH - d.SH1 - yCS, 2);
+                    break;
+                case Dimensions.BeamTypes.belkatt:
+                    wCSg = iXCS / (d.TtH - yCS);
+                    sxCS2 = d.TtB * Math.Pow(d.TtHf, 3) / 12 + d.TtB * d.TtHf * Math.Pow(d.TtH - d.TtHf / 2 - yCS, 2) + 2 * (d.TtB1 * Math.Pow(d.TtH - d.TtHf - yCS, 3) / 12 + 0.5 * d.TtB1 * Math.Pow(d.TtH - d.TtHf - yCS, 2));
+                    break;
+                default:
+                    wCSg = 1.1;
+                    sxCS2 = 1.1;
+                    break;
+            }
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SC"));

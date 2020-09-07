@@ -23,6 +23,10 @@ namespace WpfApp1._0
         private Boolean vrdmaxVedd = false;
         private Boolean vrdsVedd = false;
         private Boolean uLeff = false;
+        private Boolean isProstokat = false;
+        private Boolean isTeowy = false;
+        private Boolean isSkrzynkowy = false;
+        private Boolean isTT = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -127,6 +131,38 @@ namespace WpfApp1._0
             get
             {
                 return testf;
+            }
+        }
+
+        public Boolean IsProstokat
+        {
+            get
+            {
+                return isProstokat;
+            }
+        }
+
+        public Boolean IsTeowy
+        {
+            get
+            {
+                return isTeowy;
+            }
+        }
+
+        public Boolean IsSkrzynkowy
+        {
+            get
+            {
+                return isSkrzynkowy;
+            }
+        }
+
+        public Boolean IsTT
+        {
+            get
+            {
+                return isTT;
             }
         }
 
@@ -236,6 +272,42 @@ namespace WpfApp1._0
                 uLeff = false;
             }
 
+            if (beam.Beam.Dimensions.BeamType == Dimensions.BeamTypes.prostokatny)
+            {
+                isProstokat = true;
+            }
+            else
+            {
+                isProstokat = false;
+            }
+
+            if (beam.Beam.Dimensions.BeamType == Dimensions.BeamTypes.skrzynkowy)
+            {
+                isSkrzynkowy = true;
+            }
+            else
+            {
+                isSkrzynkowy = false;
+            }
+
+            if (beam.Beam.Dimensions.BeamType == Dimensions.BeamTypes.dwuteowy)
+            {
+                isTeowy = true;
+            }
+            else
+            {
+                isTeowy = false;
+            }
+
+            if (beam.Beam.Dimensions.BeamType == Dimensions.BeamTypes.belkatt)
+            {
+                isTT = true;
+            }
+            else
+            {
+                isTT = false;
+            }
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestP"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestF"));
 
@@ -250,6 +322,11 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VrdmaxVedd"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VrdsVedd"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ULeff"));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsProstokat"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsTeowy"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsSkrzynkowy"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsTT"));
         }
     }
 }

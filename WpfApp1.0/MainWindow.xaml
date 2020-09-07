@@ -118,8 +118,8 @@
                     </Border>
                 </StackPanel>
 
-                <!-- Wymiary przekroju -->
-                <StackPanel>
+                <!-- Wymiary przekroju były... -->
+                <!--<StackPanel>
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
                         <StackPanel >
                         <Grid>
@@ -208,8 +208,228 @@
                         </Grid>
                         </StackPanel>
                     </Border>
+                </StackPanel>-->
+
+                <!-- Wymiary przekroju DWUTEOWY -->
+                <StackPanel Visibility="{Binding Conditions.IsTeowy, Source={StaticResource beam}, Converter={StaticResource converter}}">
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
+                        <StackPanel >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Typ i wymiary przekroju" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                                    <StackPanel Margin="0 2" Orientation="Horizontal">
+                                        <TextBlock Text="Typ przekroju" VerticalAlignment="Center" />
+                                        <ComboBox Margin="20 0" ItemsSource="{Binding Beam.Dimensions.TypesOfBeam, 
+                                        Source={StaticResource beam}}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.Dimensions.BeamTypeDescription, Source={StaticResource beam}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość elementu h= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimH, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość półki dolnej d&#x2081;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość półki dolnej bd&#x2081;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość półki górnej d&#x2082;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość półki górnej bd&#x2082;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimBD2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość środnika b= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.DimB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+
+                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="180"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
-                
+
+                <!-- Wymiary przekroju PROSTOKAT -->
+                <StackPanel  Visibility="{Binding Conditions.IsProstokat, Source={StaticResource beam}, Converter={StaticResource converter}}">
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
+                        <StackPanel >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Typ i wymiary przekroju" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                                    <StackPanel Margin="0 2" Orientation="Horizontal">
+                                        <TextBlock Text="Typ przekroju" VerticalAlignment="Center" />
+                                        <ComboBox Margin="20 0" ItemsSource="{Binding Beam.Dimensions.TypesOfBeam, 
+                                        Source={StaticResource beam}}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.Dimensions.BeamTypeDescription, Source={StaticResource beam}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość elementu h= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.PrH, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość elementu b= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.PrB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="GreenYellow">
+
+                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- Wymiary przekroju BELKA TT -->
+                <StackPanel  Visibility="{Binding Conditions.IsTT, Source={StaticResource beam}, Converter={StaticResource converter}}">
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
+                        <StackPanel >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Typ i wymiary przekroju" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                                    <StackPanel Margin="0 2" Orientation="Horizontal">
+                                        <TextBlock Text="Typ przekroju" VerticalAlignment="Center" />
+                                        <ComboBox Margin="20 0" ItemsSource="{Binding Beam.Dimensions.TypesOfBeam, 
+                                        Source={StaticResource beam}}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.Dimensions.BeamTypeDescription, Source={StaticResource beam}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość elementu h= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.TtH, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość półki b= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.TtB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość półki hf= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.TtHf, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokości środnikó b&#x2081;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.TtB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Odległość między środnikami b&#x2082;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.TtB, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="Purple">
+
+                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- Wymiary przekroju SKRZYNKOWY -->
+                <StackPanel  Visibility="{Binding Conditions.IsSkrzynkowy, Source={StaticResource beam}, Converter={StaticResource converter}}">
+                    <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" >
+                        <StackPanel >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Typ i wymiary przekroju" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                                    <StackPanel Margin="0 2" Orientation="Horizontal">
+                                        <TextBlock Text="Typ przekroju" VerticalAlignment="Center" />
+                                        <ComboBox Margin="20 0" ItemsSource="{Binding Beam.Dimensions.TypesOfBeam, 
+                                        Source={StaticResource beam}}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.Dimensions.BeamTypeDescription, Source={StaticResource beam}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość elementu h= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SH, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość półki górnej b&#x2081;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SB1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość półki dolnej b&#x2082;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SB2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Szerokość ścianek b3= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SB3, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość półki górnej h&#x2081;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SH1, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 2" Orientation="horizontal">
+                                        <TextBlock Text="Wysokość półki dolnej h&#x2082;= " VerticalAlignment="center"/>
+                                        <TextBox Padding="2" Text="{Binding Beam.Dimensions.SH2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                        <TextBlock Text=" cm" VerticalAlignment="center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="Gray">
+
+                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
                 <!-- Mimosrod i liczba ciegien -->
                 <StackPanel>
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
