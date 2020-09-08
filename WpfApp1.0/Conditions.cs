@@ -27,6 +27,10 @@ namespace WpfApp1._0
         private Boolean isTeowy = false;
         private Boolean isSkrzynkowy = false;
         private Boolean isTT = false;
+        private Boolean isZwykla = false;
+        private Boolean isPrzewieszona = false;
+        private Boolean is1Utwierdzenie = false;
+        private Boolean is2Utwierdzenia = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -163,6 +167,38 @@ namespace WpfApp1._0
             get
             {
                 return isTT;
+            }
+        }
+
+        public Boolean IsZwykla
+        {
+            get
+            {
+                return isZwykla;
+            }
+        }
+
+        public Boolean IsPrzewieszona
+        {
+            get
+            {
+                return isPrzewieszona;
+            }
+        }
+
+        public Boolean Is1Utwierdzenie
+        {
+            get
+            {
+                return is1Utwierdzenie;
+            }
+        }
+
+        public Boolean Is2Utwierdzenia
+        {
+            get
+            {
+                return is2Utwierdzenia;
             }
         }
 
@@ -308,6 +344,42 @@ namespace WpfApp1._0
                 isTT = false;
             }
 
+            if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.jednoprzeslowa)
+            {
+                isZwykla = true;
+            }
+            else
+            {
+                isZwykla = false;
+            }
+
+            if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.przewieszenie)
+            {
+                isPrzewieszona = true;
+            }
+            else
+            {
+                isPrzewieszona = false;
+            }
+
+            if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.jednoZamocowanie)
+            {
+                is1Utwierdzenie = true;
+            }
+            else
+            {
+                is1Utwierdzenie = false;
+            }
+
+            if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.dwaZamocowania)
+            {
+                is2Utwierdzenia = true;
+            }
+            else
+            {
+                is2Utwierdzenia = false;
+            }
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestP"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TestF"));
 
@@ -327,6 +399,11 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsTeowy"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsSkrzynkowy"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsTT"));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsZwykla"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsPrzewieszona"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Is1Utwierdzenie"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Is2Utwierdzenia"));
         }
     }
 }

@@ -11,6 +11,8 @@ namespace WpfApp1._0
     {
         // length m
         private Double length = 12.0;
+        private Double length2 = 1.0;
+        private Double lengthX = 6.0;
 
         private BeamTypes beamType = BeamTypes.dwuteowy;
         private String beamTypeDescription = EnumDescribe.GetDescribe(BeamTypes.dwuteowy);
@@ -58,6 +60,38 @@ namespace WpfApp1._0
                 {
                     length = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("Length"));
+                }
+            }
+        }
+
+        public Double Length2
+        {
+            get
+            {
+                return length2;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    length2 = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("Length2"));
+                }
+            }
+        }
+
+        public Double LengthX
+        {
+            get
+            {
+                return lengthX;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    lengthX = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("LengthX"));
                 }
             }
         }

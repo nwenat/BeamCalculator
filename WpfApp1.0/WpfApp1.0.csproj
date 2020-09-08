@@ -85,14 +85,6 @@
     <Compile Include="SteelParameters.cs" />
     <Compile Include="Stirrups.cs" />
     <Compile Include="TechnologicalLosses.cs" />
-    <Page Include="Draws\przekroj.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Draws\uklad.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MaterialParametersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,23 +132,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Draws\foka1.jpg" />
-    <Resource Include="Draws\foka2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Draws\parametry_materialowe.jpg" />
-    <Resource Include="Draws\przekroj.jpg" />
-    <Resource Include="Draws\schemat_statyczny.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Draws\parametry_materialowe2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Draws\przekroj.bmp" />
-    <Resource Include="Draws\przekroj.png" />
+    <Resource Include="Draws\schemat_statyczny.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Draws\schemat_statyczny.bmp" />
+    <Resource Include="Draws\dwuteowy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\prostokat.bmp" />
+    <Resource Include="Draws\skrzynka.bmp" />
+    <Resource Include="Draws\TT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\dwaUtwierdzenia.bmp" />
+    <Resource Include="Draws\jednoUtwierdzenie.bmp" />
+    <Resource Include="Draws\przewieszenie.bmp" />
+    <Resource Include="Draws\zwykla.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

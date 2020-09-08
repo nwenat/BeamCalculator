@@ -31,11 +31,21 @@
                     <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="1.32*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="                          Układ belki" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                    <TextBlock Text="Schemat statyczny belki:" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                    <ComboBox ItemsSource="{Binding Beam.Loads.TypesOfStaticSystems, 
+                                        Source={StaticResource beam}}" SelectedIndex="0" 
+                                              SelectedItem="{Binding Beam.Loads.StaticSystemDescription, Source={StaticResource beam}}"/>
+                            </StackPanel>
+
                             <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Obciążęnie stałe &#x0394;g=  " VerticalAlignment="center" />
                                     <TextBox Padding="2" Text="{Binding Beam.Loads.DGLoad, Source={StaticResource beam}}" Background="LemonChiffon"/>
@@ -46,16 +56,38 @@
                                     <TextBox Padding="2" Text="{Binding Beam.Loads.QLoad, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" kN/m" VerticalAlignment="center"/>
                             </StackPanel>
-                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <StackPanel Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Siła skupiona P=  " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Loads.SilaP, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" kN/m" VerticalAlignment="center"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 2" Orientation="horizontal">
                                 <TextBlock Text="Rozpiętość belki L=  " VerticalAlignment="center"/>
                                     <TextBox Padding="2" Text="{Binding Beam.Dimensions.Length, Source={StaticResource beam}}" Background="LemonChiffon"/>
                                 <TextBlock Text=" m" VerticalAlignment="center"/>
                             </StackPanel>
-                        </StackPanel>
+                                <StackPanel Visibility="{Binding Conditions.IsPrzewieszona, Source={StaticResource beam}, Converter={StaticResource converter}}" Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Długość przewieszenia L2=  " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.Length2, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" m" VerticalAlignment="center"/>
+                                </StackPanel>
+                                <StackPanel Visibility="{Binding Conditions.IsZwykla, Source={StaticResource beam}, Converter={StaticResource converter}}" Margin="0 2" Orientation="horizontal">
+                                    <TextBlock Text="Odległość przyłożenia siły x=  " VerticalAlignment="center"/>
+                                    <TextBox Padding="2" Text="{Binding Beam.Dimensions.LengthX, Source={StaticResource beam}}" Background="LemonChiffon"/>
+                                    <TextBlock Text=" m" VerticalAlignment="center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <Image Width="200" Source="Draws/zwykla.bmp" Visibility="{Binding Conditions.IsZwykla, Source={StaticResource beam}, Converter={StaticResource converter}}" VerticalAlignment="Center"/>
 
-                            <Image Width="180" Source="Draws/schemat_statyczny.bmp" VerticalAlignment="Center"/>
-                        </StackPanel>
+                                <Image Width="200" Source="Draws/przewieszenie.bmp" Visibility="{Binding Conditions.IsPrzewieszona, Source={StaticResource beam}, Converter={StaticResource converter}}" VerticalAlignment="Center"/>
+
+                                <Image Width="200" Source="Draws/jednoUtwierdzenie.bmp" Visibility="{Binding Conditions.Is1Utwierdzenie, Source={StaticResource beam}, Converter={StaticResource converter}}" VerticalAlignment="Center"/>
+
+                                <Image Width="200" Source="Draws/dwaUtwierdzenia.bmp" Visibility="{Binding Conditions.Is2Utwierdzenia, Source={StaticResource beam}, Converter={StaticResource converter}}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        
                     </Grid>
                     </Border>
                 </StackPanel>
@@ -263,7 +295,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="180"/>
+                                    <Image Source="Draws/dwuteowy.bmp" VerticalAlignment="Center" Width="180"/>
 
                                 </StackPanel>
                             </Grid>
@@ -302,9 +334,9 @@
                                         <TextBlock Text=" cm" VerticalAlignment="center"/>
                                     </StackPanel>
                                 </StackPanel>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="GreenYellow">
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+                                    <Image Source="Draws/prostokat.bmp" VerticalAlignment="Center" Width="160"/>
 
                                 </StackPanel>
                             </Grid>
@@ -358,9 +390,9 @@
                                         <TextBlock Text=" cm" VerticalAlignment="center"/>
                                     </StackPanel>
                                 </StackPanel>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="Purple">
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+                                    <Image Source="Draws/TT.bmp" VerticalAlignment="Center" Width="220"/>
 
                                 </StackPanel>
                             </Grid>
@@ -420,9 +452,9 @@
                                         <TextBlock Text=" cm" VerticalAlignment="center"/>
                                     </StackPanel>
                                 </StackPanel>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Background="Gray">
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                    <Image Source="Draws/przekroj.bmp" VerticalAlignment="Center" Width="80"/>
+                                    <Image Source="Draws/skrzynka.bmp" VerticalAlignment="Center" Width="220"/>
 
                                 </StackPanel>
                             </Grid>
