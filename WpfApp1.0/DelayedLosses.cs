@@ -271,9 +271,9 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
-            sigmaCg = -1000 * (beam.Forces.MomentGK + beam.Forces.MomentDGK) * beam.AdHocLosses.Zcp / beam.CrossSectionCalculatedCharacteristics.IXCS;
+            sigmaCg = -1000 * (beam.Forces.MomentGK + beam.Forces.MomentDGK + beam.Forces.MomentPK) * beam.AdHocLosses.Zcp / beam.CrossSectionCalculatedCharacteristics.IXCS;
             sigmaCp0 = ((beam.AdHocLosses.PMo / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((beam.AdHocLosses.PMo * Math.Pow(beam.AdHocLosses.Zcp ,2)) / beam.CrossSectionCalculatedCharacteristics.IXCS)) * 10;
-            sigmaPi = ((beam.AdHocLosses.PMo / beam.CrossSectionCalculatedCharacteristics.AreaAp) + (((beam.Forces.MomentGK + beam.Forces.MomentDGK) * 100 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.IXCS)
+            sigmaPi = ((beam.AdHocLosses.PMo / beam.CrossSectionCalculatedCharacteristics.AreaAp) + (((beam.Forces.MomentGK + beam.Forces.MomentDGK + beam.Forces.MomentPK) * 100 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.IXCS)
                 * beam.CrossSectionCalculatedCharacteristics.AlfaP) * 10;
             mi = sigmaPi / beam.Beam.PrestressingSteelParameters.Fpk;
             deltaSigmaPr = 0.66 * sigmaPi * 2.5 * Math.Pow(Math.E, 9.1 * mi) * Math.Pow(500, 0.75 * (1 - mi)) * Math.Pow(10, -5);
@@ -281,7 +281,7 @@ namespace WpfApp1._0
             betaAsT = 1 - Math.Pow(Math.E, -0.2*Math.Sqrt(beam.Beam.DifferentData.TOpoznione * 365));
             epsilonCa8 = 2.5 * (beam.Beam.ConcreteParameters.Fck - 10) * Math.Pow(10, -6);
             epsilonCaT = betaAsT * epsilonCa8;
-            u = beam.Beam.Dimensions.DimBD1 + 2 * beam.Beam.Dimensions.DimH;
+            u = beam.CrossSectionCalculatedCharacteristics.U;
             h0 = (2 * beam.CrossSectionCalculatedCharacteristics.Area) / u;
             kh = 0.7 + Math.Pow(Math.E, -(h0 / 100));
 

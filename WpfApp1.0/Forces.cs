@@ -22,6 +22,9 @@ namespace WpfApp1._0
         // Q - obc. zmienne
         private Double momentQK;
         private Double momentQ;
+        // P - sila skupiona
+        private Double momentPK;
+        private Double momentP;
         // force kN
         private Double force;
 
@@ -83,6 +86,22 @@ namespace WpfApp1._0
             }
         }
 
+        public Double MomentPK
+        {
+            get
+            {
+                return momentPK;
+            }
+        }
+
+        public Double MomentP
+        {
+            get
+            {
+                return momentP;
+            }
+        }
+
         public Double Force
         {
             get
@@ -98,13 +117,44 @@ namespace WpfApp1._0
 
         public void Calculate(BeamUnderLoad beam)
         {
+            double L = beam.Beam.Dimensions.Length;
             g = beam.CrossSectionCalculatedCharacteristics.Area * 0.0001 * beam.Beam.ConcreteParameters.RhoB;
-            momentDGK = (beam.Beam.Loads.DGLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentDG = (beam.Beam.Loads.DGLoad * 1.35 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentGK = (g * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentG = (g * 1.35 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentQK = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
-            momentQ = (beam.Beam.Loads.QLoad * 1.5 * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
+
+            switch (beam.Beam.Loads.StaticSystem)
+            {
+                case Loads.StaticSystemTypes.jednoprzeslowa:
+                    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) / 8;
+                    momentGK = (g * Math.Pow(L, 2)) / 8;
+                    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) / 8;
+                    momentPK = beam.Beam.Loads.SilaP * L / 4;
+                    break;
+                case Loads.StaticSystemTypes.przewieszenie:
+                    // posprawdzać 
+                    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) / 8;
+                    momentGK = (g * Math.Pow(L, 2)) / 8;
+                    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) / 8;
+                    momentPK = beam.Beam.Loads.SilaP * L / 4;
+                    break;
+                case Loads.StaticSystemTypes.jednoZamocowanie:
+                    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) * 0.0703;
+                    momentGK = (g * Math.Pow(L, 2)) * 0.0703;
+                    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) * 0.0703;
+                    momentPK = beam.Beam.Loads.SilaP * L * 0.156;
+                    break;
+                case Loads.StaticSystemTypes.dwaZamocowania:
+                    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) * 0.0417;
+                    momentGK = (g * Math.Pow(L, 2)) * 0.0417;
+                    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) * 0.0417;
+                    momentPK = beam.Beam.Loads.SilaP * L * 0.125;
+                    break;
+                default:
+                    break;
+            }
+
+            momentDG = 1.35 * momentDGK;
+            momentG = 1.35 * momentGK;
+            momentP = 1.35 * momentPK;
+            momentQ = 1.5 * MomentQK;
 
             force = (beam.Beam.Loads.QLoad * beam.Beam.Dimensions.Length * beam.Beam.Dimensions.Length) / 8;
 
@@ -114,6 +164,8 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentDG"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQK"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentQ"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentPK"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MomentP"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("G"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Force"));
         }

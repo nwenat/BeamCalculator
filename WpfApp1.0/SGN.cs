@@ -194,7 +194,7 @@ namespace WpfApp1._0
             sig1F1 = ((pD1 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pD1 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (beam.Forces.MomentG * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;
             pD2 = 1.0 * beam.AdHocLosses.PMo;
 
-            Double moment = beam.Forces.MomentG + beam.Forces.MomentDG + beam.Forces.MomentQ;
+            Double moment = beam.Forces.MomentG + beam.Forces.MomentDG + beam.Forces.MomentQ + beam.Forces.MomentP;
 
             sig2F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) - ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSg) + (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSg)) * 10;
             sig1F2 = ((pD2 / beam.CrossSectionCalculatedCharacteristics.AreaAcs) + ((pD2 * beam.AdHocLosses.Zcp) / beam.CrossSectionCalculatedCharacteristics.WCSd) - (moment * 100 / beam.CrossSectionCalculatedCharacteristics.WCSd)) * 10;

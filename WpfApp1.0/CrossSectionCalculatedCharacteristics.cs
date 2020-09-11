@@ -27,7 +27,11 @@ namespace WpfApp1._0
         private Double wCSg;
 
         private Double alfaP;
-
+        private Double hz;
+        private Double bNmin;
+        private Double bShear;
+        // obwod narazony na wysychanie
+        private Double u;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -136,6 +140,38 @@ namespace WpfApp1._0
             }
         }
 
+        public Double Hz
+        {
+            get
+            {
+                return hz;
+            }
+        }
+
+        public Double BNmin
+        {
+            get
+            {
+                return bNmin;
+            }
+        }
+
+        public Double BShear
+        {
+            get
+            {
+                return bShear;
+            }
+        }
+
+        public Double U
+        {
+            get
+            {
+                return u;
+            }
+        }
+
         public CrossSectionCalculatedCharacteristics(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -210,22 +246,39 @@ namespace WpfApp1._0
                 case Dimensions.BeamTypes.prostokatny:
                     wCSg = iXCS / (d.PrH - yCS);
                     sxCS2 = 0.5 * d.PrB * Math.Pow(d.PrH - yCS, 2);
+                    hz = d.PrH - d.E1;
+                    bNmin = d.PrB;
+                    bShear = d.PrB;
+                    u = 2 * d.PrH + d.PrB;
                     break;
                 case Dimensions.BeamTypes.dwuteowy:
                     wCSg = iXCS / (d.DimH - yCS);
                     sxCS2 = d.DimBD2 * d.DimD2 * (d.DimH - yCS - 0.5 * d.DimD2) + 0.5 * d.DimB * Math.Pow(d.DimH - yCS - d.DimD2, 2);
+                    hz = d.DimH - d.E1;
+                    bNmin = d.DimBD2;
+                    bShear = d.DimB;
+                    u = 2 * d.DimH + d.DimBD1;
                     break;
                 case Dimensions.BeamTypes.skrzynkowy:
                     wCSg = iXCS / (d.SH - yCS);
                     sxCS2 = d.SB1 * d.SH1 * (d.SH - yCS - 0.5 * d.SH1) + d.SB3 * Math.Pow(d.SH - d.SH1 - yCS, 2);
+                    hz = d.SH - d.E1;
+                    bNmin = d.SB1;
+                    bShear = d.SB3 * 2;
+                    u = 4 * d.SH + d.SB2;
                     break;
                 case Dimensions.BeamTypes.belkatt:
                     wCSg = iXCS / (d.TtH - yCS);
                     sxCS2 = d.TtB * Math.Pow(d.TtHf, 3) / 12 + d.TtB * d.TtHf * Math.Pow(d.TtH - d.TtHf / 2 - yCS, 2) + 2 * (d.TtB1 * Math.Pow(d.TtH - d.TtHf - yCS, 3) / 12 + 0.5 * d.TtB1 * Math.Pow(d.TtH - d.TtHf - yCS, 2));
+                    hz = d.TtH - d.E1;
+                    bNmin = d.TtB;
+                    bShear = 2 * d.TtB1;
+                    u = 4 * d.TtH + 2 * d.TtB1;
                     break;
                 default:
                     wCSg = 1.1;
                     sxCS2 = 1.1;
+                    hz = 1.1;
                     break;
             }
 
@@ -240,6 +293,10 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAcs"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AreaAp"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SxCS2"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Hz"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BNmin"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BShear"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("U"));
         }
 
     }
