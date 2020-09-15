@@ -128,13 +128,12 @@ namespace WpfApp1._0
                     momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) / 8;
                     momentPK = beam.Beam.Loads.SilaP * L / 4;
                     break;
-                case Loads.StaticSystemTypes.przewieszenie:
-                    // posprawdzać 
-                    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) / 8;
-                    momentGK = (g * Math.Pow(L, 2)) / 8;
-                    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) / 8;
-                    momentPK = beam.Beam.Loads.SilaP * L / 4;
-                    break;
+                //case Loads.StaticSystemTypes.przewieszenie:
+                //    momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) / 8;
+                //    momentGK = (g * Math.Pow(L, 2)) / 8;
+                //    momentQK = (beam.Beam.Loads.QLoad * Math.Pow(L, 2)) / 8;
+                //    momentPK = beam.Beam.Loads.SilaP * L / 4;
+                //    break;
                 case Loads.StaticSystemTypes.jednoZamocowanie:
                     momentDGK = (beam.Beam.Loads.DGLoad * Math.Pow(L, 2)) * 0.0703;
                     momentGK = (g * Math.Pow(L, 2)) * 0.0703;

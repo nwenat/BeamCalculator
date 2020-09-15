@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1._0"
         mc:Ignorable="d"
-        Title="Parametry Materiałów" Height="550" Width="400">
+        Title="Dodatkowe informacje" Height="550" Width="800">
 
     <Window.DataContext>
         <local:BeamUnderLoad/>
@@ -13,7 +13,12 @@
 
     <Border Margin="1.5, 0">
         <Grid Language="pl-PL">
-            <StackPanel Margin="1.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.08*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Margin="1.5">
                 <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
                     <Grid>
                         <StackPanel>
@@ -115,22 +120,22 @@
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
                                 <TextBlock Text="Obliczeniowa siła zrywająca cięgno Fpd = " VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.ForcePd, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.ForcePd, StringFormat={}{0:n2}}" FontWeight="Bold" />
                                 <TextBlock Text=" kN" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
                                 <TextBlock Text="Charakterystyczna wytrzymałość na rozciąganie fpk = " VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpk, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpk, StringFormat={}{0:n2}}" FontWeight="Bold" />
                                 <TextBlock Text=" MPa" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
                                 <TextBlock Text="Obliczeniowa wytrzymałość na rozciąganie fpd = " VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpd, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fpd, StringFormat={}{0:n2}}" FontWeight="Bold" />
                                 <TextBlock Text=" MPa" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
                                 <TextBlock Text="Charakterystyczna granica plastyczności fp0,1k = " VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fp01k, StringFormat={}{0:n0}}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Beam.PrestressingSteelParameters.Fp01k, StringFormat={}{0:n2}}" FontWeight="Bold" />
                                 <TextBlock Text=" MPa" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0 2" Orientation="Horizontal">
@@ -141,6 +146,66 @@
                         </StackPanel>
                     </Grid>
                 </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="1.5">
+                <Border BorderBrush="DimGray" BorderThickness="0.5" Padding="5" Margin="0, 4">
+                    <Grid>
+                        <StackPanel>
+                            <!--Inne, czasy, wilgotnosc wzgledna powietrza, klasa cem-->
+                            <TextBlock Text="Inne parametry" FontWeight="bold" HorizontalAlignment="Center" Margin="0,2"/>
+
+                            <StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="Klasa cementu" VerticalAlignment="Center" />
+                                <ComboBox Margin="20 0" ItemsSource="{Binding Beam.DifferentData.KlasyCementu}" SelectedIndex="1" 
+                                              SelectedItem="{Binding Beam.DifferentData.KlasaCem}"/>
+                            </StackPanel>
+
+                            <!--<StackPanel Margin="0 2" Orientation="Horizontal">
+                                <TextBlock Text="sprawdzenie alfa zalezne od kl cem = " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding DelayedLosses.Alfa}" FontWeight="Bold" />
+                            </StackPanel>-->
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wilgotność względna powietrza RH=  " VerticalAlignment="center" />
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.RH, StringFormat=\{0:n0\}}" Background="LemonChiffon"/>
+                                <TextBlock Text=" %" VerticalAlignment="center"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Maksymalny poślizg cięgien as1= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.As1}" Background="LemonChiffon"/>
+                                <TextBlock Text=" mm" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Czas dla którego mierzona jest wartość strat od relaksacji stali t= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TDorazne}" Background="LemonChiffon"/>
+                                <TextBlock Text=" h" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Czas dla którego obliczony jest całkowity skurcz betonu t= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TOpoznione}" Background="LemonChiffon"/>
+                                <TextBlock Text=" lata" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Wiek betonu na początku procesu wysychania ts= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TsOpoznione}" Background="LemonChiffon"/>
+                                <TextBlock Text=" dni" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Czas rozdeskowania od chwili zabetonowania t0= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.TSGN}" Background="LemonChiffon"/>
+                                <TextBlock Text=" dni" VerticalAlignment="center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 2" Orientation="horizontal">
+                                <TextBlock Text="Odległość od podpory d= " VerticalAlignment="center"/>
+                                <TextBox Padding="2" Text="{Binding Beam.DifferentData.D}" Background="LemonChiffon"/>
+                                <TextBlock Text=" cm" VerticalAlignment="center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
             </StackPanel>
         </Grid>
     </Border>

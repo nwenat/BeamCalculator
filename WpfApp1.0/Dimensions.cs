@@ -30,18 +30,18 @@ namespace WpfApp1._0
         private Double prB = 50.0;
 
         // belka TT cm
-        private Double ttH = 100.0;
-        private Double ttB = 200.0;
-        private Double ttHf = 40.0;
-        private Double ttB1 = 70.0;
-        private Double ttB2 = 10.0;
+        private Double ttH = 110.0;
+        private Double ttB = 150.0;
+        private Double ttHf = 20.0;
+        private Double ttB1 = 20.0;
+        private Double ttB2 = 80.0;
 
         // skrzynkowy cm
-        private Double sH = 100.0;
-        private Double sH1 = 40.0;
-        private Double sH2 = 10.0;
-        private Double sB1 = 70.0;
-        private Double sB2 = 10.0;
+        private Double sH = 110.0;
+        private Double sH1 = 10.0;
+        private Double sH2 = 20.0;
+        private Double sB1 = 120.0;
+        private Double sB2 = 100.0;
         private Double sB3 = 10.0;
 
         private Double e1 = 7.5;

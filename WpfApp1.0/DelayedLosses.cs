@@ -264,6 +264,14 @@ namespace WpfApp1._0
             }
         }
 
+        public Double Alfa
+        {
+            get
+            {
+                return alfa;
+            }
+        }
+
         public DelayedLosses(BeamUnderLoad beam)
         {
             Calculate(beam);
@@ -336,6 +344,7 @@ namespace WpfApp1._0
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DeltaSigmaPCSR"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DeltaPt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pmt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Alfa"));
         }
 
         private void setAlfaFromKlasaCem(String klasaCem)

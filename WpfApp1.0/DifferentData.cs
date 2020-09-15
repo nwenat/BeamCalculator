@@ -196,5 +196,13 @@ namespace WpfApp1._0
                 PropertyChanged(this, new PropertyChangedEventArgs("Sw"));
             }
         }
+
+        public Array KlasyCementu
+        {
+            get
+            {
+                return new Char[] { 'S', 'N', 'R' };
+            }
+        }
     }
 }

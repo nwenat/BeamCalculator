@@ -138,6 +138,7 @@ namespace WpfApp1._0
             vRdMax = (alfaC * beam.CrossSectionCalculatedCharacteristics.BShear * z * v1 * beam.Beam.ConcreteParameters.Fcd) / 20;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VEd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VEdd"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SXCS"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SigmaCp"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VRdC"));

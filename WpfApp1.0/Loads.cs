@@ -99,8 +99,8 @@ namespace WpfApp1._0
         {
             [Description("jednoprzęsłowa wolnopodparta")]
             jednoprzeslowa,
-            [Description("wolnopodparta z przewieszeniem")]
-            przewieszenie,
+            //[Description("wolnopodparta z przewieszeniem")]
+            //przewieszenie,
             [Description("jednoprzęsłowa zamocowana z jednej strony")]
             jednoZamocowanie,
             [Description("jednoprzęsłowa zamocowana z dwóch stron")]

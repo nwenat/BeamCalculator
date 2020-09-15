@@ -353,14 +353,14 @@ namespace WpfApp1._0
                 isZwykla = false;
             }
 
-            if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.przewieszenie)
-            {
-                isPrzewieszona = true;
-            }
-            else
-            {
-                isPrzewieszona = false;
-            }
+            //if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.przewieszenie)
+            //{
+            //    isPrzewieszona = true;
+            //}
+            //else
+            //{
+            //    isPrzewieszona = false;
+            //}
 
             if (beam.Beam.Loads.StaticSystem == Loads.StaticSystemTypes.jednoZamocowanie)
             {
