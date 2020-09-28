@@ -132,9 +132,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Draws\parametry_materialowe2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Draws\schemat_statyczny.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +147,9 @@
     <Resource Include="Draws\jednoUtwierdzenie.bmp" />
     <Resource Include="Draws\przewieszenie.bmp" />
     <Resource Include="Draws\zwykla.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Draws\parametry_materialowe2.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

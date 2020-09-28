@@ -134,7 +134,16 @@ namespace WpfApp1._0
 
             z = 0.9 * beam.CrossSectionCalculatedCharacteristics.Hz;
             double v1 = 0.6 * (1.0 - beam.Beam.ConcreteParameters.Fck / 250.0);
-            
+
+
+            int m = 1;
+
+            while (m < 20)
+            {
+                m = m + 1;
+            }
+
+
             vRdMax = (alfaC * beam.CrossSectionCalculatedCharacteristics.BShear * z * v1 * beam.Beam.ConcreteParameters.Fcd) / 20;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VEd"));

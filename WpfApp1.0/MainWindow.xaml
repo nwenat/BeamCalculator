@@ -12,7 +12,7 @@
         <local:BeamUnderLoad x:Key="beam"/>
     </Window.Resources>
 
-    <Border Margin="1.5, 0" Background="Honeydew">
+    <Border Margin="1.5, 0">
         <Grid Language="pl-PL">
             <Grid.Resources>
                 <local:BoolToVisibilityConverter x:Key="converter" />
@@ -137,7 +137,7 @@
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <Button Name="Dane"  Width="90" Command="{Binding Beam.ShowMaterialParameters, Source={StaticResource beam}}" CommandParameter="{DynamicResource beam}"
                                         BorderThickness="2">
-                                    <Image Source="D:\nwenat\GIT\Mgr\BeamCalculator\WpfApp1.0\Draws\parametry_materialowe2.jpg"/>
+                                    <Image Source="Draws\parametry_materialowe2.bmp"/>
                                     <Button.ToolTip>
                                         <ToolTip>
                                             <TextBlock Text="Dane materiałowe"/>

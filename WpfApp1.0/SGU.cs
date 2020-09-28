@@ -75,23 +75,23 @@ namespace WpfApp1._0
             
             eCeff = beam.Beam.ConcreteParameters.ECm * 1000 / (1 + beam.DelayedLosses.Fi8T0);
 
-            u = (5 * (q/100) * Math.Pow(beam.Beam.Dimensions.Length * 100, 4)) / (384 * (eCeff/10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
+            //u = (5 * (q/100) * Math.Pow(beam.Beam.Dimensions.Length * 100, 4)) / (384 * (eCeff/10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
 
             double l3EI = Math.Pow(beam.Beam.Dimensions.Length * 100, 3) / ((eCeff / 10) * beam.CrossSectionCalculatedCharacteristics.IXCS);
 
             switch (beam.Beam.Loads.StaticSystem)
             {
                 case Loads.StaticSystemTypes.jednoprzeslowa:
-                    u = (5 / 384) * (q / 100) * beam.Beam.Dimensions.Length * l3EI + (1/48) * beam.Beam.Loads.SilaP * l3EI;
+                    u = (5.0 / 384.0) * (q / 100) * beam.Beam.Dimensions.Length * 100 * l3EI + (1/48.0) * beam.Beam.Loads.SilaP * l3EI;
                     break;
                 //case Loads.StaticSystemTypes.przewieszenie:
                 //    u = 0.0;
                 //    break;
                 case Loads.StaticSystemTypes.jednoZamocowanie:
-                    u = 0.00541 * (q / 100) * beam.Beam.Dimensions.Length * l3EI + 0.00933 * beam.Beam.Loads.SilaP * l3EI;
+                    u = 0.00541 * (q / 100) * beam.Beam.Dimensions.Length * 100 * l3EI + 0.00933 * beam.Beam.Loads.SilaP * l3EI;
                     break;
                 case Loads.StaticSystemTypes.dwaZamocowania:
-                    u = 0.0026 * (q / 100) * beam.Beam.Dimensions.Length * l3EI + 0.00521 * beam.Beam.Loads.SilaP * l3EI;
+                    u = 0.0026 * (q / 100) * beam.Beam.Dimensions.Length * 100 * l3EI + 0.00521 * beam.Beam.Loads.SilaP * l3EI;
                     break;
                 default:
                     break;
